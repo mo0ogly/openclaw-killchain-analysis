@@ -55,7 +55,8 @@ openclaw-killchain-analysis/
 │   ├── Phase2_Weaponization_EN.pdf           ✅ available (EN)
 │   ├── Phase3_Installation_Exécution.pdf     ✅ available (FR)
 │   ├── Phase3_Installation_Execution_EN.pdf  ✅ available (EN)
-│   ├── Phase4_Lateral_Movement.pdf           ⏳ coming soon
+│   ├── Phase4_Mouvement_Latéral_Persistance.pdf     ✅ available (FR)
+│   ├── Phase4_Lateral_Movement_Persistence_EN.pdf   ✅ available (EN)
 │   └── Phase5_Impact.pdf                     ⏳ coming soon
 │
 ├── figures/                               ← Academic figures (EN + FR)
