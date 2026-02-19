@@ -2,27 +2,41 @@
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Status: Active Research](https://img.shields.io/badge/Status-Active%20Research-orange.svg)]()
-[![Language: FR/EN](https://img.shields.io/badge/Language-FR%20%2F%20EN-blue.svg)]()
+[![Language: EN / FR](https://img.shields.io/badge/Language-EN%20%2F%20FR-blue.svg)]()
 
-> **⚠️ Ce dépôt est un travail de recherche académique en cours. Les documents sont mis à jour régulièrement. Consultez le [CHANGELOG](CHANGELOG.md) pour les corrections.**
-
----
-
-## 🇫🇷 Résumé
-
-Ce dépôt contient l'analyse complète d'une **cyberattaque fictive multi-phases exploitant un agent IA autonome** (OpenClaw) contre une entreprise pharmaceutique (MediFrance SA). L'étude modélise une kill chain agentique complète — de la reconnaissance OSINT augmentée par LLM jusqu'au déploiement d'un rançongiciel et à la double extorsion — en s'appuyant exclusivement sur des vulnérabilités, outils et techniques documentés dans la littérature publique (février 2026).
-
-**Contribution principale** : démontrer que la convergence entre agents IA autonomes, compromission supply chain et techniques d'attaque classiques (AD, ransomware) crée une surface d'attaque qualitativement nouvelle qui nécessite un modèle de défense en profondeur spécifique.
-
-## 🇬🇧 Abstract
-
-This repository contains the full analysis of a **fictional multi-phase cyberattack leveraging an autonomous AI agent** (OpenClaw) against a pharmaceutical company (MediFrance SA). The study models a complete agentic kill chain — from LLM-augmented OSINT reconnaissance to ransomware deployment and double extortion — relying exclusively on vulnerabilities, tools and techniques documented in the public literature (February 2026).
-
-**Key contribution**: demonstrating that the convergence of autonomous AI agents, supply chain compromise, and classical attack techniques (AD, ransomware) creates a qualitatively new attack surface requiring a specific defense-in-depth model.
+> **⚠️ This repository is an active research project. Documents are updated regularly. See the [CHANGELOG](CHANGELOG.md) for corrections.**
 
 ---
 
-## 📁 Structure du dépôt / Repository Structure
+## Abstract
+
+This repository presents a **comprehensive threat model of a fictional multi-phase cyberattack** exploiting an autonomous AI coding agent (OpenClaw) as both attack vector and force multiplier against a mid-size pharmaceutical company. The study models a complete **agentic kill chain spanning 36 days**, from LLM-augmented OSINT reconnaissance through supply chain compromise, lateral movement via AI agent impersonation, to ransomware deployment and double extortion.
+
+All vulnerabilities, tools and techniques are documented in the public literature (February 2026).
+
+**Key findings:**
+- **13 of 14 MITRE ATT&CK Enterprise tactics** are covered across the five phases
+- **Phase 4 (lateral movement) — not Phase 5 (ransomware)** — is the technical center of gravity
+- A compromised AI agent acts with **system permissions, automation speed, and natural language adaptability**
+- **Foundational controls** (patching, MFA, segmentation, immutable backups) would have disrupted the majority of the kill chain
+- AI-specific controls (tool allowlists, sandboxing, egress monitoring) are **complementary but not substitute** protection
+
+A **five-layer defense-in-depth model** specific to agentic AI threats is proposed.
+
+---
+
+<details>
+<summary>🇫🇷 <strong>Résumé en français</strong></summary>
+
+Ce dépôt présente la modélisation complète d'une cyberattaque fictive multi-phases exploitant un agent IA de codage autonome (OpenClaw) comme vecteur d'attaque et multiplicateur de force contre une entreprise pharmaceutique. L'étude couvre une kill chain agentique de 36 jours, de la reconnaissance OSINT augmentée par LLM jusqu'au déploiement d'un rançongiciel et à la double extorsion. Un modèle de défense en profondeur en cinq couches spécifique aux menaces agentiques est proposé.
+
+📄 La note de synthèse en français est disponible : [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md)
+
+</details>
+
+---
+
+## 📁 Repository Structure
 
 ```
 openclaw-killchain-analysis/
@@ -31,75 +45,66 @@ openclaw-killchain-analysis/
 ├── CHANGELOG.md                           ← corrections & version history
 ├── LICENSE                                ← CC BY-NC-SA 4.0
 │
-├── NOTE_ACADEMIQUE.md                     ← Note de synthèse (8-12 pages)
-│                                             Academic summary note
+├── ACADEMIC_NOTE.md                       ← Summary note (EN, ~10 pages)
+├── NOTE_ACADEMIQUE.md                     ← Note de synthèse (FR, ~10 pages)
 │
-├── phases/                                ← Analyses détaillées par phase
-│   ├── Phase1_Reconnaissance.pdf             Detailed analysis per phase
-│   ├── Phase2_Armement.pdf
-│   ├── Phase3_Livraison_Exploitation.pdf
-│   ├── Phase4_Mouvement_Lateral.pdf
+├── phases/                                ← Detailed phase analyses (FR)
+│   ├── Phase1_Reconnaissance.pdf
+│   ├── Phase2_Weaponization.pdf
+│   ├── Phase3_Delivery_Exploitation.pdf
+│   ├── Phase4_Lateral_Movement.pdf
 │   └── Phase5_Impact.pdf
 │
-├── figures/                               ← Figures académiques (FR + EN)
-│   ├── fig12_trifecta_fr.png                Academic figures
+├── figures/                               ← Academic figures (EN + FR)
 │   ├── fig12_trifecta_en.png
-│   ├── fig20_defense_killchain.png
-│   ├── fig21_timeline_fr.png
-│   ├── fig21_timeline_en.png
-│   ├── fig22_mitre_heatmap_fr.png
 │   ├── fig22_mitre_heatmap_en.png
 │   └── ...
 │
-└── scripts/                               ← Scripts de génération des figures
-    └── gen_figures.py                        (numérotation paramétrable)
+└── scripts/                               ← Figure generation scripts
+    └── gen_figures.py
 ```
 
-## 📖 Guide de lecture / Reading Guide
+## 📖 Reading Guide
 
-| Temps disponible | Document recommandé |
-|-----------------|-------------------|
-| **5 minutes** | Ce README + les figures |
-| **20 minutes** | [Note académique de synthèse](NOTE_ACADEMIQUE.md) |
-| **1 heure** | Note + une phase au choix |
-| **Étude complète** | Les 5 phases dans l'ordre |
+| Time available | Start here |
+|---------------|-----------|
+| **5 min** | This README + key figures below |
+| **20 min** | [Academic Note (EN)](ACADEMIC_NOTE.md) or [Note académique (FR)](NOTE_ACADEMIQUE.md) |
+| **1 hour** | Summary note + one phase of your choice |
+| **Full study** | All 5 phases in order |
 
-## 🗺️ Les 5 Phases / The 5 Phases
+## 🗺️ The 5 Phases
 
-| Phase | Titre | Période | Pages | Résumé |
-|-------|-------|---------|-------|--------|
-| **1** | Reconnaissance | J−30 → J−15 | ~25 p. | OSINT augmenté par LLM, graphe social, 40 000+ agents OpenClaw exposés via Shodan |
-| **2** | Armement | J−15 → J−7 | ~25 p. | Skill piégée ClawHub, ransomware PromptLock (Go), payloads d'injection de prompt, deepfake audio |
-| **3** | Livraison & Exploitation | J−7 → J | ~25 p. | 3 vecteurs simultanés : supply chain skill, infostealer (vol tokens Hudson Rock), CVE-2024-55591 VPN |
-| **4** | Mouvement latéral | J → J+5 | ~30 p. | Agent fantôme, prompt injection via Slack, DCSync → Golden Ticket, PoisonGPT chatbot |
-| **5** | Actions sur l'objectif | J+5 → J+6 | ~25 p. | Exfiltration R&D complète, PromptLock déployé, double extorsion, impact estimé 7,5 M€ |
+| Phase | Title | Timeline | Key Findings |
+|-------|-------|----------|-------------|
+| **1** | Reconnaissance | D−30 → D−15 | LLM-augmented OSINT, social graph reconstruction, 40,000+ exposed OpenClaw agents via Shodan |
+| **2** | Weaponization | D−15 → D−7 | Malicious ClawHub skill, PromptLock ransomware (Go), prompt injection payloads, audio deepfake |
+| **3** | Delivery & Exploitation | D−7 → D | 3 simultaneous vectors: skill supply chain, infostealer (token theft per Hudson Rock), CVE-2024-55591 VPN |
+| **4** | Lateral Movement | D → D+5 | Shadow agent, Slack prompt injection, DCSync → Golden Ticket, PoisonGPT chatbot poisoning |
+| **5** | Actions on Objectives | D+5 → D+6 | Full R&D exfiltration, PromptLock deployed, double extortion, estimated impact €7.5M |
 
-## 🛡️ Modèle de Défense en Profondeur / Defense-in-Depth Model
+## 🛡️ Defense-in-Depth Model
 
-L'étude propose un modèle défensif en **5 couches** :
+| Layer | Principle | Key Controls |
+|-------|----------|-------------|
+| **C1** — Agent Governance | The LLM is an advisor, not an executor | Tool allowlists, sandbox, human-in-the-loop |
+| **C2** — Input Control | All ingested content is untrusted | Data/instruction separation, need-to-know access |
+| **C3** — Output Control | Legitimate HTTPS can mask logical abuse | Egress proxy by app identity, DLP, destination allowlists |
+| **C4** — Impact Reduction | Compromised agent must not inherit SI-wide permissions | Segmentation, 3-2-1-1-0 backups, AD hardening |
+| **C5** — Basic Hygiene | Agentic controls don't replace fundamentals | Accelerated patching, MFA, minimal exposure |
 
-| Couche | Principe | Contrôles clés |
-|--------|----------|---------------|
-| **C1** — Gouvernance de l'agent | Le LLM est un conseiller, pas un exécuteur | Allowlist d'outils, sandbox, human-in-the-loop |
-| **C2** — Contrôle des entrées | Tout contenu ingéré est non fiable | Séparation données/instructions, besoin d'en connaître |
-| **C3** — Contrôle des sorties | Un flux HTTPS légitime peut masquer un abus | Proxy egress, DLP, allowlist de destinations |
-| **C4** — Réduction de l'impact | L'agent compromis ne doit pas hériter des droits du SI | Segmentation, sauvegardes 3-2-1-1-0, protection AD |
-| **C5** — Hygiène fondamentale | Les contrôles agentiques ne remplacent pas les fondamentaux | Patch management, MFA, exposition minimale |
+**Core insight**: Layers C4–C5 (fundamentals) would have disrupted the majority of the kill chain. Layers C1–C3 (AI-specific) are complementary, not substitute.
 
-**Enseignement central** : les couches C4–C5 (fondamentaux) auraient bloqué la majorité de la kill chain. Les couches C1–C3 (spécifiques IA) complètent mais ne remplacent pas cette base.
-
-## 📊 Figures clés / Key Figures
+## 📊 Key Figures
 
 <table>
 <tr>
-<td><img src="figures/fig12_trifecta_fr.png" width="300"/><br/><em>Fig. 12 — Trifecta létale de Willison</em></td>
-<td><img src="figures/fig22_mitre_heatmap_fr.png" width="400"/><br/><em>Fig. 22 — Heatmap MITRE ATT&CK</em></td>
+<td><img src="figures/fig12_trifecta_en.png" width="300"/><br/><em>Fig. 12 — Willison's Lethal Trifecta</em></td>
+<td><img src="figures/fig22_mitre_heatmap_en.png" width="400"/><br/><em>Fig. 22 — MITRE ATT&CK Density Matrix</em></td>
 </tr>
 </table>
 
-## ⚖️ Avertissement / Disclaimer
-
-> **Ce travail est une analyse académique basée sur un scénario entièrement fictif.** MediFrance SA n'existe pas. Aucune attaque réelle n'a été conduite. Toutes les vulnérabilités et techniques décrites sont documentées dans la littérature publique. L'objectif est exclusivement défensif : identifier les risques liés aux agents IA autonomes pour améliorer les postures de sécurité.
+## ⚖️ Disclaimer
 
 > **This work is an academic analysis based on an entirely fictional scenario.** MediFrance SA does not exist. No actual attack was conducted. All vulnerabilities and techniques described are documented in the public literature. The purpose is exclusively defensive: identifying risks associated with autonomous AI agents to improve security postures.
 
@@ -107,7 +112,7 @@ L'étude propose un modèle défensif en **5 couches** :
 
 ```bibtex
 @techreport{pizzi2026openclaw,
-  title     = {Opération OpenClaw : Modélisation d'une Kill Chain Agentique Contre une Infrastructure d'Entreprise},
+  title     = {Operation OpenClaw: Modeling an Agentic Kill Chain Against Enterprise Infrastructure},
   author    = {Pizzi, Fabrice},
   year      = {2026},
   month     = {February},
@@ -119,12 +124,10 @@ L'étude propose un modèle défensif en **5 couches** :
 
 ## 📬 Contact
 
-- **Auteur** : Fabrice Pizzi
-- **GitHub** : [@mo0ogly](https://github.com/mo0ogly)
-- **LinkedIn** : [à compléter]
+- **Author**: Fabrice Pizzi
+- **GitHub**: [@mo0ogly](https://github.com/mo0ogly)
+- **LinkedIn**: [to be added]
 
-## 📜 Licence
+## 📜 License
 
-Ce travail est publié sous licence [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-
-Vous êtes libre de partager et adapter ce travail à condition de créditer l'auteur, de ne pas en faire un usage commercial, et de partager les adaptations sous la même licence.
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
