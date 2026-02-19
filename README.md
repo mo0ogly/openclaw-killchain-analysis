@@ -4,6 +4,10 @@
 [![Status: Active Research](https://img.shields.io/badge/Status-Active%20Research-orange.svg)]()
 [![Language: EN / FR](https://img.shields.io/badge/Language-EN%20%2F%20FR-blue.svg)]()
 
+<p align="center">
+  <img src="figures/openclaw_operation.png" alt="Operation OpenClaw — Kill Chain Overview" width="700"/>
+</p>
+
 > **⚠️ This repository is an active research project. Documents are updated regularly. See the [CHANGELOG](CHANGELOG.md) for corrections.**
 
 ---
