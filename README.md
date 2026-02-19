@@ -57,7 +57,8 @@ openclaw-killchain-analysis/
 │   ├── Phase3_Installation_Execution_EN.pdf  ✅ available (EN)
 │   ├── Phase4_Mouvement_Latéral_Persistance.pdf     ✅ available (FR)
 │   ├── Phase4_Lateral_Movement_Persistence_EN.pdf   ✅ available (EN)
-│   └── Phase5_Impact.pdf                     ⏳ coming soon
+│   ├── Phase5_PromptLock_Exfiltration-RD_Double Extorsion.pdf      ✅ available (FR)
+│   └── Phase5_PromptLock_Exfiltration_Double_Extortion_EN.pdf     ✅ available (EN)
 │
 ├── figures/                               ← Academic figures (EN + FR)
 │   ├── fig12_trifecta_en.png
