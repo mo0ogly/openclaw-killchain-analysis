@@ -44,7 +44,7 @@ The attacker leverages the inference capabilities of an unaligned LLM to augment
 
 **Key finding**: The LLM enables correlation and inference of information that traditional manual collection would not have produced in the same timeframe, notably reconstructing hierarchical relationships from fragmentary data.
 
-*Detailed analysis: [Phase 1 — Reconnaissance](phases/Phase1_Reconnaissance.pdf)*
+*Detailed analysis: [Phase 1 — Reconnaissance](phases/Phase1_Reconnaissance_en.pdf)*
 
 ### 3.2 Phase 2 — Weaponization (D−15 → D−7)
 
