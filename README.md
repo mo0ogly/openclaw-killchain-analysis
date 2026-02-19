@@ -1,4 +1,4 @@
-# 🔒 Operation OpenClaw — Kill Chain Analysis of an AI Agent-Driven Cyberattack
+# Operation OpenClaw — Kill Chain Analysis of an AI Agent-Driven Cyberattack
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Status: Active Research](https://img.shields.io/badge/Status-Active%20Research-orange.svg)]()
@@ -30,13 +30,13 @@ A **five-layer defense-in-depth model** specific to agentic AI threats is propos
 
 Ce dépôt présente la modélisation complète d'une cyberattaque fictive multi-phases exploitant un agent IA de codage autonome (OpenClaw) comme vecteur d'attaque et multiplicateur de force contre une entreprise pharmaceutique. L'étude couvre une kill chain agentique de 36 jours, de la reconnaissance OSINT augmentée par LLM jusqu'au déploiement d'un rançongiciel et à la double extorsion. Un modèle de défense en profondeur en cinq couches spécifique aux menaces agentiques est proposé.
 
-📄 La note de synthèse en français est disponible : [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md)
+La note de synthèse en français est disponible : [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md)
 
 </details>
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 openclaw-killchain-analysis/
@@ -64,7 +64,7 @@ openclaw-killchain-analysis/
     └── gen_figures.py
 ```
 
-## 📖 Reading Guide
+## Reading Guide
 
 | Time available | Start here |
 |---------------|-----------|
@@ -73,7 +73,7 @@ openclaw-killchain-analysis/
 | **1 hour** | Summary note + one phase of your choice |
 | **Full study** | All 5 phases in order |
 
-## 🗺️ The 5 Phases
+## The 5 Phases
 
 | Phase | Title | Timeline | Key Findings |
 |-------|-------|----------|-------------|
@@ -83,7 +83,7 @@ openclaw-killchain-analysis/
 | **4** | Lateral Movement | D → D+5 | Shadow agent, Slack prompt injection, DCSync → Golden Ticket, PoisonGPT chatbot poisoning |
 | **5** | Actions on Objectives | D+5 → D+6 | Full R&D exfiltration, PromptLock deployed, double extortion, estimated impact €7.5M |
 
-## 🛡️ Defense-in-Depth Model
+##  Defense-in-Depth Model
 
 | Layer | Principle | Key Controls |
 |-------|----------|-------------|
@@ -95,7 +95,7 @@ openclaw-killchain-analysis/
 
 **Core insight**: Layers C4–C5 (fundamentals) would have disrupted the majority of the kill chain. Layers C1–C3 (AI-specific) are complementary, not substitute.
 
-## 📊 Key Figures
+## Key Figures
 
 <table>
 <tr>
@@ -104,11 +104,11 @@ openclaw-killchain-analysis/
 </tr>
 </table>
 
-## ⚖️ Disclaimer
+##  Disclaimer
 
 > **This work is an academic analysis based on an entirely fictional scenario.** MediFrance SA does not exist. No actual attack was conducted. All vulnerabilities and techniques described are documented in the public literature. The purpose is exclusively defensive: identifying risks associated with autonomous AI agents to improve security postures.
 
-## 📄 Citation
+## Citation
 
 ```bibtex
 @techreport{pizzi2026openclaw,
@@ -122,11 +122,11 @@ openclaw-killchain-analysis/
 }
 ```
 
-## 📬 Contact
+## Contact
 
 - **Author**: Fabrice Pizzi
 - **GitHub**: [@mo0ogly](https://github.com/mo0ogly)
-- **LinkedIn**: [to be added]
+- **LinkedIn**: https://www.linkedin.com/in/fpizzi/
 
 ## 📜 License
 
