@@ -54,7 +54,7 @@ L'arsenal offensif comprend quatre composantes : (1) une skill OpenClaw piégée
 
 **Finding clé** : la marketplace ClawHub présente des barrières de publication minimales. Sur 3 984 skills auditées par Snyk, 534 (13,4 %) présentaient des problèmes critiques et 76 contenaient des payloads malveillants confirmés. 91 % des skills malveillantes combinaient prompt injection et malware traditionnel.
 
-*Analyse détaillée : [Phase 2 — Armement](phases/Phase2_Weaponization.pdf)*
+*Analyse détaillée : Phase 2 — Armement (à venir)*
 
 ### 3.3 Phase 3 — Livraison et Exploitation (J−7 → J)
 
@@ -62,7 +62,7 @@ La livraison emprunte **trois vecteurs simultanés** pour maximiser la probabili
 
 **Finding clé** : la redondance des vecteurs d'accès (agent + réseau + credentials) impose une remédiation sur chaque surface indépendamment — la correction d'un vecteur ne neutralise pas les autres.
 
-*Analyse détaillée : [Phase 3 — Livraison et Exploitation](phases/Phase3_Delivery_Exploitation.pdf)*
+*Analyse détaillée : Phase 3 — Livraison et Exploitation (à venir)*
 
 ### 3.4 Phase 4 — Mouvement latéral (J → J+5)
 
@@ -70,15 +70,15 @@ Phase la plus dense techniquement (13/14 tactiques ATT&CK couvertes). L'attaquan
 
 **Finding clé** : la capacité de l'agent compromis à planifier et exécuter des actions multi-étapes de manière autonome accélère la progression dans la kill chain par rapport à un attaquant humain opérant manuellement.
 
-*Analyse détaillée : [Phase 4 — Mouvement latéral](phases/Phase4_Lateral_Movement.pdf)*
+*Analyse détaillée : Phase 4 — Mouvement latéral (à venir)*
 
 ### 3.5 Phase 5 — Actions sur l'objectif (J+5 → J+6)
 
-L'exfiltration complète des données R&D précède le déploiement du rançongiciel PromptLock, qui chiffre les serveurs de fichiers, désactive les Volume Shadow Copies, et neutralise les sauvegardes préalablement identifiées. Le modèle de double extorsion combine la demande de rançon (menace de publication des données R&D) et le chiffrement des systèmes. L'impact financier total est estimé à 7,5 M€.
+L'exfiltration complète des données R&D précède le déploiement du rançongiciel PromptLock, qui chiffre les serveurs de fichiers, désactive les Volume Shadow Copies, et neutralise les sauvegardes préalablement identifiées. Le modèle de double extorsion combine la demande de rançon (menace de publication des données R&D) et le chiffrement des systèmes. La rançon demandée est de 2,5 M€ ; l'impact financier total — incluant l'arrêt de production, la restauration, l'investigation forensique et les coûts réglementaires — est estimé à 7,5 M€.
 
 **Finding clé** : les sauvegardes sont la cible prioritaire de l'attaquant. 94 % des attaques ransomware ciblent les sauvegardes (Sophos 2025), et 57 % réussissent à les compromettre.
 
-*Analyse détaillée : [Phase 5 — Actions sur l'objectif](phases/Phase5_Impact.pdf)*
+*Analyse détaillée : Phase 5 — Actions sur l'objectif (à venir)*
 
 ## 4. Couverture MITRE ATT&CK — Analyse transversale
 

@@ -7,17 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Initial Release
 - 5-phase analysis documents (Phase 1–5)
 - Academic summary note
-- 14 academic figures (FR + EN)
+- 27 academic figures (FR + EN)
 - Defense-in-depth model (5 layers)
 - MITRE ATT&CK/ATLAS mapping per phase
 - Kill chain defense matrix
 
 ### Known Issues (to be corrected)
-- [ ] "Bruce Schneider" → "Christian Schneider" correction pending (15+ occurrences)
-- [ ] Placeholder references to be resolved: [DVULN_SHODAN_OPENCLAW], [SOCIAL_GRAPH_MINING_SURVEY], [FORTINET_CVE_2024_55591]
-- [ ] Axe 2 Stylométrie section announced but not yet developed
-- [ ] Phase 3 §3.1 draft comments to be cleaned
-- [ ] Section numbering harmonization in progress
+- 
 
 ## Versioning Policy
 

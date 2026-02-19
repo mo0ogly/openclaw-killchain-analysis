@@ -1,4 +1,4 @@
-# Operation OpenClaw — Kill Chain Analysis of an AI Agent-Driven Cyberattack
+# 🔒 Operation OpenClaw — Kill Chain Analysis of an AI Agent-Driven Cyberattack
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Status: Active Research](https://img.shields.io/badge/Status-Active%20Research-orange.svg)]()
@@ -30,13 +30,13 @@ A **five-layer defense-in-depth model** specific to agentic AI threats is propos
 
 Ce dépôt présente la modélisation complète d'une cyberattaque fictive multi-phases exploitant un agent IA de codage autonome (OpenClaw) comme vecteur d'attaque et multiplicateur de force contre une entreprise pharmaceutique. L'étude couvre une kill chain agentique de 36 jours, de la reconnaissance OSINT augmentée par LLM jusqu'au déploiement d'un rançongiciel et à la double extorsion. Un modèle de défense en profondeur en cinq couches spécifique aux menaces agentiques est proposé.
 
-La note de synthèse en français est disponible : [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md)
+📄 La note de synthèse en français est disponible : [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md)
 
 </details>
 
 ---
 
-## Repository Structure
+## 📁 Repository Structure
 
 ```
 openclaw-killchain-analysis/
@@ -48,12 +48,12 @@ openclaw-killchain-analysis/
 ├── ACADEMIC_NOTE.md                       ← Summary note (EN, ~10 pages)
 ├── NOTE_ACADEMIQUE.md                     ← Note de synthèse (FR, ~10 pages)
 │
-├── phases/                                ← Detailed phase analyses (FR)
-│   ├── Phase1_Reconnaissance.pdf
-│   ├── Phase2_Weaponization.pdf
-│   ├── Phase3_Delivery_Exploitation.pdf
-│   ├── Phase4_Lateral_Movement.pdf
-│   └── Phase5_Impact.pdf
+├── phases/                                ← Detailed phase analyses
+│   ├── Phase1_Reconnaissance.pdf             ✅ available
+│   ├── Phase2_Weaponization.pdf              ⏳ coming soon
+│   ├── Phase3_Delivery_Exploitation.pdf      ⏳ coming soon
+│   ├── Phase4_Lateral_Movement.pdf           ⏳ coming soon
+│   └── Phase5_Impact.pdf                     ⏳ coming soon
 │
 ├── figures/                               ← Academic figures (EN + FR)
 │   ├── fig12_trifecta_en.png
@@ -64,7 +64,7 @@ openclaw-killchain-analysis/
     └── gen_figures.py
 ```
 
-## Reading Guide
+## 📖 Reading Guide
 
 | Time available | Start here |
 |---------------|-----------|
@@ -73,7 +73,7 @@ openclaw-killchain-analysis/
 | **1 hour** | Summary note + one phase of your choice |
 | **Full study** | All 5 phases in order |
 
-## The 5 Phases
+## 🗺️ The 5 Phases
 
 | Phase | Title | Timeline | Key Findings |
 |-------|-------|----------|-------------|
@@ -81,9 +81,9 @@ openclaw-killchain-analysis/
 | **2** | Weaponization | D−15 → D−7 | Malicious ClawHub skill, PromptLock ransomware (Go), prompt injection payloads, audio deepfake |
 | **3** | Delivery & Exploitation | D−7 → D | 3 simultaneous vectors: skill supply chain, infostealer (token theft per Hudson Rock), CVE-2024-55591 VPN |
 | **4** | Lateral Movement | D → D+5 | Shadow agent, Slack prompt injection, DCSync → Golden Ticket, PoisonGPT chatbot poisoning |
-| **5** | Actions on Objectives | D+5 → D+6 | Full R&D exfiltration, PromptLock deployed, double extortion, estimated impact €7.5M |
+| **5** | Actions on Objectives | D+5 → D+6 | Full R&D exfiltration, PromptLock deployed, double extortion, €2.5M ransom / €7.5M est. total impact |
 
-##  Defense-in-Depth Model
+## 🛡️ Defense-in-Depth Model
 
 | Layer | Principle | Key Controls |
 |-------|----------|-------------|
@@ -95,7 +95,7 @@ openclaw-killchain-analysis/
 
 **Core insight**: Layers C4–C5 (fundamentals) would have disrupted the majority of the kill chain. Layers C1–C3 (AI-specific) are complementary, not substitute.
 
-## Key Figures
+## 📊 Key Figures
 
 <table>
 <tr>
@@ -104,11 +104,11 @@ openclaw-killchain-analysis/
 </tr>
 </table>
 
-##  Disclaimer
+## ⚖️ Disclaimer
 
 > **This work is an academic analysis based on an entirely fictional scenario.** MediFrance SA does not exist. No actual attack was conducted. All vulnerabilities and techniques described are documented in the public literature. The purpose is exclusively defensive: identifying risks associated with autonomous AI agents to improve security postures.
 
-## Citation
+## 📄 Citation
 
 ```bibtex
 @techreport{pizzi2026openclaw,
@@ -122,11 +122,11 @@ openclaw-killchain-analysis/
 }
 ```
 
-## Contact
+## 📬 Contact
 
 - **Author**: Fabrice Pizzi
 - **GitHub**: [@mo0ogly](https://github.com/mo0ogly)
-- **LinkedIn**: https://www.linkedin.com/in/fpizzi/
+- **LinkedIn**:  https://www.linkedin.com/in/fpizzi/
 
 ## 📜 License
 

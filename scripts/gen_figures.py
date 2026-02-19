@@ -20,7 +20,7 @@ import os
 FIG_START = 21  # Premier numéro de figure de cette série
 # Les figures seront numérotées FIG_START, FIG_START+1, etc.
 
-OUT = "/home/claude/figures"
+OUT = "/home/figures"
 os.makedirs(OUT, exist_ok=True)
 
 # Academic style
