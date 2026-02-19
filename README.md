@@ -49,9 +49,12 @@ openclaw-killchain-analysis/
 ├── NOTE_ACADEMIQUE.md                     ← Note de synthèse (FR, ~10 pages)
 │
 ├── phases/                                ← Detailed phase analyses
-│   ├── Phase1_Reconnaissance.pdf             ✅ available
-│   ├── Phase2_Weaponization.pdf              ⏳ coming soon
-│   ├── Phase3_Delivery_Exploitation.pdf      ⏳ coming soon
+│   ├── Phase1_Reconnaissance.pdf             ✅ available (FR)
+│   ├── Phase1_Reconnaissance_en.pdf          ✅ available (EN)
+│   ├── Phase2_Weaponization.pdf              ✅ available (FR)
+│   ├── Phase2_Weaponization_EN.pdf           ✅ available (EN)
+│   ├── Phase3_Installation_Exécution.pdf     ✅ available (FR)
+│   ├── Phase3_Installation_Execution_EN.pdf  ✅ available (EN)
 │   ├── Phase4_Lateral_Movement.pdf           ⏳ coming soon
 │   └── Phase5_Impact.pdf                     ⏳ coming soon
 │
