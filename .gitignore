@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Office temp files
+~$*.docx
+~$*.xlsx
+~$*.pptx
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Draft / working files
+drafts/
+*.bak
