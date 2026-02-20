@@ -154,7 +154,7 @@ openclaw-killchain-analysis/
 
 ## Disclaimer
 
-> **This work is an academic analysis based on an entirely fictional scenario.** MediFrance SA does not exist. No actual attack was conducted. All vulnerabilities and techniques described are documented in the public literature. The purpose is exclusively defensive: identifying risks associated with autonomous AI agents to improve security postures.
+> **This work is an academic analysis based on an entirely fictional scenario.** PharmEurys SA does not exist. No actual attack was conducted. All vulnerabilities and techniques described are documented in the public literature. The purpose is exclusively defensive: identifying risks associated with autonomous AI agents to improve security postures.
 
 ## Citation
 

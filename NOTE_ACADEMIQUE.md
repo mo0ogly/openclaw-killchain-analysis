@@ -10,7 +10,7 @@
 
 ## Résumé
 
-Ce travail présente la modélisation complète d'une cyberattaque multi-phases exploitant un agent IA de codage autonome (OpenClaw) comme vecteur d'attaque et multiplicateur de force contre une entreprise pharmaceutique fictive (MediFrance SA, ~500 employés). L'analyse couvre une kill chain complète de 36 jours (J−30 à J+6), depuis la reconnaissance OSINT augmentée par LLM jusqu'au déploiement d'un rançongiciel et à la double extorsion. L'ensemble des techniques, vulnérabilités et outils décrits sont documentés dans la littérature publique à février 2026.
+Ce travail présente la modélisation complète d'une cyberattaque multi-phases exploitant un agent IA de codage autonome (OpenClaw) comme vecteur d'attaque et multiplicateur de force contre une entreprise pharmaceutique fictive (PharmEurys SA, ~500 employés). L'analyse couvre une kill chain complète de 36 jours (J−30 à J+6), depuis la reconnaissance OSINT augmentée par LLM jusqu'au déploiement d'un rançongiciel et à la double extorsion. L'ensemble des techniques, vulnérabilités et outils décrits sont documentés dans la littérature publique à février 2026.
 
 L'étude identifie que 13 des 14 tactiques MITRE ATT&CK Enterprise sont couvertes sur les cinq phases, la Phase 4 (mouvement latéral) présentant la densité de techniques la plus élevée. Un modèle de défense en profondeur en cinq couches spécifique aux menaces agentiques est proposé, démontrant que les contrôles fondamentaux (patching, MFA, segmentation, sauvegardes immuables) auraient interrompu la majorité de la kill chain, tandis que les contrôles spécifiques à l'IA (allowlists d'outils, sandboxing, monitoring egress) offrent une protection complémentaire mais non substituable.
 
@@ -28,7 +28,7 @@ Ce travail modélise une opération offensive fictive complète exploitant cette
 2. **Cartographier systématiquement** les tactiques et techniques sur les référentiels MITRE ATT&CK Enterprise v15 et MITRE ATLAS.
 3. **Proposer un modèle défensif structuré** adapté aux menaces spécifiques des agents IA autonomes.
 
-L'entreprise cible, MediFrance SA, est une entité fictive (PME pharmaceutique, ~500 employés, infrastructure Microsoft classique) conçue pour être représentative du tissu industriel européen.
+L'entreprise cible, PharmEurys SA, est une entité fictive (PME pharmaceutique, ~500 employés, infrastructure Microsoft classique) conçue pour être représentative du tissu industriel européen.
 
 ## 2. Méthodologie
 
@@ -42,7 +42,7 @@ Aucune attaque réelle n'a été conduite. Le scénario est entièrement fictif.
 
 ### 3.1 Phase 1 — Reconnaissance (J−30 → J−15)
 
-L'attaquant exploite les capacités d'inférence d'un LLM non aligné pour augmenter la reconnaissance OSINT classique. Les données publiques de LinkedIn, les métadonnées des services exposés (Shodan/Censys) et les publications scientifiques permettent de reconstituer l'organigramme complet de MediFrance, d'identifier les collaborateurs clés, et de cartographier l'infrastructure technique — incluant des instances OpenClaw exposées avec leur empreinte HTML caractéristique.
+L'attaquant exploite les capacités d'inférence d'un LLM non aligné pour augmenter la reconnaissance OSINT classique. Les données publiques de LinkedIn, les métadonnées des services exposés (Shodan/Censys) et les publications scientifiques permettent de reconstituer l'organigramme complet de PharmEurys, d'identifier les collaborateurs clés, et de cartographier l'infrastructure technique — incluant des instances OpenClaw exposées avec leur empreinte HTML caractéristique.
 
 **Finding clé** : le LLM permet de corréler et d'inférer des informations que la collecte manuelle traditionnelle n'aurait pas produites dans le même délai, notamment la reconstitution des liens hiérarchiques à partir de données fragmentaires.
 
@@ -105,7 +105,7 @@ Le modèle défensif proposé structure les contrôles en **cinq couches**, de l
 
 ## 6. Discussion et limites
 
-**Limites du scénario** : le scénario suppose un attaquant sophistiqué avec accès à des ressources LLM non alignées et un temps de préparation de 30 jours. La simultanéité de trois vecteurs d'accès initial, bien que techniquement plausible, représente un investissement opérationnel significatif. L'absence de SOC actif dans le scénario MediFrance maximise l'impact — une détection précoce en Phase 3 ou 4 aurait considérablement réduit les conséquences.
+**Limites du scénario** : le scénario suppose un attaquant sophistiqué avec accès à des ressources LLM non alignées et un temps de préparation de 30 jours. La simultanéité de trois vecteurs d'accès initial, bien que techniquement plausible, représente un investissement opérationnel significatif. L'absence de SOC actif dans le scénario PharmEurys maximise l'impact — une détection précoce en Phase 3 ou 4 aurait considérablement réduit les conséquences.
 
 **Implications pour les organisations** : le déploiement d'agents IA autonomes en entreprise doit s'accompagner d'une évaluation de la trifecta de Willison. Toute configuration réunissant accès aux données privées, exposition à du contenu non fiable et capacité de communication externe doit être traitée comme un composant à haut risque nécessitant des contrôles spécifiques.
 

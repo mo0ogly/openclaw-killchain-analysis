@@ -8,7 +8,7 @@
 
 ## Abstract
 
-This paper presents a comprehensive threat model of a multi-phase cyberattack exploiting an autonomous AI coding agent (OpenClaw) as both attack vector and force multiplier against a fictional pharmaceutical company (MediFrance SA, ~500 employees). The analysis covers a complete kill chain spanning 36 days (D−30 to D+6), from LLM-augmented OSINT reconnaissance through supply chain compromise, lateral movement via AI agent impersonation, to ransomware deployment and double extortion. All techniques, vulnerabilities, and tools described are documented in the public literature as of February 2026.
+This paper presents a comprehensive threat model of a multi-phase cyberattack exploiting an autonomous AI coding agent (OpenClaw) as both attack vector and force multiplier against a fictional pharmaceutical company (PharmEurys SA, ~500 employees). The analysis covers a complete kill chain spanning 36 days (D−30 to D+6), from LLM-augmented OSINT reconnaissance through supply chain compromise, lateral movement via AI agent impersonation, to ransomware deployment and double extortion. All techniques, vulnerabilities, and tools described are documented in the public literature as of February 2026.
 
 The study identifies that 13 of 14 MITRE ATT&CK Enterprise tactics are covered across the five phases, with Phase 4 (lateral movement) representing the highest technique density. A five-layer defense-in-depth model specific to agentic AI threats is proposed, demonstrating that foundational controls (patching, MFA, segmentation, immutable backups) would have disrupted the majority of the kill chain, while AI-specific controls (tool allowlists, sandboxing, egress monitoring) provide complementary but not substitute protection.
 
@@ -26,7 +26,7 @@ This study models a complete fictional offensive operation exploiting this conve
 2. **Systematically map** tactics and techniques onto the MITRE ATT&CK Enterprise v15 and MITRE ATLAS frameworks.
 3. **Propose a structured defensive model** adapted to threats specific to autonomous AI agents.
 
-The target organization, MediFrance SA, is a fictional entity (pharmaceutical SME, ~500 employees, standard Microsoft infrastructure) designed to be representative of typical European mid-size enterprises.
+The target organization, PharmEurys SA, is a fictional entity (pharmaceutical SME, ~500 employees, standard Microsoft infrastructure) designed to be representative of typical European mid-size enterprises.
 
 ## 2. Methodology
 
@@ -40,7 +40,7 @@ No actual attack was conducted. The scenario is entirely fictional.
 
 ### 3.1 Phase 1 — Reconnaissance (D−30 → D−15)
 
-The attacker leverages the inference capabilities of an unaligned LLM to augment classical OSINT reconnaissance. Public LinkedIn data, exposed service metadata (Shodan/Censys), and scientific publications enable full reconstruction of MediFrance's organizational chart, identification of key personnel, and technical infrastructure mapping — including exposed OpenClaw instances with their characteristic HTML fingerprint.
+The attacker leverages the inference capabilities of an unaligned LLM to augment classical OSINT reconnaissance. Public LinkedIn data, exposed service metadata (Shodan/Censys), and scientific publications enable full reconstruction of PharmEurys's organizational chart, identification of key personnel, and technical infrastructure mapping — including exposed OpenClaw instances with their characteristic HTML fingerprint.
 
 **Key finding**: The LLM enables correlation and inference of information that traditional manual collection would not have produced in the same timeframe, notably reconstructing hierarchical relationships from fragmentary data.
 
@@ -103,7 +103,7 @@ The proposed model structures controls into **five layers**, from closest to the
 
 ## 6. Discussion and Limitations
 
-**Scenario limitations**: The scenario assumes a sophisticated attacker with access to unaligned LLM resources and 30 days of preparation time. The simultaneity of three initial access vectors, while technically plausible, represents significant operational investment. The absence of an active SOC in the MediFrance scenario maximizes impact — early detection in Phase 3 or 4 would have considerably reduced consequences.
+**Scenario limitations**: The scenario assumes a sophisticated attacker with access to unaligned LLM resources and 30 days of preparation time. The simultaneity of three initial access vectors, while technically plausible, represents significant operational investment. The absence of an active SOC in the PharmEurys scenario maximizes impact — early detection in Phase 3 or 4 would have considerably reduced consequences.
 
 **Implications for organizations**: Deploying autonomous AI agents in enterprise environments must be accompanied by an assessment of Willison's trifecta. Any configuration combining access to private data, exposure to untrusted content, and external communication capability should be treated as a high-risk component requiring specific controls.
 

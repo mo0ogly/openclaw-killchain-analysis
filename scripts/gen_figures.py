@@ -271,7 +271,7 @@ def fig_trifecta(lang='fr'):
         ]
         title = f"Figure {n} — Trifecta létale de Willison appliquée à OpenClaw"
         subtitle = "La co-présence des trois propriétés crée la condition nécessaire à l'exfiltration par prompt injection"
-        ref_text = "Source : S. Willison (2026), adapté au scénario MediFrance"
+        ref_text = "Source : S. Willison (2026), adapté au scénario PharmEurys"
     else:
         labels = [
             "Access to\nprivate data",
@@ -286,7 +286,7 @@ def fig_trifecta(lang='fr'):
         ]
         title = f"Figure {n} — Willison's Lethal Trifecta Applied to OpenClaw"
         subtitle = "The co-presence of all three properties creates the necessary condition for prompt injection exfiltration"
-        ref_text = "Source: S. Willison (2026), adapted to MediFrance scenario"
+        ref_text = "Source: S. Willison (2026), adapted to PharmEurys scenario"
     
     for i, ((cx, cy), color, alpha, label) in enumerate(zip(centers, colors_v, alphas, labels)):
         circle = plt.Circle((cx, cy), r, facecolor=color, alpha=alpha,
@@ -422,7 +422,7 @@ def fig_exfiltration(lang='fr'):
         legend_legit = "Flux légitime"
         legend_mal = "Flux malveillant (camouflé)"
         nodes = {
-            'medifrance': ("MediFrance\nSI interne", 1, 4),
+            'pharmeurys': ("PharmEurys\nSI interne", 1, 4),
             'openclaw': ("Agent\nOpenClaw", 4, 4),
             'gateway': ("Gateway\nOpenClaw", 7, 6),
             'llm': ("API LLM\n(Claude/GPT)", 10, 7),
@@ -439,7 +439,7 @@ def fig_exfiltration(lang='fr'):
         legend_legit = "Legitimate flow"
         legend_mal = "Malicious flow (camouflaged)"
         nodes = {
-            'medifrance': ("MediFrance\nInternal SI", 1, 4),
+            'pharmeurys': ("PharmEurys\nInternal SI", 1, 4),
             'openclaw': ("OpenClaw\nAgent", 4, 4),
             'gateway': ("OpenClaw\nGateway", 7, 6),
             'llm': ("LLM API\n(Claude/GPT)", 10, 7),
@@ -454,7 +454,7 @@ def fig_exfiltration(lang='fr'):
     
     # Draw nodes
     node_colors = {
-        'medifrance': '#D6E4F0', 'openclaw': '#2166AC', 'gateway': '#92C5DE',
+        'pharmeurys': '#D6E4F0', 'openclaw': '#2166AC', 'gateway': '#92C5DE',
         'llm': '#D1E5F0', 'slack': '#D1E5F0', 'c2': '#B2182B',
         'email': '#D1E5F0', 'exfil_email': '#F4A582', 'fichiers': '#D6E4F0', 'ad': '#D6E4F0',
     }
@@ -539,7 +539,7 @@ def fig_radar(lang='fr'):
             'C4 — Réduction\nde l\'impact',
             'C5 — Hygiène\nfondamentale',
         ]
-        title = f"Figure {n} — Radar de maturité défensive — MediFrance SA"
+        title = f"Figure {n} — Radar de maturité défensive — PharmEurys SA"
         label_before = "Posture avant l'attaque (estimée)"
         label_after = "Posture recommandée"
     else:
@@ -550,12 +550,12 @@ def fig_radar(lang='fr'):
             'C4 — Impact\nReduction',
             'C5 — Basic\nHygiene',
         ]
-        title = f"Figure {n} — Defensive Maturity Radar — MediFrance SA"
+        title = f"Figure {n} — Defensive Maturity Radar — PharmEurys SA"
         label_before = "Pre-attack posture (estimated)"
         label_after = "Recommended posture"
     
     # Scores (0-5)
-    before = [0.5, 0.5, 1.0, 1.5, 2.0]  # MediFrance was weak
+    before = [0.5, 0.5, 1.0, 1.5, 2.0]  # PharmEurys was weak
     after =  [4.0, 3.5, 4.0, 4.5, 4.5]  # Recommended
     
     N = len(categories)
@@ -608,7 +608,7 @@ def fig_waterfall(lang='fr'):
             "Atteinte\nréputation",
             "TOTAL\nESTIMÉ",
         ]
-        title = f"Figure {n} — Impact financier estimé — Opération OpenClaw vs. MediFrance SA"
+        title = f"Figure {n} — Impact financier estimé — Opération OpenClaw vs. PharmEurys SA"
         ylabel = "Coût estimé (M€)"
         note = "Estimations basées sur : Verizon DBIR 2025, Securin Ransomware Report 2025,\nVikingCloud Statistics 2026, Sophos State of Ransomware 2025"
     else:
@@ -621,7 +621,7 @@ def fig_waterfall(lang='fr'):
             "Reputation\ndamage",
             "ESTIMATED\nTOTAL",
         ]
-        title = f"Figure {n} — Estimated Financial Impact — Operation OpenClaw vs. MediFrance SA"
+        title = f"Figure {n} — Estimated Financial Impact — Operation OpenClaw vs. PharmEurys SA"
         ylabel = "Estimated cost (M€)"
         note = "Estimates based on: Verizon DBIR 2025, Securin Ransomware Report 2025,\nVikingCloud Statistics 2026, Sophos State of Ransomware 2025"
     
