@@ -52,7 +52,7 @@ The offensive arsenal comprises four components: (1) a malicious OpenClaw skill 
 
 **Key finding**: The ClawHub marketplace presents minimal publication barriers. Of 3,984 skills audited by Snyk, 534 (13.4%) had critical issues and 76 contained confirmed malicious payloads. 91% of malicious skills combined prompt injection with traditional malware.
 
-*Detailed analysis: Phase 2 — Weaponization (coming soon)*
+*Detailed analysis: [Phase 2 — Weaponization](phases/Phase2_Weaponization_EN.pdf)*
 
 ### 3.3 Phase 3 — Delivery and Exploitation (D−7 → D)
 
@@ -60,7 +60,7 @@ Delivery uses **three simultaneous vectors** to maximize initial access probabil
 
 **Key finding**: The redundancy of access vectors (agent + network + credentials) requires remediation on each surface independently — patching one vector does not neutralize the others.
 
-*Detailed analysis: Phase 3 — Delivery and Exploitation (coming soon)*
+*Detailed analysis: [Phase 3 — Delivery and Exploitation](phases/Phase3_Installation_Execution_EN.pdf)*
 
 ### 3.4 Phase 4 — Lateral Movement (D → D+5)
 
@@ -68,7 +68,7 @@ The most technically dense phase (13/14 ATT&CK tactics covered). The attacker us
 
 **Key finding**: The compromised agent's ability to plan and execute multi-step actions autonomously accelerates kill chain progression compared to a human attacker operating manually.
 
-*Detailed analysis: Phase 4 — Lateral Movement (coming soon)*
+*Detailed analysis: [Phase 4 — Lateral Movement and Persistence](phases/Phase4_Lateral_Movement_Persistence_EN.pdf)*
 
 ### 3.5 Phase 5 — Actions on Objectives (D+5 → D+6)
 
@@ -76,7 +76,7 @@ Complete R&D data exfiltration precedes deployment of the PromptLock ransomware,
 
 **Key finding**: Backups are the attacker's priority target. 94% of ransomware attacks target backups (Sophos 2025), and 57% succeed in compromising them.
 
-*Detailed analysis: Phase 5 — Actions on Objectives (coming soon)*
+*Detailed analysis: [Phase 5 — Exfiltration and Double Extortion](phases/Phase5_PromptLock_Exfiltration_Double_Extortion_EN.pdf)*
 
 ## 4. MITRE ATT&CK Coverage — Cross-Phase Analysis
 

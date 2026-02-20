@@ -1,4 +1,4 @@
-# 🔒 Operation OpenClaw — Kill Chain Analysis of an AI Agent-Driven Cyberattack
+# Operation OpenClaw — Kill Chain Analysis of an AI Agent-Driven Cyberattack
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Status: Active Research](https://img.shields.io/badge/Status-Active%20Research-orange.svg)]()
@@ -8,7 +8,47 @@
   <img src="figures/openclaw_operation.png" alt="Operation OpenClaw — Kill Chain Overview" width="700"/>
 </p>
 
-> **⚠️ This repository is an active research project. Documents are updated regularly. See the [CHANGELOG](CHANGELOG.md) for corrections.**
+> **This repository is an active research project. Documents are updated regularly. See the [CHANGELOG](CHANGELOG.md) for corrections.**
+
+---
+
+## Quick Access — No Git Required
+
+**You don't need to install anything.** Click any link below to read or download the documents directly in your browser.
+
+### Start Here
+
+| Document | FR | EN |
+|----------|----|----|
+| **Summary note** (~10 pages) | [Note academique (PDF)](ACADEMIC_NOTE.pdf) | [Academic note (PDF)](ACADEMIC_NOTE_en.pdf) |
+| **Summary note** (markdown) | [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md) | [ACADEMIC_NOTE.md](ACADEMIC_NOTE.md) |
+| **Master 2 course** — AI & Cybersecurity introduction for non-specialists | [Cours M2 Sorbonne (PDF)](S1-ISI5_IA_et_Cybersecurite%20v5.pdf) | [M2 Course Sorbonne (PDF)](S1-ISI5_IA_et_Cybersecurite%20v5_en.pdf) |
+
+### Detailed Phase Analyses (~25-30 pages each)
+
+| Phase | Title | FR | EN |
+|-------|-------|----|----|
+| **1** | Reconnaissance | [PDF](phases/Phase1_Reconnaissance.pdf) | [PDF](phases/Phase1_Reconnaissance_en.pdf) |
+| **2** | Weaponization | [PDF](phases/Phase2_Weaponization.pdf) | [PDF](phases/Phase2_Weaponization_EN.pdf) |
+| **3** | Delivery & Exploitation | [PDF](phases/Phase3_Installation_Exécution.pdf) | [PDF](phases/Phase3_Installation_Execution_EN.pdf) |
+| **4** | Lateral Movement & Persistence | [PDF](phases/Phase4_Mouvement_Latéral_Persistance.pdf) | [PDF](phases/Phase4_Lateral_Movement_Persistence_EN.pdf) |
+| **5** | Exfiltration & Double Extortion | [PDF](phases/Phase5_PromptLock_Exfiltration-RD_Double%20Extorsion.pdf) | [PDF](phases/Phase5_PromptLock_Exfiltration_Double_Extortion_EN.pdf) |
+
+### Download Everything
+
+> **[Download all files as ZIP](https://github.com/mo0ogly/openclaw-killchain-analysis/archive/refs/heads/main.zip)** — one click, no Git needed.
+
+---
+
+## Reading Guide
+
+| Time available | Start here |
+|---------------|-----------|
+| **5 min** | This README + [key figures](#key-figures) below |
+| **20 min** | Summary note: [FR (PDF)](ACADEMIC_NOTE.pdf) / [EN (PDF)](ACADEMIC_NOTE_en.pdf) |
+| **1 hour** | Summary note + one phase of your choice (see table above) |
+| **Full study** | All 5 phases in order |
+| **New to AI security?** | Start with the [Master 2 course (FR)](S1-ISI5_IA_et_Cybersecurite%20v5.pdf) / [(EN)](S1-ISI5_IA_et_Cybersecurite%20v5_en.pdf) |
 
 ---
 
@@ -30,69 +70,29 @@ A **five-layer defense-in-depth model** specific to agentic AI threats is propos
 ---
 
 <details>
-<summary>🇫🇷 <strong>Résumé en français</strong></summary>
+<summary><strong>Resume en francais</strong></summary>
 
-Ce dépôt présente la modélisation complète d'une cyberattaque fictive multi-phases exploitant un agent IA de codage autonome (OpenClaw) comme vecteur d'attaque et multiplicateur de force contre une entreprise pharmaceutique. L'étude couvre une kill chain agentique de 36 jours, de la reconnaissance OSINT augmentée par LLM jusqu'au déploiement d'un rançongiciel et à la double extorsion. Un modèle de défense en profondeur en cinq couches spécifique aux menaces agentiques est proposé.
+Ce depot presente la modelisation complete d'une cyberattaque fictive multi-phases exploitant un agent IA de codage autonome (OpenClaw) comme vecteur d'attaque et multiplicateur de force contre une entreprise pharmaceutique. L'etude couvre une kill chain agentique de 36 jours, de la reconnaissance OSINT augmentee par LLM jusqu'au deploiement d'un rancongiciel et a la double extorsion. Un modele de defense en profondeur en cinq couches specifique aux menaces agentiques est propose.
 
-📄 La note de synthèse en français est disponible : [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md)
+La note de synthese en francais est disponible : [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md) | [PDF](ACADEMIC_NOTE.pdf)
+
+Le cours de Master 2 Sorbonne (introduction a l'IA et cybersecurite) : [PDF](S1-ISI5_IA_et_Cybersecurite%20v5.pdf)
 
 </details>
 
 ---
 
-## 📁 Repository Structure
-
-```
-openclaw-killchain-analysis/
-│
-├── README.md                              ← this file
-├── CHANGELOG.md                           ← corrections & version history
-├── LICENSE                                ← CC BY-NC-SA 4.0
-│
-├── ACADEMIC_NOTE.md                       ← Summary note (EN, ~10 pages)
-├── NOTE_ACADEMIQUE.md                     ← Note de synthèse (FR, ~10 pages)
-│
-├── phases/                                ← Detailed phase analyses
-│   ├── Phase1_Reconnaissance.pdf             ✅ available (FR)
-│   ├── Phase1_Reconnaissance_en.pdf          ✅ available (EN)
-│   ├── Phase2_Weaponization.pdf              ✅ available (FR)
-│   ├── Phase2_Weaponization_EN.pdf           ✅ available (EN)
-│   ├── Phase3_Installation_Exécution.pdf     ✅ available (FR)
-│   ├── Phase3_Installation_Execution_EN.pdf  ✅ available (EN)
-│   ├── Phase4_Mouvement_Latéral_Persistance.pdf     ✅ available (FR)
-│   ├── Phase4_Lateral_Movement_Persistence_EN.pdf   ✅ available (EN)
-│   ├── Phase5_PromptLock_Exfiltration-RD_Double Extorsion.pdf      ✅ available (FR)
-│   └── Phase5_PromptLock_Exfiltration_Double_Extortion_EN.pdf     ✅ available (EN)
-│
-├── figures/                               ← Academic figures (EN + FR)
-│   ├── fig12_trifecta_en.png
-│   ├── fig22_mitre_heatmap_en.png
-│   └── ...
-│
-└── scripts/                               ← Figure generation scripts
-    └── gen_figures.py
-```
-
-## 📖 Reading Guide
-
-| Time available | Start here |
-|---------------|-----------|
-| **5 min** | This README + key figures below |
-| **20 min** | [Academic Note (EN)](ACADEMIC_NOTE.md) or [Note académique (FR)](NOTE_ACADEMIQUE.md) |
-| **1 hour** | Summary note + one phase of your choice |
-| **Full study** | All 5 phases in order |
-
-## 🗺️ The 5 Phases
+## The 5 Phases
 
 | Phase | Title | Timeline | Key Findings |
 |-------|-------|----------|-------------|
-| **1** | Reconnaissance | D−30 → D−15 | LLM-augmented OSINT, social graph reconstruction, 40,000+ exposed OpenClaw agents via Shodan |
-| **2** | Weaponization | D−15 → D−7 | Malicious ClawHub skill, PromptLock ransomware (Go), prompt injection payloads, audio deepfake |
-| **3** | Delivery & Exploitation | D−7 → D | 3 simultaneous vectors: skill supply chain, infostealer (token theft per Hudson Rock), CVE-2024-55591 VPN |
-| **4** | Lateral Movement | D → D+5 | Shadow agent, Slack prompt injection, DCSync → Golden Ticket, PoisonGPT chatbot poisoning |
-| **5** | Actions on Objectives | D+5 → D+6 | Full R&D exfiltration, PromptLock deployed, double extortion, €2.5M ransom / €7.5M est. total impact |
+| **1** | [Reconnaissance](phases/Phase1_Reconnaissance_en.pdf) | D-30 to D-15 | LLM-augmented OSINT, social graph reconstruction, 40,000+ exposed OpenClaw agents via Shodan |
+| **2** | [Weaponization](phases/Phase2_Weaponization_EN.pdf) | D-15 to D-7 | Malicious ClawHub skill, PromptLock ransomware (Go), prompt injection payloads, audio deepfake |
+| **3** | [Delivery & Exploitation](phases/Phase3_Installation_Execution_EN.pdf) | D-7 to D | 3 simultaneous vectors: skill supply chain, infostealer (token theft per Hudson Rock), CVE-2024-55591 VPN |
+| **4** | [Lateral Movement](phases/Phase4_Lateral_Movement_Persistence_EN.pdf) | D to D+5 | Shadow agent, Slack prompt injection, DCSync to Golden Ticket, PoisonGPT chatbot poisoning |
+| **5** | [Actions on Objectives](phases/Phase5_PromptLock_Exfiltration_Double_Extortion_EN.pdf) | D+5 to D+6 | Full R&D exfiltration, PromptLock deployed, double extortion, 2.5M EUR ransom / 7.5M EUR est. total impact |
 
-## 🛡️ Defense-in-Depth Model
+## Defense-in-Depth Model
 
 | Layer | Principle | Key Controls |
 |-------|----------|-------------|
@@ -102,9 +102,9 @@ openclaw-killchain-analysis/
 | **C4** — Impact Reduction | Compromised agent must not inherit SI-wide permissions | Segmentation, 3-2-1-1-0 backups, AD hardening |
 | **C5** — Basic Hygiene | Agentic controls don't replace fundamentals | Accelerated patching, MFA, minimal exposure |
 
-**Core insight**: Layers C4–C5 (fundamentals) would have disrupted the majority of the kill chain. Layers C1–C3 (AI-specific) are complementary, not substitute.
+**Core insight**: Layers C4-C5 (fundamentals) would have disrupted the majority of the kill chain. Layers C1-C3 (AI-specific) are complementary, not substitute.
 
-## 📊 Key Figures
+## Key Figures
 
 <table>
 <tr>
@@ -113,11 +113,50 @@ openclaw-killchain-analysis/
 </tr>
 </table>
 
-## ⚖️ Disclaimer
+## Introductory Course — AI & Cybersecurity (Master 2, Sorbonne)
+
+For readers unfamiliar with AI security concepts, a **Master 2 course from Universite Paris Sorbonne** is included as an introduction:
+
+- [S1-ISI5 — IA et Cybersecurite (FR, PDF)](S1-ISI5_IA_et_Cybersecurite%20v5.pdf)
+- [S1-ISI5 — AI and Cybersecurity (EN, PDF)](S1-ISI5_IA_et_Cybersecurite%20v5_en.pdf)
+
+This course covers foundational concepts needed to understand the kill chain analysis and is recommended as a starting point for non-specialists.
+
+## Repository Structure
+
+```
+openclaw-killchain-analysis/
+│
+├── README.md                              ← this file
+├── CHANGELOG.md                           ← corrections & version history
+├── LICENSE                                ← CC BY-NC-SA 4.0
+│
+├── ACADEMIC_NOTE.md                       ← Summary note (EN, markdown)
+├── ACADEMIC_NOTE_en.pdf                   ← Summary note (EN, PDF)
+├── NOTE_ACADEMIQUE.md                     ← Note de synthese (FR, markdown)
+├── ACADEMIC_NOTE.pdf                      ← Note de synthese (FR, PDF)
+│
+├── S1-ISI5_IA_et_Cybersecurite v5.pdf     ← Master 2 course (FR)
+├── S1-ISI5_IA_et_Cybersecurite v5_en.pdf  ← Master 2 course (EN)
+│
+├── phases/                                ← Detailed phase analyses (FR + EN)
+│   ├── Phase1_Reconnaissance.pdf / _en.pdf
+│   ├── Phase2_Weaponization.pdf / _EN.pdf
+│   ├── Phase3_Installation_Execution.pdf / _EN.pdf
+│   ├── Phase4_Mouvement_Lateral.pdf / _EN.pdf
+│   └── Phase5_PromptLock.pdf / _EN.pdf
+│
+├── figures/                               ← Academic figures (EN + FR, 21 figures)
+│
+└── scripts/                               ← Figure generation scripts
+    └── gen_figures.py
+```
+
+## Disclaimer
 
 > **This work is an academic analysis based on an entirely fictional scenario.** MediFrance SA does not exist. No actual attack was conducted. All vulnerabilities and techniques described are documented in the public literature. The purpose is exclusively defensive: identifying risks associated with autonomous AI agents to improve security postures.
 
-## 📄 Citation
+## Citation
 
 ```bibtex
 @techreport{pizzi2026openclaw,
@@ -125,18 +164,18 @@ openclaw-killchain-analysis/
   author    = {Pizzi, Fabrice},
   year      = {2026},
   month     = {February},
-  institution = {Université Paris Sorbonne},
+  institution = {Universite Paris Sorbonne},
   type      = {Technical Report},
   url       = {https://github.com/mo0ogly/openclaw-killchain-analysis}
 }
 ```
 
-## 📬 Contact
+## Contact
 
 - **Author**: Fabrice Pizzi
 - **GitHub**: [@mo0ogly](https://github.com/mo0ogly)
-- **LinkedIn**:  https://www.linkedin.com/in/fpizzi/
+- **LinkedIn**: https://www.linkedin.com/in/fpizzi/
 
-## 📜 License
+## License
 
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operation OpenClaw — Kill Chain Analysis</title>
+    <meta name="description" content="Academic research: modeling an agentic kill chain against enterprise infrastructure using a compromised AI coding agent.">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79c0ff;
+            --red: #f85149;
+            --green: #3fb950;
+            --orange: #d29922;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+        header { text-align: center; margin-bottom: 3rem; }
+        header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        header p { color: var(--text-muted); font-size: 1.1rem; }
+        .badges { margin: 1rem 0; }
+        .badge {
+            display: inline-block; padding: 0.25rem 0.75rem; border-radius: 1rem;
+            font-size: 0.8rem; font-weight: 600; margin: 0.2rem;
+        }
+        .badge-orange { background: #d29922; color: #000; }
+        .badge-blue { background: #58a6ff; color: #000; }
+        .badge-grey { background: #30363d; color: #e6edf3; }
+
+        .alert {
+            background: #1a1e2a; border: 1px solid var(--accent);
+            border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 2rem;
+            text-align: center;
+        }
+        .alert a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .alert a:hover { text-decoration: underline; }
+
+        h2 {
+            font-size: 1.4rem; margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+        }
+
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+        .card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 8px; padding: 1.25rem; transition: border-color 0.2s;
+        }
+        .card:hover { border-color: var(--accent); }
+        .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+        .card .links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .card .links a {
+            display: inline-block; padding: 0.4rem 0.9rem; border-radius: 6px;
+            font-size: 0.85rem; font-weight: 600; text-decoration: none;
+            background: #21262d; color: var(--accent); border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .card .links a:hover { background: var(--accent); color: #000; }
+
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td {
+            padding: 0.75rem 1rem; text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        td a { color: var(--accent); text-decoration: none; }
+        td a:hover { text-decoration: underline; }
+
+        .phase-num {
+            display: inline-block; width: 2rem; height: 2rem; line-height: 2rem;
+            text-align: center; border-radius: 50%; background: #21262d;
+            font-weight: 700; font-size: 0.9rem; margin-right: 0.5rem;
+        }
+
+        .defense-table td:first-child { font-weight: 600; white-space: nowrap; }
+
+        .download-box {
+            background: #1a2332; border: 2px solid var(--accent);
+            border-radius: 8px; padding: 1.5rem; text-align: center; margin: 2rem 0;
+        }
+        .download-box a {
+            display: inline-block; padding: 0.75rem 2rem; background: var(--accent);
+            color: #000; border-radius: 8px; font-weight: 700; font-size: 1.1rem;
+            text-decoration: none; transition: background 0.2s;
+        }
+        .download-box a:hover { background: var(--accent-hover); }
+        .download-box p { color: var(--text-muted); margin-top: 0.75rem; font-size: 0.9rem; }
+
+        .disclaimer {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 8px; padding: 1.25rem; margin: 2rem 0;
+            color: var(--text-muted); font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+            text-align: center; color: var(--text-muted); font-size: 0.85rem;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            th, td { padding: 0.5rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Operation OpenClaw</h1>
+        <p>Kill Chain Analysis of an AI Agent-Driven Cyberattack</p>
+        <p style="margin-top: 0.5rem; font-size: 0.95rem;"><strong>Fabrice Pizzi</strong> &mdash; Universit&eacute; Paris Sorbonne, 2026</p>
+        <div class="badges">
+            <span class="badge badge-orange">Active Research</span>
+            <span class="badge badge-blue">EN / FR</span>
+            <span class="badge badge-grey">CC BY-NC-SA 4.0</span>
+        </div>
+    </header>
+
+    <div class="alert">
+        No installation needed &mdash; click any link below to read the documents directly.<br>
+        Or <a href="https://github.com/mo0ogly/openclaw-killchain-analysis/archive/refs/heads/main.zip">download everything as ZIP</a>.
+    </div>
+
+    <h2>Start Here</h2>
+
+    <div class="card-grid">
+        <div class="card">
+            <h3>New to AI Security?</h3>
+            <p>Master 2 course (Sorbonne) &mdash; introduction to AI &amp; Cybersecurity for non-specialists.</p>
+            <div class="links">
+                <a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/S1-ISI5_IA_et_Cybersecurite%20v5.pdf">FR (PDF)</a>
+                <a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/S1-ISI5_IA_et_Cybersecurite%20v5_en.pdf">EN (PDF)</a>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Summary Note (~10 pages)</h3>
+            <p>Academic overview of the full kill chain and defense model.</p>
+            <div class="links">
+                <a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/ACADEMIC_NOTE.pdf">FR (PDF)</a>
+                <a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/ACADEMIC_NOTE_en.pdf">EN (PDF)</a>
+                <a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/NOTE_ACADEMIQUE.md">FR (Web)</a>
+                <a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/ACADEMIC_NOTE.md">EN (Web)</a>
+            </div>
+        </div>
+    </div>
+
+    <h2>The 5 Phases &mdash; Detailed Analyses</h2>
+
+    <table>
+        <thead>
+            <tr><th>Phase</th><th>Title</th><th>Timeline</th><th>FR</th><th>EN</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="phase-num">1</span></td>
+                <td>Reconnaissance</td>
+                <td>D&minus;30 &rarr; D&minus;15</td>
+                <td><a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/phases/Phase1_Reconnaissance.pdf">PDF</a></td>
+                <td><a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/phases/Phase1_Reconnaissance_en.pdf">PDF</a></td>
+            </tr>
+            <tr>
+                <td><span class="phase-num">2</span></td>
+                <td>Weaponization</td>
+                <td>D&minus;15 &rarr; D&minus;7</td>
+                <td><a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/phases/Phase2_Weaponization.pdf">PDF</a></td>
+                <td><a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/phases/Phase2_Weaponization_EN.pdf">PDF</a></td>
+            </tr>
+            <tr>
+                <td><span class="phase-num">3</span></td>
+                <td>Delivery &amp; Exploitation</td>
+                <td>D&minus;7 &rarr; D</td>
+                <td><a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/phases/Phase3_Installation_Ex%C3%A9cution.pdf">PDF</a></td>
+                <td><a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/phases/Phase3_Installation_Execution_EN.pdf">PDF</a></td>
+            </tr>
+            <tr>
+                <td><span class="phase-num">4</span></td>
+                <td>Lateral Movement &amp; Persistence</td>
+                <td>D &rarr; D+5</td>
+                <td><a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/phases/Phase4_Mouvement_Lat%C3%A9ral_Persistance.pdf">PDF</a></td>
+                <td><a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/phases/Phase4_Lateral_Movement_Persistence_EN.pdf">PDF</a></td>
+            </tr>
+            <tr>
+                <td><span class="phase-num">5</span></td>
+                <td>Exfiltration &amp; Double Extortion</td>
+                <td>D+5 &rarr; D+6</td>
+                <td><a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/phases/Phase5_PromptLock_Exfiltration-RD_Double%20Extorsion.pdf">PDF</a></td>
+                <td><a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/phases/Phase5_PromptLock_Exfiltration_Double_Extortion_EN.pdf">PDF</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Defense-in-Depth Model (5 Layers)</h2>
+
+    <table class="defense-table">
+        <thead>
+            <tr><th>Layer</th><th>Principle</th><th>Key Controls</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>C1 &mdash; Agent Governance</td><td>The LLM is an advisor, not an executor</td><td>Tool allowlists, sandbox, human-in-the-loop</td></tr>
+            <tr><td>C2 &mdash; Input Control</td><td>All ingested content is untrusted</td><td>Data/instruction separation, need-to-know</td></tr>
+            <tr><td>C3 &mdash; Output Control</td><td>Legitimate HTTPS can mask logical abuse</td><td>Egress proxy, DLP, destination allowlists</td></tr>
+            <tr><td>C4 &mdash; Impact Reduction</td><td>Compromised agent must not inherit SI-wide permissions</td><td>Segmentation, 3-2-1-1-0 backups, AD hardening</td></tr>
+            <tr><td>C5 &mdash; Basic Hygiene</td><td>Agentic controls don't replace fundamentals</td><td>Accelerated patching, MFA, minimal exposure</td></tr>
+        </tbody>
+    </table>
+
+    <p style="color: var(--text-muted); margin-top: 0.5rem;"><strong>Core insight:</strong> Layers C4&ndash;C5 (fundamentals) would have disrupted the majority of the kill chain. Layers C1&ndash;C3 (AI-specific) are complementary, not substitute.</p>
+
+    <div class="download-box">
+        <a href="https://github.com/mo0ogly/openclaw-killchain-analysis/archive/refs/heads/main.zip">Download All Documents (ZIP)</a>
+        <p>All PDFs, figures, and source files in a single download &mdash; no Git required.</p>
+    </div>
+
+    <div class="disclaimer">
+        <strong>Disclaimer:</strong> This work is an academic analysis based on an entirely fictional scenario.
+        MediFrance SA does not exist. No actual attack was conducted.
+        All vulnerabilities and techniques described are documented in the public literature.
+        The purpose is exclusively defensive.
+    </div>
+
+    <footer>
+        <p><strong>Fabrice Pizzi</strong> &mdash; <a href="https://github.com/mo0ogly">GitHub</a> &middot; <a href="https://www.linkedin.com/in/fpizzi/">LinkedIn</a></p>
+        <p style="margin-top: 0.5rem;">Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p>
+        <p style="margin-top: 0.5rem;"><a href="https://github.com/mo0ogly/openclaw-killchain-analysis">View on GitHub</a></p>
+    </footer>
+
+</div>
+
+</body>
+</html>
