@@ -349,121 +349,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             transition: opacity 0.3s;
         }
-
-        /* V6 Featured Section Styles */
-        .featured-v6 {
-            background: linear-gradient(135deg, #0a0a0f, #161b22);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2.5rem 0;
-            position: relative;
-            overflow: hidden;
-            border-top: 3px solid #ff3366;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .featured-v6::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-image: linear-gradient(rgba(0, 255, 136, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 136, 0.02) 1px, transparent 1px);
-            background-size: 20px 20px;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .featured-v6-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .v6-badge-top {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff0055, #ff3366);
-            color: white;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 4px;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        .featured-v6 h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .featured-v6 p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .featured-v6-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .v6-grid-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 8px;
-            padding: 1rem;
-            transition: all 0.2s;
-        }
-
-        .v6-grid-item:hover {
-            border-color: rgba(0, 255, 136, 0.3);
-            background: rgba(0, 255, 136, 0.05);
-        }
-
-        .v6-grid-item .num {
-            font-family: monospace;
-            color: #00ff88;
-            font-size: 0.8rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .v6-grid-item .title {
-            font-weight: 600;
-            color: #e6edf3;
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .v6-grid-item .desc {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.4);
-            line-height: 1.4;
-        }
-
-        .featured-v6-actions a {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
-            background: rgba(255, 51, 102, 0.1);
-            color: #ff3366;
-            border: 1px solid rgba(255, 51, 102, 0.3);
-            border-radius: 6px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .featured-v6-actions a:hover {
-            background: rgba(255, 51, 102, 0.2);
-            border-color: #ff3366;
-        }
     </style>
 </head>
 
@@ -523,42 +408,20 @@
 
         <h2>The 5 Phases &mdash; Detailed Analyses</h2>
 
-        <div class="featured-v6">
-            <div class="featured-v6-content">
-                <div class="v6-badge-top">▲ NOUVEAU DANS LA V6</div>
-                <h3>Section 3 &mdash; Taxonomie des attaques SUR les systèmes d'IA</h3>
-                <p>Support de cours complet intégrant les travaux du GT Sécurité de l'IA (Campus Cyber &times; Hub
-                    France IA, fév 2026), NIST AI 100-2, MITRE ATLAS et OWASP.</p>
-
-                <div class="featured-v6-grid">
-                    <div class="v6-grid-item">
-                        <div class="num">3.1</div>
-                        <div class="title">Empoisonnement</div>
-                        <div class="desc">Data poisoning, backdoors, supply chain IA</div>
-                    </div>
-                    <div class="v6-grid-item">
-                        <div class="num">3.2</div>
-                        <div class="title">Manipulation & Évasion</div>
-                        <div class="desc">Adversarial examples, jailbreak, substitution</div>
-                    </div>
-                    <div class="v6-grid-item">
-                        <div class="num">3.3</div>
-                        <div class="title">Attaques Oracles</div>
-                        <div class="desc">Model stealing, inversion, membership inference</div>
-                    </div>
-                    <div class="v6-grid-item">
-                        <div class="num">3.4+</div>
-                        <div class="title">Archs Spécifiques</div>
-                        <div class="desc">RAG, Agents autonomes (MCP), Apprentissage fédéré</div>
-                    </div>
-                </div>
-
-                <div class="featured-v6-actions">
-                    <a
-                        href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/S1-ISI5_IA_et_Cybersecurite%20v6.pdf">📄
-                        Télécharger le cours complet (PDF v6)</a>
-                </div>
-            </div>
+        <div class="featured-course" style="margin: 2.5rem 0; text-align: center;">
+            <a href="https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/infographic_linkedin_v6.png"
+                target="_blank" style="display: block; margin-bottom: 1.5rem;">
+                <img src="https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/infographic_linkedin_v6.png"
+                    alt="Cours M2 Sorbonne - IA & Cybersécurité v6 Infographic"
+                    style="width: 100%; max-width: 900px; height: auto; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); border: 1px solid var(--border); transition: transform 0.2s;"
+                    onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
+            </a>
+            <a href="https://github.com/mo0ogly/openclaw-killchain-analysis/blob/main/S1-ISI5_IA_et_Cybersecurite%20v6.pdf"
+                style="display: inline-block; padding: 0.8rem 1.8rem; background: rgba(255, 51, 102, 0.1); color: #ff3366; border: 1px solid rgba(255, 51, 102, 0.3); border-radius: 6px; font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: all 0.2s;"
+                onmouseover="this.style.background='rgba(255, 51, 102, 0.2)'; this.style.borderColor='#ff3366';"
+                onmouseout="this.style.background='rgba(255, 51, 102, 0.1)'; this.style.borderColor='rgba(255, 51, 102, 0.3)';">
+                📄 Télécharger le cours complet (PDF v6)
+            </a>
         </div>
 
         <table>
