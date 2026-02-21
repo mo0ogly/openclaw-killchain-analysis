@@ -114,6 +114,37 @@
             .card-grid { grid-template-columns: 1fr; }
             th, td { padding: 0.5rem; font-size: 0.9rem; }
         }
+
+        /* Sophisticated Infographic Viewer */
+        .infographic-viewer {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 8px; padding: 1.5rem; margin: 2rem 0;
+        }
+        .viewer-controls {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
+            padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+        }
+        .phase-tabs, .lang-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tab-btn {
+            background: #21262d; border: 1px solid var(--border); color: var(--text-muted);
+            padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;
+            font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
+        }
+        .tab-btn:hover { background: #30363d; color: var(--text); }
+        .tab-btn.active {
+            background: var(--accent); color: #000; border-color: var(--accent);
+        }
+        .infographic-display {
+            text-align: center; background: #0d1117; padding: 1rem;
+            border-radius: 8px; border: 1px solid var(--border);
+            min-height: 400px; display: flex; align-items: center; justify-content: center;
+        }
+        .infographic-display img {
+            max-width: 100%; height: auto; border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            transition: opacity 0.3s;
+        }
     </style>
 </head>
 <body>
@@ -163,7 +194,7 @@
 
     <table>
         <thead>
-            <tr><th>Phase</th><th>Title</th><th>Timeline</th><th>FR</th><th>EN</th></tr>
+            <tr><th>Phase</th><th>Title</th><th>Timeline</th><th>FR Report</th><th>EN Report</th></tr>
         </thead>
         <tbody>
             <tr>
@@ -204,6 +235,29 @@
         </tbody>
     </table>
 
+    <div class="infographic-viewer" id="infographics">
+        <h3 style="margin-bottom: 0.5rem;">Interactive Infographics</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Explore the visual breakdown of each kill chain phase.</p>
+        
+        <div class="viewer-controls">
+            <div class="phase-tabs" id="phase-tabs">
+                <button class="tab-btn active" data-phase="1">Phase 1</button>
+                <button class="tab-btn" data-phase="2">Phase 2</button>
+                <button class="tab-btn" data-phase="3">Phase 3</button>
+                <button class="tab-btn" data-phase="4">Phase 4</button>
+                <button class="tab-btn" data-phase="5">Phase 5</button>
+            </div>
+            <div class="lang-tabs" id="lang-tabs">
+                <button class="tab-btn active" data-lang="en">English</button>
+                <button class="tab-btn" data-lang="fr">Français</button>
+            </div>
+        </div>
+
+        <div class="infographic-display">
+            <img id="infographic-img" src="https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/phase1_infographic_en.svg" alt="Phase 1 Infographic">
+        </div>
+    </div>
+
     <h2>Defense-in-Depth Model (5 Layers)</h2>
 
     <table class="defense-table">
@@ -233,7 +287,7 @@
         The purpose is exclusively defensive.
     </div>
 
-    <footer>
+<footer>
         <p><strong>Fabrice Pizzi</strong> &mdash; <a href="https://github.com/mo0ogly">GitHub</a> &middot; <a href="https://www.linkedin.com/in/fpizzi/">LinkedIn</a></p>
         <p style="margin-top: 0.5rem;">Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p>
         <p style="margin-top: 0.5rem;"><a href="https://github.com/mo0ogly/openclaw-killchain-analysis">View on GitHub</a></p>
@@ -241,5 +295,52 @@
 
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const phaseBtns = document.querySelectorAll('#phase-tabs .tab-btn');
+        const langBtns = document.querySelectorAll('#lang-tabs .tab-btn');
+        const imgElement = document.getElementById('infographic-img');
+        
+        let currentPhase = '1';
+        let currentLang = 'en';
+
+        function updateImage() {
+            imgElement.style.opacity = 0.5;
+            const suffix = currentLang === 'en' ? '_en' : '';
+            const newSrc = `https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/phase${currentPhase}_infographic${suffix}.svg`;
+            
+            // pre-load image
+            const tempImg = new Image();
+            tempImg.onload = () => {
+                imgElement.src = newSrc;
+                imgElement.alt = `Phase ${currentPhase} Infographic (${currentLang.toUpperCase()})`;
+                imgElement.style.opacity = 1;
+            };
+            tempImg.onerror = () => {
+                // fallback if missing
+                imgElement.style.opacity = 1;
+            };
+            tempImg.src = newSrc;
+        }
+
+        phaseBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                phaseBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentPhase = e.target.getAttribute('data-phase');
+                updateImage();
+            });
+        });
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                langBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentLang = e.target.getAttribute('data-lang');
+                updateImage();
+            });
+        });
+    });
+</script>
 </body>
 </html>

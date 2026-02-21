@@ -26,13 +26,13 @@
 
 ### Detailed Phase Analyses (~25-30 pages each)
 
-| Phase | Title | FR | EN |
-|-------|-------|----|----|
-| **1** | Reconnaissance | [PDF](phases/Phase1_Reconnaissance.pdf) | [PDF](phases/Phase1_Reconnaissance_en.pdf) |
-| **2** | Weaponization | [PDF](phases/Phase2_Weaponization.pdf) | [PDF](phases/Phase2_Weaponization_EN.pdf) |
-| **3** | Delivery & Exploitation | [PDF](phases/Phase3_Installation_Exécution.pdf) | [PDF](phases/Phase3_Installation_Execution_EN.pdf) |
-| **4** | Lateral Movement & Persistence | [PDF](phases/Phase4_Mouvement_Latéral_Persistance.pdf) | [PDF](phases/Phase4_Lateral_Movement_Persistence_EN.pdf) |
-| **5** | Exfiltration & Double Extortion | [PDF](phases/Phase5_PromptLock_Exfiltration-RD_Double%20Extorsion.pdf) | [PDF](phases/Phase5_PromptLock_Exfiltration_Double_Extortion_EN.pdf) |
+| Phase | Title | FR (Report) | EN (Report) | FR (Infographie) | EN (Infographic) |
+|-------|-------|-------------|-------------|------------------|------------------|
+| **1** | Reconnaissance | [PDF](phases/Phase1_Reconnaissance.pdf) | [PDF](phases/Phase1_Reconnaissance_en.pdf) | [SVG](figures/phase1_infographic.svg) | [SVG](figures/phase1_infographic_en.svg) |
+| **2** | Weaponization | [PDF](phases/Phase2_Weaponization.pdf) | [PDF](phases/Phase2_Weaponization_EN.pdf) | [SVG](figures/phase2_infographic.svg) | [SVG](figures/phase2_infographic_en.svg) |
+| **3** | Delivery & Exploitation | [PDF](phases/Phase3_Installation_Exécution.pdf) | [PDF](phases/Phase3_Installation_Execution_EN.pdf) | [SVG](figures/phase3_infographic.svg) | [SVG](figures/phase3_infographic_en.svg) |
+| **4** | Lateral Movement & Persistence | [PDF](phases/Phase4_Mouvement_Latéral_Persistance.pdf) | [PDF](phases/Phase4_Lateral_Movement_Persistence_EN.pdf) | [SVG](figures/phase4_infographic.svg) | [SVG](figures/phase4_infographic_en.svg) |
+| **5** | Exfiltration & Double Extortion | [PDF](phases/Phase5_PromptLock_Exfiltration-RD_Double%20Extorsion.pdf) | [PDF](phases/Phase5_PromptLock_Exfiltration_Double_Extortion_EN.pdf) | [SVG](figures/phase5_infographic.svg) | [SVG](figures/phase5_infographic_en.svg) |
 
 ### Download Everything
 
@@ -91,6 +91,48 @@ Le cours de Master 2 Sorbonne (introduction a l'IA et cybersecurite) : [PDF](S1-
 | **3** | [Delivery & Exploitation](phases/Phase3_Installation_Execution_EN.pdf) | D-7 to D | 3 simultaneous vectors: skill supply chain, infostealer (token theft per Hudson Rock), CVE-2024-55591 VPN |
 | **4** | [Lateral Movement](phases/Phase4_Lateral_Movement_Persistence_EN.pdf) | D to D+5 | Shadow agent, Slack prompt injection, DCSync to Golden Ticket, PoisonGPT chatbot poisoning |
 | **5** | [Actions on Objectives](phases/Phase5_PromptLock_Exfiltration_Double_Extortion_EN.pdf) | D+5 to D+6 | Full R&D exfiltration, PromptLock deployed, double extortion, 2.5M EUR ransom / 7.5M EUR est. total impact |
+
+## Infographics / Infographies
+
+<details>
+<summary><strong>Phase 1: Reconnaissance</strong></summary>
+
+**English**: <br><img src="figures/phase1_infographic_en.svg" width="800"/>
+
+**Français**: <br><img src="figures/phase1_infographic.svg" width="800"/>
+</details>
+
+<details>
+<summary><strong>Phase 2: Weaponization</strong></summary>
+
+**English**: <br><img src="figures/phase2_infographic_en.svg" width="800"/>
+
+**Français**: <br><img src="figures/phase2_infographic.svg" width="800"/>
+</details>
+
+<details>
+<summary><strong>Phase 3: Delivery & Exploitation</strong></summary>
+
+**English**: <br><img src="figures/phase3_infographic_en.svg" width="800"/>
+
+**Français**: <br><img src="figures/phase3_infographic.svg" width="800"/>
+</details>
+
+<details>
+<summary><strong>Phase 4: Lateral Movement & Persistence</strong></summary>
+
+**English**: <br><img src="figures/phase4_infographic_en.svg" width="800"/>
+
+**Français**: <br><img src="figures/phase4_infographic.svg" width="800"/>
+</details>
+
+<details>
+<summary><strong>Phase 5: Exfiltration & Double Extortion</strong></summary>
+
+**English**: <br><img src="figures/phase5_infographic_en.svg" width="800"/>
+
+**Français**: <br><img src="figures/phase5_infographic.svg" width="800"/>
+</details>
 
 ## Defense-in-Depth Model
 

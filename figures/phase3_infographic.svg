@@ -1,0 +1,484 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1900" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffaa00"/>
+      <stop offset="50%" style="stop-color:#00e68a"/>
+      <stop offset="100%" style="stop-color:#00d4ff"/>
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#141832;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#1c2045;stop-opacity:0.9"/>
+    </linearGradient>
+    <linearGradient id="accentBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="100%" style="stop-color:#0088cc"/>
+    </linearGradient>
+    <linearGradient id="accentPurple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7b2ff7"/>
+      <stop offset="100%" style="stop-color:#5a1fb8"/>
+    </linearGradient>
+    <linearGradient id="accentPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff2d95"/>
+      <stop offset="100%" style="stop-color:#cc1a6e"/>
+    </linearGradient>
+    <linearGradient id="accentGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00e68a"/>
+      <stop offset="100%" style="stop-color:#00b36b"/>
+    </linearGradient>
+    <linearGradient id="accentOrange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffaa00"/>
+      <stop offset="100%" style="stop-color:#dd8800"/>
+    </linearGradient>
+    <linearGradient id="accentRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff3333"/>
+      <stop offset="100%" style="stop-color:#cc0000"/>
+    </linearGradient>
+    <linearGradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffaa00;stop-opacity:0"/>
+      <stop offset="15%" style="stop-color:#ffaa00"/>
+      <stop offset="85%" style="stop-color:#00e68a"/>
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="hubRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffaa00"/>
+      <stop offset="50%" style="stop-color:#ff3333"/>
+      <stop offset="100%" style="stop-color:#00d4ff"/>
+    </linearGradient>
+    
+    <!-- Arrow Markers -->
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#ffaa00" opacity="0.6"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#ff3333" opacity="0.6"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#00d4ff" opacity="0.6"/>
+    </marker>
+
+    <!-- Glow filters -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowStrong">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="shadowLight">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+    <!-- Grid pattern -->
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a2050" stroke-width="0.5"/>
+    </pattern>
+    <!-- Scan line pattern -->
+    <pattern id="scanLines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="4" y2="0" stroke="#ffffff" stroke-width="0.3" opacity="0.03"/>
+    </pattern>
+  </defs>
+
+  <!-- ==================== BACKGROUND ==================== -->
+  <rect width="1200" height="1900" fill="url(#bgGrad)"/>
+  <rect width="1200" height="1900" fill="url(#gridPattern)" opacity="0.3"/>
+  <rect width="1200" height="1900" fill="url(#scanLines)"/>
+
+  <!-- Decorative background circles -->
+  <circle cx="100" cy="200" r="300" fill="none" stroke="#00e68a" stroke-width="0.5" opacity="0.08"/>
+  <circle cx="100" cy="200" r="250" fill="none" stroke="#00d4ff" stroke-width="0.3" opacity="0.05"/>
+  <circle cx="1100" cy="1700" r="350" fill="none" stroke="#ffaa00" stroke-width="0.5" opacity="0.08"/>
+  <circle cx="1100" cy="1700" r="300" fill="none" stroke="#ffaa00" stroke-width="0.3" opacity="0.05"/>
+  <circle cx="600" cy="950" r="500" fill="none" stroke="#ff3333" stroke-width="0.3" opacity="0.04"/>
+
+  <!-- ==================== HEADER ==================== -->
+  <!-- Phase badge -->
+  <rect x="400" y="28" width="400" height="48" rx="24" fill="none" stroke="url(#headerGrad)" stroke-width="2"/>
+  <text x="600" y="59" text-anchor="middle" fill="url(#headerGrad)" font-size="17" font-weight="600" letter-spacing="5">OPENCLAW KILLCHAIN</text>
+
+  <!-- Main title -->
+  <text x="600" y="128" text-anchor="middle" fill="#ffffff" font-size="58" font-weight="800" letter-spacing="3">PHASE 3</text>
+  <rect x="180" y="146" width="840" height="3" rx="1.5" fill="url(#headerGrad)" filter="url(#glow)"/>
+  <text x="600" y="192" text-anchor="middle" fill="url(#headerGrad)" font-size="38" font-weight="300" letter-spacing="10">INSTALLATION &amp; EXÉCUTION</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="232" text-anchor="middle" fill="#8090b0" font-size="16" letter-spacing="2">COMPROMISSION INITIALE MULTI-VECTEURS — J−7 → JOUR J</text>
+
+  <!-- ==================== TIMELINE ==================== -->
+  <g transform="translate(80, 268)">
+    <rect x="0" y="0" width="1040" height="85" rx="12" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="1040" height="85" rx="12" fill="none" stroke="#2a3060" stroke-width="1"/>
+
+    <!-- Timeline line -->
+    <line x1="120" y1="42" x2="920" y2="42" stroke="url(#timelineGrad)" stroke-width="3" filter="url(#glow)"/>
+
+    <!-- D-7 marker -->
+    <circle cx="120" cy="42" r="11" fill="#0a0e27" stroke="#ffaa00" stroke-width="2.5" filter="url(#glow)"/>
+    <circle cx="120" cy="42" r="4.5" fill="#ffaa00"/>
+    <text x="120" y="24" text-anchor="middle" fill="#ffaa00" font-size="14" font-weight="700">J−7</text>
+    <text x="120" y="68" text-anchor="middle" fill="#6070a0" font-size="10">Début Livraison</text>
+
+    <!-- Phase markers -->
+    <circle cx="386" cy="42" r="5" fill="#503020" stroke="#ffaa00" stroke-width="1" opacity="0.6"/>
+    <text x="386" y="24" text-anchor="middle" fill="#a07050" font-size="10">J−5</text>
+    <text x="386" y="68" text-anchor="middle" fill="#ffaa00" font-size="9">Skill Piégée</text>
+
+    <circle cx="653" cy="42" r="5" fill="#502030" stroke="#ff3333" stroke-width="1" opacity="0.6"/>
+    <text x="653" y="24" text-anchor="middle" fill="#a05070" font-size="10">J−2</text>
+    <text x="653" y="68" text-anchor="middle" fill="#ff3333" font-size="9">Vol d'Identité</text>
+
+    <!-- D-Day marker -->
+    <circle cx="920" cy="42" r="11" fill="#0a0e27" stroke="#00d4ff" stroke-width="2.5" filter="url(#glow)"/>
+    <circle cx="920" cy="42" r="4.5" fill="#00d4ff"/>
+    <text x="920" y="24" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="700">Jour J</text>
+    <text x="920" y="68" text-anchor="middle" fill="#6070a0" font-size="10">Exploit VPN &#x2192; Ph. 4</text>
+  </g>
+
+  <!-- ==================== 3 TECHNIQUE CARDS (TOP ROW) ==================== -->
+
+  <!-- Card 1: Skill Piégée (left) -->
+  <g transform="translate(60, 420)">
+    <rect x="0" y="0" width="340" height="180" rx="12" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="340" height="180" rx="12" fill="none" stroke="#ffaa00" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="0" width="5" height="180" rx="2" fill="url(#accentOrange)"/>
+
+    <circle cx="40" cy="35" r="20" fill="#ffaa00" opacity="0.15"/>
+    <!-- Box Icon -->
+    <g transform="translate(40, 35)">
+        <path d="M -12 -5 L 0 2 L 12 -5 L 12 7 L 0 14 L -12 7 Z" fill="none" stroke="#ffaa00" stroke-width="2"/>
+        <path d="M -12 -5 L 0 -12 L 12 -5 L 0 2 Z" fill="none" stroke="#ffaa00" stroke-width="2"/>
+        <line x1="0" y1="2" x2="0" y2="14" stroke="#ffaa00" stroke-width="2"/>
+    </g>
+
+    <text x="70" y="30" fill="#ffffff" font-size="16" font-weight="700">Skill « PharmaResearch »</text>
+    <text x="70" y="48" fill="#ffaa00" font-size="11" font-weight="600">T1195.002 / Hack Supply Chain</text>
+
+    <line x1="15" y1="65" x2="325" y2="65" stroke="#2a3060" stroke-width="0.5"/>
+
+    <text x="15" y="85" fill="#a0b0d0" font-size="11.5">&#x2022; Installation par un chercheur R&amp;D ciblé</text>
+    <text x="15" y="103" fill="#a0b0d0" font-size="11.5">&#x2022; Confiance accordée au fichier SKILL.md</text>
+    <text x="15" y="121" fill="#a0b0d0" font-size="11.5">&#x2022; Exécution (privilèges complets de l'agent)</text>
+    <text x="15" y="139" fill="#a0b0d0" font-size="11.5">&#x2022; CVE-2026-25253 : Vol de token 1-Click</text>
+    <text x="15" y="157" fill="#a0b0d0" font-size="11.5">&#x2022; Point d'entrée direct dans l'écosystème IA</text>
+
+    <!-- Badge -->
+    <rect x="225" y="162" width="100" height="18" rx="9" fill="#ffaa00" opacity="0.15"/>
+    <text x="275" y="174" text-anchor="middle" fill="#ffaa00" font-size="10" font-weight="600">SUPPLY CHAIN</text>
+  </g>
+
+  <!-- Card 2: Vol Identité (middle) -->
+  <g transform="translate(430, 420)">
+    <rect x="0" y="0" width="340" height="180" rx="12" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="340" height="180" rx="12" fill="none" stroke="#ff3333" stroke-width="1" opacity="0.4"/>
+    <rect x="165" y="0" width="175" height="5" rx="2" fill="url(#accentRed)"/>
+    <rect x="0" y="0" width="175" height="5" rx="2" fill="url(#accentRed)"/>
+
+    <circle cx="40" cy="35" r="20" fill="#ff3333" opacity="0.15"/>
+    <!-- Identity/Key Icon -->
+    <g transform="translate(40, 35)">
+        <circle cx="0" cy="-6" r="5" fill="none" stroke="#ff3333" stroke-width="2"/>
+        <line x1="0" y1="-1" x2="0" y2="10" stroke="#ff3333" stroke-width="2"/>
+        <line x1="0" y1="5" x2="6" y2="5" stroke="#ff3333" stroke-width="2"/>
+        <line x1="0" y1="10" x2="6" y2="10" stroke="#ff3333" stroke-width="2"/>
+    </g>
+
+    <text x="70" y="30" fill="#ffffff" font-size="16" font-weight="700">Vol d'Identité Agentique</text>
+    <text x="70" y="48" fill="#ff3333" font-size="11" font-weight="600">T1528 / Steal Access Token</text>
+
+    <line x1="15" y1="65" x2="325" y2="65" stroke="#2a3060" stroke-width="0.5"/>
+
+    <text x="15" y="85" fill="#a0b0d0" font-size="11.5">&#x2022; Exfiltration ciblée par infostealer (Vidar)</text>
+    <text x="15" y="103" fill="#a0b0d0" font-size="11.5">&#x2022; Vol du token de gateway (openclaw.json)</text>
+    <text x="15" y="121" fill="#a0b0d0" font-size="11.5">&#x2022; Vol des clés de signature (device.json)</text>
+    <text x="15" y="139" fill="#a0b0d0" font-size="11.5">&#x2022; Copie du profil comportemental (soul.md)</text>
+    <text x="15" y="157" fill="#a0b0d0" font-size="11.5">&#x2022; Usurpation (Shadow Agent) sur autre machine</text>
+
+    <!-- Badge -->
+    <rect x="225" y="162" width="100" height="18" rx="9" fill="#ff3333" opacity="0.15"/>
+    <text x="275" y="174" text-anchor="middle" fill="#ff3333" font-size="10" font-weight="600">INFOSTEALER</text>
+  </g>
+
+  <!-- Card 3: Fortinet VPN (right) -->
+  <g transform="translate(800, 420)">
+    <rect x="0" y="0" width="340" height="180" rx="12" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="340" height="180" rx="12" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.4"/>
+    <rect x="335" y="0" width="5" height="180" rx="2" fill="url(#accentBlue)"/>
+
+    <circle cx="40" cy="35" r="20" fill="#00d4ff" opacity="0.15"/>
+    <!-- VPN/Shield Icon -->
+    <g transform="translate(40, 35)">
+        <path d="M -10 -8 L 0 -12 L 10 -8 L 10 2 C 10 9, 0 14, 0 14 C 0 14, -10 9, -10 2 Z" fill="none" stroke="#00d4ff" stroke-width="2"/>
+        <circle cx="0" cy="2" r="2" fill="#00d4ff"/>
+    </g>
+
+    <text x="70" y="30" fill="#ffffff" font-size="16" font-weight="700">Exploitation VPN Fortinet</text>
+    <text x="70" y="48" fill="#00d4ff" font-size="11" font-weight="600">T1190 / Exploit Public Application</text>
+
+    <line x1="15" y1="65" x2="325" y2="65" stroke="#2a3060" stroke-width="0.5"/>
+
+    <text x="15" y="85" fill="#a0b0d0" font-size="11.5">&#x2022; CVE-2024-55591 (CVSS 9.6) - Firmware vulnérable</text>
+    <text x="15" y="103" fill="#a0b0d0" font-size="11.5">&#x2022; Bypass d'authentification SSL-VPN (jsconsole)</text>
+    <text x="15" y="121" fill="#a0b0d0" font-size="11.5">&#x2022; Obtainment du contexte "Super Admin"</text>
+    <text x="15" y="139" fill="#a0b0d0" font-size="11.5">&#x2022; Vecteur d'accès réseau parallèle &amp; redondant</text>
+    <text x="15" y="157" fill="#a0b0d0" font-size="11.5">&#x2022; Indépendant du paysage IA (Périmètre classique)</text>
+
+    <!-- Badge -->
+    <rect x="235" y="162" width="90" height="18" rx="9" fill="#00d4ff" opacity="0.15"/>
+    <text x="280" y="174" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="600">PÉRIMÈTRE</text>
+  </g>
+
+  <!-- ==================== FLOW LINES TO TARGET  ==================== -->
+  <!-- Left to Target -->
+  <path d="M 230 600 C 230 670, 480 700, 500 715" fill="none" stroke="#ffaa00" stroke-width="2" opacity="0.6" stroke-dasharray="8 4" marker-end="url(#arrowOrange)"/>
+  
+  <!-- Middle to Target -->
+  <line x1="600" y1="600" x2="600" y2="655" stroke="#ff3333" stroke-width="2" opacity="0.6" stroke-dasharray="8 4" marker-end="url(#arrowRed)"/>
+  
+  <!-- Right to Target -->
+  <path d="M 970 600 C 970 670, 720 700, 700 715" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.6" stroke-dasharray="8 4" marker-end="url(#arrowBlue)"/>
+
+  <!-- ==================== CENTRAL TARGET (ENTERPRISE NETWORK) ==================== -->
+  <g transform="translate(600, 755)">
+    <!-- Outer animated ring -->
+    <circle cx="0" cy="0" r="95" fill="none" stroke="url(#hubRingGrad)" stroke-width="1.5" opacity="0.3" stroke-dasharray="12 6"/>
+    <!-- Middle ring -->
+    <circle cx="0" cy="0" r="80" fill="#050815" stroke="#00e68a" stroke-width="1" opacity="0.9" stroke-dasharray="2 4"/>
+    <!-- Inner circle -->
+    <circle cx="0" cy="0" r="65" fill="#051515" stroke="#00e68a" stroke-width="2.5" filter="url(#glowStrong)"/>
+    
+    <!-- Server Rack Icon (Sleek professional node) -->
+    <g transform="translate(0, -22)">
+        <rect x="-16" y="-12" width="32" height="8" rx="1.5" fill="none" stroke="#00e68a" stroke-width="1.5"/>
+        <rect x="-16" y="0" width="32" height="8" rx="1.5" fill="none" stroke="#00e68a" stroke-width="1.5"/>
+        <rect x="-16" y="12" width="32" height="8" rx="1.5" fill="none" stroke="#00e68a" stroke-width="1.5"/>
+        
+        <!-- Blinking lights -->
+        <circle cx="-10" cy="-8" r="1.5" fill="#00e68a"/>
+        <circle cx="-10" cy="4" r="1.5" fill="#00e68a"/>
+        <circle cx="-10" cy="16" r="1.5" fill="#00e68a"/>
+    </g>
+
+    <text x="0" y="24" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="700">ACCÈS INITIAL</text>
+    <text x="0" y="40" text-anchor="middle" fill="#a0d0b0" font-size="11">PharmEurys SA</text>
+  </g>
+
+  <!-- ==================== STATE OF COMPROMISE ==================== -->
+  <g transform="translate(0, 890)">
+    <rect x="80" y="0" width="1040" height="50" rx="8" fill="#141832" opacity="0.8"/>
+    <rect x="80" y="0" width="1040" height="3" rx="1.5" fill="url(#headerGrad)"/>
+    <text x="600" y="35" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="700" letter-spacing="3">ÉTAT DE LA COMPROMISSION (JOUR J)</text>
+  </g>
+
+  <!-- Impact Cards -->
+  <!-- Impact 1 -->
+  <g transform="translate(80, 960)">
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="none" stroke="#ffaa00" stroke-width="1" opacity="0.5"/>
+
+    <circle cx="35" cy="35" r="22" fill="#ffaa00" opacity="0.2"/>
+    <!-- Custom Terminal Icon -->
+    <g transform="translate(35, 35)">
+       <rect x="-12" y="-9" width="24" height="16" rx="2" fill="none" stroke="#ffaa00" stroke-width="2"/>
+       <line x1="-15" y1="9" x2="15" y2="9" stroke="#ffaa00" stroke-width="2"/>
+       <line x1="-8" y1="-5" x2="-4" y2="-1" stroke="#ffaa00" stroke-width="1.5"/>
+       <line x1="-8" y1="3" x2="-4" y2="-1" stroke="#ffaa00" stroke-width="1.5"/>
+    </g>
+
+    <text x="68" y="30" fill="#ffffff" font-size="15" font-weight="700">Couche Agentique</text>
+    <text x="68" y="48" fill="#ffaa00" font-size="11" font-weight="600">Accès via Skill Piégée</text>
+
+    <text x="15" y="80" fill="#a0b0d0" font-size="11.5">&#x2022; Détournement discret des outils internes</text>
+    <text x="15" y="100" fill="#a0b0d0" font-size="11.5">&#x2022; Injection conditionnelle (HEARTBEAT.md)</text>
+    <text x="15" y="120" fill="#a0b0d0" font-size="11.5">&#x2022; Amplification dynamique par l'autonomie</text>
+  </g>
+
+  <!-- Impact 2 -->
+  <g transform="translate(435, 960)">
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="none" stroke="#ff3333" stroke-width="1" opacity="0.5"/>
+
+    <circle cx="35" cy="35" r="22" fill="#ff3333" opacity="0.2"/>
+    <!-- Identity Profile Icon -->
+    <g transform="translate(35, 35)">
+       <circle cx="0" cy="-6" r="5" fill="none" stroke="#ff3333" stroke-width="2"/>
+       <path d="M -10 10 C -10 2, 10 2, 10 10" fill="none" stroke="#ff3333" stroke-width="2"/>
+    </g>
+
+    <text x="68" y="30" fill="#ffffff" font-size="15" font-weight="700">Couche Identité SaaS</text>
+    <text x="68" y="48" fill="#ff3333" font-size="11" font-weight="600">Usurpation des tokens</text>
+
+    <text x="15" y="80" fill="#a0b0d0" font-size="11.5">&#x2022; Accès Outlook / Slack sans mot de passe</text>
+    <text x="15" y="100" fill="#a0b0d0" font-size="11.5">&#x2022; Fichiers stockés en clair (openclaw.json)</text>
+    <text x="15" y="120" fill="#a0b0d0" font-size="11.5">&#x2022; Contourne systématiquement le MFA</text>
+  </g>
+
+  <!-- Impact 3 -->
+  <g transform="translate(790, 960)">
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+
+    <circle cx="35" cy="35" r="22" fill="#00d4ff" opacity="0.2"/>
+    <!-- Network Icon -->
+    <g transform="translate(35, 35)">
+       <circle cx="0" cy="-6" r="3" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+       <circle cx="-8" cy="6" r="3" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+       <circle cx="8" cy="6" r="3" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+       <line x1="-2" y1="-3" x2="-6" y2="3" stroke="#00d4ff" stroke-width="1.5"/>
+       <line x1="2" y1="-3" x2="6" y2="3" stroke="#00d4ff" stroke-width="1.5"/>
+    </g>
+
+    <text x="68" y="30" fill="#ffffff" font-size="15" font-weight="700">Couche Réseau Interne</text>
+    <text x="68" y="48" fill="#00d4ff" font-size="11" font-weight="600">Exploitation Fortinet VPN</text>
+
+    <text x="15" y="80" fill="#a0b0d0" font-size="11.5">&#x2022; Accès "Super Admin" direct au périmètre</text>
+    <text x="15" y="100" fill="#a0b0d0" font-size="11.5">&#x2022; Indépendant des protections sur les agents IA</text>
+    <text x="15" y="120" fill="#a0b0d0" font-size="11.5">&#x2022; Persistance furtive pré-existante</text>
+  </g>
+
+  <!-- ==================== MITRE ATT&CK ==================== -->
+  <g transform="translate(0, 1140)">
+    <rect x="80" y="0" width="1040" height="50" rx="8" fill="#141832" opacity="0.8"/>
+    <rect x="80" y="0" width="1040" height="3" rx="1.5" fill="url(#headerGrad)"/>
+    <text x="600" y="35" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="700" letter-spacing="3">COUVERTURE MITRE ATT&amp;CK / ATLAS</text>
+  </g>
+
+  <!-- MITRE Cards -->
+  <!-- Initial Access -->
+  <g transform="translate(90, 1210)">
+    <rect x="0" y="0" width="370" height="120" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="370" height="3" rx="1.5" fill="#00e68a"/>
+
+    <text x="185" y="28" text-anchor="middle" fill="#00e68a" font-size="15" font-weight="700">Initial Access (TA0001)</text>
+
+    <!-- Technique badges -->
+    <rect x="110" y="42" width="70" height="22" rx="11" fill="#00e68a" opacity="0.15"/>
+    <text x="145" y="57" text-anchor="middle" fill="#00e68a" font-size="10" font-weight="600">T1195.002</text>
+    
+    <rect x="190" y="42" width="70" height="22" rx="11" fill="#00e68a" opacity="0.15"/>
+    <text x="225" y="57" text-anchor="middle" fill="#00e68a" font-size="10" font-weight="600">T1190</text>
+
+    <text x="64" y="90" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="800">2</text>
+    <text x="100" y="90" fill="#6070a0" font-size="12">techniques</text>
+    <text x="100" y="108" fill="#4050a0" font-size="10" font-style="italic">Supply Chain &amp; Exploit App</text>
+  </g>
+
+  <!-- Credential Access -->
+  <g transform="translate(480, 1210)">
+    <rect x="0" y="0" width="370" height="120" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="370" height="3" rx="1.5" fill="#ff3333"/>
+
+    <text x="185" y="28" text-anchor="middle" fill="#ff3333" font-size="15" font-weight="700">Credential Access (TA0006)</text>
+
+    <!-- Technique badges -->
+    <rect x="110" y="42" width="70" height="22" rx="11" fill="#ff3333" opacity="0.15"/>
+    <text x="145" y="57" text-anchor="middle" fill="#ff3333" font-size="10" font-weight="600">T1528</text>
+    
+    <rect x="190" y="42" width="70" height="22" rx="11" fill="#ff3333" opacity="0.15"/>
+    <text x="225" y="57" text-anchor="middle" fill="#ff3333" font-size="10" font-weight="600">T1552</text>
+
+    <text x="64" y="90" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="800">2</text>
+    <text x="100" y="90" fill="#6070a0" font-size="12">techniques</text>
+    <text x="100" y="108" fill="#4050a0" font-size="10" font-style="italic">Steal Token &amp; Config Files</text>
+  </g>
+
+  <!-- Execution -->
+  <g transform="translate(870, 1210)">
+    <rect x="0" y="0" width="240" height="120" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="240" height="3" rx="1.5" fill="#ff2d95"/>
+
+    <text x="120" y="28" text-anchor="middle" fill="#ff2d95" font-size="15" font-weight="700">Execution (TA0002)</text>
+
+    <rect x="85" y="42" width="70" height="22" rx="11" fill="#ff2d95" opacity="0.15"/>
+    <text x="120" y="57" text-anchor="middle" fill="#ff2d95" font-size="10" font-weight="600">AML.T0051</text>
+
+    <text x="64" y="90" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="800">1</text>
+    <text x="100" y="90" fill="#6070a0" font-size="12">technique</text>
+    <text x="100" y="108" fill="#4050a0" font-size="10" font-style="italic">Indirect Prompt Injection</text>
+  </g>
+
+  <!-- ==================== KEY STATS BAR ==================== -->
+  <g transform="translate(80, 1370)">
+    <rect x="0" y="0" width="1040" height="70" rx="10" fill="url(#cardGrad1)" filter="url(#shadowLight)"/>
+    <rect x="0" y="0" width="1040" height="70" rx="10" fill="none" stroke="#2a3060" stroke-width="1"/>
+
+    <!-- Stat 1 -->
+    <text x="130" y="28" text-anchor="middle" fill="#00e68a" font-size="26" font-weight="800">3</text>
+    <text x="130" y="48" text-anchor="middle" fill="#8090b0" font-size="10">vecteurs d'accès</text>
+    <text x="130" y="62" text-anchor="middle" fill="#5060a0" font-size="9">indépendants &amp; parallèles</text>
+
+    <line x1="260" y1="10" x2="260" y2="60" stroke="#2a3060" stroke-width="0.5"/>
+
+    <!-- Stat 2 -->
+    <text x="390" y="28" text-anchor="middle" fill="#ffaa00" font-size="26" font-weight="800">13.4%</text>
+    <text x="390" y="48" text-anchor="middle" fill="#8090b0" font-size="10">des extensions IA</text>
+    <text x="390" y="62" text-anchor="middle" fill="#5060a0" font-size="9">présentent des risques critiques</text>
+
+    <line x1="520" y1="10" x2="520" y2="60" stroke="#2a3060" stroke-width="0.5"/>
+
+    <!-- Stat 3 -->
+    <text x="650" y="28" text-anchor="middle" fill="#ff2d95" font-size="26" font-weight="800">1 Click</text>
+    <text x="650" y="48" text-anchor="middle" fill="#8090b0" font-size="10">CVE-2026-25253</text>
+    <text x="650" y="62" text-anchor="middle" fill="#5060a0" font-size="9">Vecteur RCE sur OpenClaw</text>
+
+    <line x1="780" y1="10" x2="780" y2="60" stroke="#2a3060" stroke-width="0.5"/>
+
+    <!-- Stat 4 -->
+    <text x="910" y="28" text-anchor="middle" fill="#00d4ff" font-size="26" font-weight="800">9.6</text>
+    <text x="910" y="48" text-anchor="middle" fill="#8090b0" font-size="10">Score CVSS</text>
+    <text x="910" y="62" text-anchor="middle" fill="#5060a0" font-size="9">Vulnérabilité Fortinet VPN</text>
+  </g>
+
+  <!-- ==================== CONCLUSION CLÉ ==================== -->
+  <g transform="translate(80, 1475)">
+    <rect x="0" y="0" width="1040" height="100" rx="12" fill="#141832" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="1040" height="100" rx="12" fill="none" stroke="#00e68a" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="0" width="6" height="100" rx="3" fill="#00e68a"/>
+
+    <text x="25" y="28" fill="#00e68a" font-size="14" font-weight="700" letter-spacing="2">CONCLUSION CLÉ</text>
+    <text x="25" y="50" fill="#d0d8e8" font-size="12.5">L’opération OpenClaw démontre une convergence des surfaces d'attaque : la compromission initiale d'une cible IA</text>
+    <text x="25" y="68" fill="#d0d8e8" font-size="12.5">ne dépend pas d'un défaut unique, mais combine la chaîne d'approvisionnement des skills, le vol d'identité agentique</text>
+    <text x="25" y="86" fill="#d0d8e8" font-size="12.5">par infostealer classique et l'exploitation de failles périmétriques, dépassant ainsi la couche purement LLM.</text>
+  </g>
+
+  <!-- ==================== FOOTER ==================== -->
+  <g transform="translate(0, 1765)">
+    <rect x="80" y="0" width="1040" height="120" rx="12" fill="#0d1020" opacity="0.6"/>
+
+    <!-- Killchain navigation -->
+    <text x="600" y="25" text-anchor="middle" fill="#4050a0" font-size="12" letter-spacing="3">KILLCHAIN OPENCLAW — NAVIGATION</text>
+
+    <!-- Phase indicators -->
+    <rect x="150" y="42" width="140" height="38" rx="19" fill="none" stroke="#3040a0" stroke-width="1"/>
+    <text x="220" y="66" text-anchor="middle" fill="#5060a0" font-size="13">Phase 1</text>
+
+    <text x="330" y="65" text-anchor="middle" fill="#3040a0" font-size="18">&#x2192;</text>
+
+    <rect x="365" y="42" width="140" height="38" rx="19" fill="none" stroke="#3040a0" stroke-width="1"/>
+    <text x="435" y="66" text-anchor="middle" fill="#5060a0" font-size="13">Phase 2</text>
+
+    <text x="540" y="65" text-anchor="middle" fill="#3040a0" font-size="18">&#x2192;</text>
+
+    <rect x="570" y="42" width="140" height="38" rx="19" fill="#00e68a" opacity="0.25" stroke="#00e68a" stroke-width="1.5"/>
+    <text x="640" y="66" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">Phase 3 &#x25C0;</text>
+
+    <text x="745" y="65" text-anchor="middle" fill="#3040a0" font-size="18">&#x2192;</text>
+
+    <rect x="775" y="42" width="140" height="38" rx="19" fill="none" stroke="#3040a0" stroke-width="1"/>
+    <text x="845" y="66" text-anchor="middle" fill="#5060a0" font-size="13">Phase 4</text>
+
+    <text x="950" y="65" text-anchor="middle" fill="#3040a0" font-size="18">&#x2192;</text>
+
+    <rect x="980" y="42" width="140" height="38" rx="19" fill="none" stroke="#3040a0" stroke-width="1"/>
+    <text x="1050" y="66" text-anchor="middle" fill="#5060a0" font-size="13">Phase 5</text>
+
+    <text x="600" y="100" text-anchor="middle" fill="#2a3060" font-size="10" letter-spacing="1">OpenClaw Killchain Analysis — F. Pizzi — Univ. Paris Sorbonne, 2026 — Infographic v3.1</text>
+    <text x="600" y="115" text-anchor="middle" fill="#2a3060" font-size="9">Scénario entièrement fictif — Aucune attaque réelle conduite</text>
+  </g>
+</svg>

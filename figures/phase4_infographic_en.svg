@@ -1,0 +1,444 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1900" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff2d95"/>
+      <stop offset="50%" style="stop-color:#7b2ff7"/>
+      <stop offset="100%" style="stop-color:#00d4ff"/>
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#141832;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#1c2045;stop-opacity:0.9"/>
+    </linearGradient>
+    <linearGradient id="accentBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="100%" style="stop-color:#0088cc"/>
+    </linearGradient>
+    <linearGradient id="accentPurple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7b2ff7"/>
+      <stop offset="100%" style="stop-color:#5a1fb8"/>
+    </linearGradient>
+    <linearGradient id="accentPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff2d95"/>
+      <stop offset="100%" style="stop-color:#cc1a6e"/>
+    </linearGradient>
+    <linearGradient id="accentGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00e68a"/>
+      <stop offset="100%" style="stop-color:#00b36b"/>
+    </linearGradient>
+    <linearGradient id="accentOrange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffaa00"/>
+      <stop offset="100%" style="stop-color:#dd8800"/>
+    </linearGradient>
+    <linearGradient id="accentRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff3333"/>
+      <stop offset="100%" style="stop-color:#cc0000"/>
+    </linearGradient>
+    <linearGradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffaa00;stop-opacity:0"/>
+      <stop offset="15%" style="stop-color:#ff2d95"/>
+      <stop offset="85%" style="stop-color:#7b2ff7"/>
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0"/>
+    </linearGradient>
+    
+    <!-- Glow filters -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowStrong">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="shadowLight">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+    <!-- Grid pattern -->
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a2050" stroke-width="0.5"/>
+    </pattern>
+    <!-- Scan line pattern -->
+    <pattern id="scanLines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="4" y2="0" stroke="#ffffff" stroke-width="0.3" opacity="0.03"/>
+    </pattern>
+  </defs>
+
+  <!-- ==================== BACKGROUND ==================== -->
+  <rect width="1200" height="1900" fill="url(#bgGrad)"/>
+  <rect width="1200" height="1900" fill="url(#gridPattern)" opacity="0.3"/>
+  <rect width="1200" height="1900" fill="url(#scanLines)"/>
+
+  <!-- Decorative background circles -->
+  <circle cx="100" cy="200" r="300" fill="none" stroke="#ff2d95" stroke-width="0.5" opacity="0.08"/>
+  <circle cx="100" cy="200" r="250" fill="none" stroke="#7b2ff7" stroke-width="0.3" opacity="0.05"/>
+  <circle cx="1100" cy="1700" r="350" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.08"/>
+  <circle cx="1100" cy="1700" r="300" fill="none" stroke="#7b2ff7" stroke-width="0.3" opacity="0.05"/>
+  <circle cx="600" cy="950" r="500" fill="none" stroke="#ff2d95" stroke-width="0.3" opacity="0.04"/>
+
+  <!-- ==================== HEADER ==================== -->
+  <!-- Phase badge -->
+  <rect x="400" y="28" width="400" height="48" rx="24" fill="none" stroke="url(#headerGrad)" stroke-width="2"/>
+  <text x="600" y="59" text-anchor="middle" fill="url(#headerGrad)" font-size="17" font-weight="600" letter-spacing="5">OPENCLAW KILLCHAIN</text>
+
+  <!-- Main title -->
+  <text x="600" y="128" text-anchor="middle" fill="#ffffff" font-size="58" font-weight="800" letter-spacing="3">PHASE 4</text>
+  <rect x="180" y="146" width="840" height="3" rx="1.5" fill="url(#headerGrad)" filter="url(#glow)"/>
+  <text x="600" y="192" text-anchor="middle" fill="url(#headerGrad)" font-size="38" font-weight="300" letter-spacing="10">LATERAL MOVEMENT &amp; PERSISTENCE</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="232" text-anchor="middle" fill="#8090b0" font-size="16" letter-spacing="2">AUTONOMOUS AI AGENT, SLACK INJECTION AND BACKUP DESTRUCTION</text>
+
+  <!-- ==================== TIMELINE ==================== -->
+  <g transform="translate(80, 268)">
+    <rect x="0" y="0" width="1040" height="85" rx="12" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="1040" height="85" rx="12" fill="none" stroke="#2a3060" stroke-width="1"/>
+
+    <!-- Timeline line -->
+    <line x1="120" y1="42" x2="920" y2="42" stroke="url(#timelineGrad)" stroke-width="3" filter="url(#glow)"/>
+
+    <!-- D+1 marker -->
+    <circle cx="120" cy="42" r="11" fill="#0a0e27" stroke="#ffaa00" stroke-width="2.5" filter="url(#glow)"/>
+    <circle cx="120" cy="42" r="4.5" fill="#ffaa00"/>
+    <text x="120" y="24" text-anchor="middle" fill="#ffaa00" font-size="14" font-weight="700">D+1</text>
+    <text x="120" y="68" text-anchor="middle" fill="#6070a0" font-size="10">LotL &amp; Active Directory</text>
+
+    <!-- D+2 marker -->
+    <circle cx="386" cy="42" r="5" fill="#503020" stroke="#ff2d95" stroke-width="1" opacity="0.6"/>
+    <text x="386" y="24" text-anchor="middle" fill="#d05080" font-size="10">D+2</text>
+    <text x="386" y="68" text-anchor="middle" fill="#ff2d95" font-size="9">Slack Prompt Injection</text>
+
+    <!-- D+3 marker -->
+    <circle cx="653" cy="42" r="5" fill="#302050" stroke="#7b2ff7" stroke-width="1" opacity="0.6"/>
+    <text x="653" y="24" text-anchor="middle" fill="#8060d0" font-size="10">D+3 / D+4</text>
+    <text x="653" y="68" text-anchor="middle" fill="#7b2ff7" font-size="9">PoisonGPT &amp; Exfiltration</text>
+
+    <!-- D+5 marker -->
+    <circle cx="920" cy="42" r="11" fill="#0a0e27" stroke="#00d4ff" stroke-width="2.5" filter="url(#glow)"/>
+    <circle cx="920" cy="42" r="4.5" fill="#00d4ff"/>
+    <text x="920" y="24" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="700">D+5</text>
+    <text x="920" y="68" text-anchor="middle" fill="#6070a0" font-size="10">Backup Destruction</text>
+  </g>
+
+  <!-- ==================== 4 TECHNIQUE CARDS (2x2 GRID) ==================== -->
+
+  <!-- Card 1: LotL & AD (Top Left) -->
+  <g transform="translate(130, 400)">
+    <rect x="0" y="0" width="450" height="190" rx="12" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="450" height="190" rx="12" fill="none" stroke="#ffaa00" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="0" width="5" height="190" rx="2" fill="url(#accentOrange)"/>
+
+    <circle cx="45" cy="40" r="22" fill="#ffaa00" opacity="0.15"/>
+    <g transform="translate(45, 40)">
+        <rect x="-10" y="-12" width="20" height="24" rx="2" fill="none" stroke="#ffaa00" stroke-width="2"/>
+        <line x1="-5" y1="-5" x2="5" y2="-5" stroke="#ffaa00" stroke-width="2"/>
+        <line x1="-5" y1="0" x2="5" y2="0" stroke="#ffaa00" stroke-width="2"/>
+        <line x1="-5" y1="5" x2="2" y2="5" stroke="#ffaa00" stroke-width="2"/>
+    </g>
+
+    <text x="80" y="32" fill="#ffffff" font-size="17" font-weight="700">Lateral Movement &amp; AD Escalation</text>
+    <text x="80" y="52" fill="#ffaa00" font-size="12" font-weight="600">T1059.001 (LotL) / T1003.001 (Mimikatz)</text>
+
+    <line x1="20" y1="75" x2="430" y2="75" stroke="#2a3060" stroke-width="0.5"/>
+
+    <text x="20" y="98" fill="#a0b0d0" font-size="12.5">&#x2022; Navigation via legitimate protocols (SMB, PowerShell)</text>
+    <text x="20" y="118" fill="#a0b0d0" font-size="12.5">&#x2022; In-memory credential extraction (LSASS)</text>
+    <text x="20" y="138" fill="#a0b0d0" font-size="12.5">&#x2022; Active Directory exploitation → DCSync</text>
+    <text x="20" y="158" fill="#a0b0d0" font-size="12.5">&#x2022; Golden Ticket creation (Domain Admin)</text>
+
+    <rect x="340" y="162" width="90" height="20" rx="10" fill="#ffaa00" opacity="0.15"/>
+    <text x="385" y="176" text-anchor="middle" fill="#ffaa00" font-size="10" font-weight="600">LIVING-OFF-LOCAL</text>
+  </g>
+
+  <!-- Card 2: Prompt Injection Slack (Top Right) -->
+  <g transform="translate(620, 400)">
+    <rect x="0" y="0" width="450" height="190" rx="12" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="450" height="190" rx="12" fill="none" stroke="#ff2d95" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="0" width="5" height="190" rx="2" fill="url(#accentPink)"/>
+
+    <circle cx="45" cy="40" r="22" fill="#ff2d95" opacity="0.15"/>
+    <g transform="translate(45, 40)">
+        <path d="M -12 -8 L 12 -8 L 12 6 L 4 6 L -4 14 L -4 6 L -12 6 Z" fill="none" stroke="#ff2d95" stroke-width="2"/>
+        <line x1="-5" y1="-3" x2="5" y2="-3" stroke="#ff2d95" stroke-width="1.5"/>
+        <line x1="-5" y1="1" x2="2" y2="1" stroke="#ff2d95" stroke-width="1.5"/>
+    </g>
+
+    <text x="80" y="32" fill="#ffffff" font-size="17" font-weight="700">Hijacking via Prompt Injection</text>
+    <text x="80" y="52" fill="#ff2d95" font-size="12" font-weight="600">AML.T0051 / ASI01 Agent Goal Hijacking</text>
+
+    <line x1="20" y1="75" x2="430" y2="75" stroke="#2a3060" stroke-width="0.5"/>
+
+    <text x="20" y="98" fill="#a0b0d0" font-size="12.5">&#x2022; Indirect injection via shared content on Slack</text>
+    <text x="20" y="118" fill="#a0b0d0" font-size="12.5">&#x2022; Ingestion by OpenClaw agent during normal usage</text>
+    <text x="20" y="138" fill="#a0b0d0" font-size="12.5">&#x2022; Network command execution via legitimate terminal</text>
+    <text x="20" y="158" fill="#a0b0d0" font-size="12.5">&#x2022; The agent becomes an "unwitting insider"</text>
+
+    <rect x="340" y="162" width="90" height="20" rx="10" fill="#ff2d95" opacity="0.15"/>
+    <text x="385" y="176" text-anchor="middle" fill="#ff2d95" font-size="10" font-weight="600">INDIRECT INJECTION</text>
+  </g>
+
+  <!-- Card 3: Chatbot Poisoning (Bottom Left) -->
+  <g transform="translate(130, 620)">
+    <rect x="0" y="0" width="450" height="190" rx="12" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="450" height="190" rx="12" fill="none" stroke="#7b2ff7" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="0" width="5" height="190" rx="2" fill="url(#accentPurple)"/>
+
+    <circle cx="45" cy="40" r="22" fill="#7b2ff7" opacity="0.15"/>
+    <g transform="translate(45, 40)">
+        <polygon points="0,-12 10,4 -10,4" fill="none" stroke="#7b2ff7" stroke-width="2"/>
+        <line x1="0" y1="-4" x2="0" y2="0" stroke="#7b2ff7" stroke-width="2"/>
+        <circle cx="0" cy="8" r="1.5" fill="#7b2ff7"/>
+        <circle cx="0" cy="8" r="6" fill="none" stroke="#7b2ff7" stroke-width="1.5"/>
+    </g>
+
+    <text x="80" y="32" fill="#ffffff" font-size="17" font-weight="700">Poisoned Model &amp; Exfiltration</text>
+    <text x="80" y="52" fill="#7b2ff7" font-size="12" font-weight="600">AML.T0020 (Model Poisoning) / T1041</text>
+
+    <line x1="20" y1="75" x2="430" y2="75" stroke="#2a3060" stroke-width="0.5"/>
+
+    <text x="20" y="98" fill="#a0b0d0" font-size="12.5">&#x2022; Local model substitution (PoisonGPT/ROME type)</text>
+    <text x="20" y="118" fill="#a0b0d0" font-size="12.5">&#x2022; Conditional triggers targeting user data</text>
+    <text x="20" y="138" fill="#a0b0d0" font-size="12.5">&#x2022; Active R&amp;D exfiltration (chatbot API channel)</text>
+    <text x="20" y="158" fill="#a0b0d0" font-size="12.5">&#x2022; Camouflage in legitimate outbound HTTPS traffic</text>
+
+    <rect x="340" y="162" width="90" height="20" rx="10" fill="#7b2ff7" opacity="0.15"/>
+    <text x="385" y="176" text-anchor="middle" fill="#7b2ff7" font-size="10" font-weight="600">AI SUPPLY CHAIN</text>
+  </g>
+
+  <!-- Card 4: Sauvegardes (Bottom Right) -->
+  <g transform="translate(620, 620)">
+    <rect x="0" y="0" width="450" height="190" rx="12" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="450" height="190" rx="12" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="0" width="5" height="190" rx="2" fill="url(#accentBlue)"/>
+
+    <circle cx="45" cy="40" r="22" fill="#00d4ff" opacity="0.15"/>
+    <g transform="translate(45, 40)">
+        <path d="M -10 -6 L 0 -10 L 10 -6 L 10 6 L 0 10 L -10 6 Z" fill="none" stroke="#00d4ff" stroke-width="2"/>
+        <line x1="-5" y1="-2" x2="5" y2="4" stroke="#00d4ff" stroke-width="2"/>
+        <line x1="5" y1="-2" x2="-5" y2="4" stroke="#00d4ff" stroke-width="2"/>
+    </g>
+
+    <text x="80" y="32" fill="#ffffff" font-size="17" font-weight="700">Backup Neutralization</text>
+    <text x="80" y="52" fill="#00d4ff" font-size="12" font-weight="600">T1490 (Inhibit Recovery) / T1486</text>
+
+    <line x1="20" y1="75" x2="430" y2="75" stroke="#2a3060" stroke-width="0.5"/>
+
+    <text x="20" y="98" fill="#a0b0d0" font-size="12.5">&#x2022; Local deletion of restore points (VSS)</text>
+    <text x="20" y="118" fill="#a0b0d0" font-size="12.5">&#x2022; Encryption/deletion on network shares (NAS)</text>
+    <text x="20" y="138" fill="#a0b0d0" font-size="12.5">&#x2022; Targeting backup infrastructure (Veeam)</text>
+    <text x="20" y="158" fill="#a0b0d0" font-size="12.5">&#x2022; Breaks the 3-2-1-1-0 resiliency principle</text>
+
+    <rect x="340" y="162" width="90" height="20" rx="10" fill="#00d4ff" opacity="0.15"/>
+    <text x="385" y="176" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="600">PREVENTIVE IMPACT</text>
+  </g>
+
+  <!-- ==================== STATE OF COMPROMISE ==================== -->
+  <g transform="translate(0, 870)">
+    <rect x="80" y="0" width="1040" height="50" rx="8" fill="#141832" opacity="0.8"/>
+    <rect x="80" y="0" width="1040" height="3" rx="1.5" fill="url(#headerGrad)"/>
+    <text x="600" y="35" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="700" letter-spacing="3">OPERATIONAL STATE AT D+5</text>
+  </g>
+
+  <!-- Impact Cards -->
+  <g transform="translate(80, 940)">
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="none" stroke="#ffaa00" stroke-width="1" opacity="0.5"/>
+
+    <circle cx="35" cy="35" r="22" fill="#ffaa00" opacity="0.2"/>
+    <!-- Key icon -->
+    <g transform="translate(35, 35)">
+       <circle cx="-5" cy="0" r="4" fill="none" stroke="#ffaa00" stroke-width="2"/>
+       <line x1="-1" y1="0" x2="8" y2="0" stroke="#ffaa00" stroke-width="2"/>
+       <line x1="4" y1="0" x2="4" y2="4" stroke="#ffaa00" stroke-width="2"/>
+       <line x1="8" y1="0" x2="8" y2="4" stroke="#ffaa00" stroke-width="2"/>
+    </g>
+
+    <text x="68" y="30" fill="#ffffff" font-size="15" font-weight="700">Privileged Network Access</text>
+    <text x="68" y="48" fill="#ffaa00" font-size="11" font-weight="600">Active Directory (Domain Admin)</text>
+
+    <text x="15" y="80" fill="#a0b0d0" font-size="11.5">&#x2022; Persistent until KRBTGT is sanitized</text>
+    <text x="15" y="100" fill="#a0b0d0" font-size="11.5">&#x2022; Unlimited permissions on the directory</text>
+    <text x="15" y="120" fill="#a0b0d0" font-size="11.5">&#x2022; Base for transversal deployments</text>
+  </g>
+
+  <g transform="translate(435, 940)">
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="none" stroke="#7b2ff7" stroke-width="1" opacity="0.5"/>
+
+    <circle cx="35" cy="35" r="22" fill="#7b2ff7" opacity="0.2"/>
+    <g transform="translate(35, 35)">
+       <path d="M -8 -8 C 0 -16, 8 -8, 8 0 C 8 8, -8 8, -8 0 Z" fill="none" stroke="#7b2ff7" stroke-width="2"/>
+       <circle cx="0" cy="0" r="2" fill="#7b2ff7"/>
+    </g>
+
+    <text x="68" y="30" fill="#ffffff" font-size="15" font-weight="700">AI Model Backdoor</text>
+    <text x="68" y="48" fill="#7b2ff7" font-size="11" font-weight="600">Stealthy Application Persistence</text>
+
+    <text x="15" y="80" fill="#a0b0d0" font-size="11.5">&#x2022; Undetectable by classic heuristics</text>
+    <text x="15" y="100" fill="#a0b0d0" font-size="11.5">&#x2022; Requires cryptographic hash validation</text>
+    <text x="15" y="120" fill="#a0b0d0" font-size="11.5">&#x2022; Facilitates seamless exfiltration of R&amp;D data</text>
+  </g>
+
+  <g transform="translate(790, 940)">
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="330" height="140" rx="10" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+
+    <circle cx="35" cy="35" r="22" fill="#00d4ff" opacity="0.2"/>
+    <g transform="translate(35, 35)">
+       <rect x="-8" y="-8" width="16" height="16" fill="none" stroke="#00d4ff" stroke-width="2"/>
+       <line x1="-8" y1="-8" x2="8" y2="8" stroke="#00d4ff" stroke-width="2"/>
+       <line x1="8" y1="-8" x2="-8" y2="8" stroke="#00d4ff" stroke-width="2"/>
+    </g>
+
+    <text x="68" y="30" fill="#ffffff" font-size="15" font-weight="700">Blocked Restorations</text>
+    <text x="68" y="48" fill="#00d4ff" font-size="11" font-weight="600">3-2-1-1-0 resiliency rule broken</text>
+
+    <text x="15" y="80" fill="#a0b0d0" font-size="11.5">&#x2022; VSS, shares and dedicated instances deleted</text>
+    <text x="15" y="100" fill="#a0b0d0" font-size="11.5">&#x2022; Privileged access used without air-gapped safeguard</text>
+    <text x="15" y="120" fill="#a0b0d0" font-size="11.5">&#x2022; Guaranteed prerequisite for final ransomware</text>
+  </g>
+
+  <!-- ==================== MITRE ATT&CK ==================== -->
+  <g transform="translate(0, 1120)">
+    <rect x="80" y="0" width="1040" height="50" rx="8" fill="#141832" opacity="0.8"/>
+    <rect x="80" y="0" width="1040" height="3" rx="1.5" fill="url(#headerGrad)"/>
+    <text x="600" y="35" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="700" letter-spacing="3">MITRE ATT&amp;CK / ATLAS COVERAGE</text>
+  </g>
+
+  <!-- MITRE Cards -->
+  <!-- Lateral Movement -->
+  <g transform="translate(90, 1190)">
+    <rect x="0" y="0" width="370" height="120" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="370" height="3" rx="1.5" fill="#ffaa00"/>
+
+    <text x="185" y="28" text-anchor="middle" fill="#ffaa00" font-size="15" font-weight="700">Lat. Move. &amp; Cred. Access</text>
+
+    <rect x="110" y="42" width="70" height="22" rx="11" fill="#ffaa00" opacity="0.15"/>
+    <text x="145" y="57" text-anchor="middle" fill="#ffaa00" font-size="10" font-weight="600">T1059</text>
+    
+    <rect x="190" y="42" width="70" height="22" rx="11" fill="#ffaa00" opacity="0.15"/>
+    <text x="225" y="57" text-anchor="middle" fill="#ffaa00" font-size="10" font-weight="600">T1558</text>
+
+    <text x="64" y="90" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="800">4+</text>
+    <text x="100" y="90" fill="#6070a0" font-size="12">techniques</text>
+    <text x="100" y="108" fill="#4050a0" font-size="10" font-style="italic">Pass-the-Hash &amp; Golden Ticket</text>
+  </g>
+
+  <!-- Execution & AI Models (ATLAS) -->
+  <g transform="translate(480, 1190)">
+    <rect x="0" y="0" width="370" height="120" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="370" height="3" rx="1.5" fill="#ff2d95"/>
+
+    <text x="185" y="28" text-anchor="middle" fill="#ff2d95" font-size="15" font-weight="700">Execution &amp; AI Hijacking</text>
+
+    <rect x="110" y="42" width="70" height="22" rx="11" fill="#ff2d95" opacity="0.15"/>
+    <text x="145" y="57" text-anchor="middle" fill="#ff2d95" font-size="10" font-weight="600">AML.T0051</text>
+    
+    <rect x="190" y="42" width="70" height="22" rx="11" fill="#ff2d95" opacity="0.15"/>
+    <text x="225" y="57" text-anchor="middle" fill="#ff2d95" font-size="10" font-weight="600">AML.T0020</text>
+
+    <text x="64" y="90" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="800">2</text>
+    <text x="100" y="90" fill="#6070a0" font-size="12">techniques</text>
+    <text x="100" y="108" fill="#4050a0" font-size="10" font-style="italic">Indirect Prompt Inj. &amp; Model Poison</text>
+  </g>
+
+  <!-- Impact -->
+  <g transform="translate(870, 1190)">
+    <rect x="0" y="0" width="240" height="120" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="240" height="3" rx="1.5" fill="#00d4ff"/>
+
+    <text x="120" y="28" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="700">Impact (Inhibit Recov.)</text>
+
+    <rect x="85" y="42" width="70" height="22" rx="11" fill="#00d4ff" opacity="0.15"/>
+    <text x="120" y="57" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="600">T1490</text>
+
+    <text x="64" y="90" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="800">3</text>
+    <text x="100" y="90" fill="#6070a0" font-size="12">techniques</text>
+    <text x="100" y="108" fill="#4050a0" font-size="10" font-style="italic">Destroy VSS, NAS, &amp; Cloud</text>
+  </g>
+
+  <!-- ==================== KEY STATS BAR ==================== -->
+  <g transform="translate(80, 1350)">
+    <rect x="0" y="0" width="1040" height="70" rx="10" fill="url(#cardGrad1)" filter="url(#shadowLight)"/>
+    <rect x="0" y="0" width="1040" height="70" rx="10" fill="none" stroke="#2a3060" stroke-width="1"/>
+
+    <!-- Stat 1 -->
+    <text x="130" y="28" text-anchor="middle" fill="#00e68a" font-size="26" font-weight="800">4</text>
+    <text x="130" y="48" text-anchor="middle" fill="#8090b0" font-size="10">targeted classes</text>
+    <text x="130" y="62" text-anchor="middle" fill="#5060a0" font-size="9">VSS, NAS, Veeam, Cloud</text>
+
+    <line x1="260" y1="10" x2="260" y2="60" stroke="#2a3060" stroke-width="0.5"/>
+
+    <!-- Stat 2 -->
+    <text x="390" y="28" text-anchor="middle" fill="#ff2d95" font-size="26" font-weight="800">9.3</text>
+    <text x="390" y="48" text-anchor="middle" fill="#8090b0" font-size="10">CVSS CVE-2025-32711</text>
+    <text x="390" y="62" text-anchor="middle" fill="#5060a0" font-size="9">Exfiltration M365 EchoLeak</text>
+
+    <line x1="520" y1="10" x2="520" y2="60" stroke="#2a3060" stroke-width="0.5"/>
+
+    <!-- Stat 3 -->
+    <text x="650" y="28" text-anchor="middle" fill="#ffaa00" font-size="26" font-weight="800">89%</text>
+    <text x="650" y="48" text-anchor="middle" fill="#8090b0" font-size="10">of firms report</text>
+    <text x="650" y="62" text-anchor="middle" fill="#5060a0" font-size="9">backup targeting (Veeam)</text>
+
+    <line x1="780" y1="10" x2="780" y2="60" stroke="#2a3060" stroke-width="0.5"/>
+
+    <!-- Stat 4 -->
+    <text x="910" y="28" text-anchor="middle" fill="#00d4ff" font-size="26" font-weight="800">98%</text>
+    <text x="910" y="48" text-anchor="middle" fill="#8090b0" font-size="10">of ransomware cases</text>
+    <text x="910" y="62" text-anchor="middle" fill="#5060a0" font-size="9">attempt backup erasure</text>
+  </g>
+
+  <!-- ==================== CONCLUSION CLÉ ==================== -->
+  <g transform="translate(80, 1455)">
+    <rect x="0" y="0" width="1040" height="100" rx="12" fill="#141832" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="1040" height="100" rx="12" fill="none" stroke="#7b2ff7" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="0" width="6" height="100" rx="3" fill="#7b2ff7"/>
+
+    <text x="25" y="28" fill="#7b2ff7" font-size="14" font-weight="700" letter-spacing="2">KEY CONCLUSION</text>
+    <text x="25" y="50" fill="#d0d8e8" font-size="12.5">The compromised AI agent acts here as a multi-vector "unwitting insider": it exploits legitimate rights</text>
+    <text x="25" y="68" fill="#d0d8e8" font-size="12.5">with high velocity. The hybrid lateral movement combines LotL stealth with prompt injection, inevitably </text>
+    <text x="25" y="86" fill="#d0d8e8" font-size="12.5">leading to Domain Admin compromise and the methodical destruction of backups.</text>
+  </g>
+
+  <!-- ==================== FOOTER ==================== -->
+  <g transform="translate(0, 1765)">
+    <rect x="80" y="0" width="1040" height="120" rx="12" fill="#0d1020" opacity="0.6"/>
+
+    <!-- Killchain navigation -->
+    <text x="600" y="25" text-anchor="middle" fill="#4050a0" font-size="12" letter-spacing="3">OPENCLAW KILLCHAIN — NAVIGATION</text>
+
+    <!-- Phase indicators -->
+    <rect x="150" y="42" width="140" height="38" rx="19" fill="none" stroke="#3040a0" stroke-width="1"/>
+    <text x="220" y="66" text-anchor="middle" fill="#5060a0" font-size="13">Phase 1</text>
+
+    <text x="330" y="65" text-anchor="middle" fill="#3040a0" font-size="18">&#x2192;</text>
+
+    <rect x="365" y="42" width="140" height="38" rx="19" fill="none" stroke="#3040a0" stroke-width="1"/>
+    <text x="435" y="66" text-anchor="middle" fill="#5060a0" font-size="13">Phase 2</text>
+
+    <text x="540" y="65" text-anchor="middle" fill="#3040a0" font-size="18">&#x2192;</text>
+
+    <rect x="570" y="42" width="140" height="38" rx="19" fill="none" stroke="#3040a0" stroke-width="1"/>
+    <text x="640" y="66" text-anchor="middle" fill="#5060a0" font-size="13">Phase 3</text>
+
+    <text x="745" y="65" text-anchor="middle" fill="#3040a0" font-size="18">&#x2192;</text>
+
+    <rect x="775" y="42" width="140" height="38" rx="19" fill="#7b2ff7" opacity="0.25" stroke="#7b2ff7" stroke-width="1.5"/>
+    <text x="845" y="66" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">Phase 4 &#x25C0;</text>
+
+    <text x="950" y="65" text-anchor="middle" fill="#3040a0" font-size="18">&#x2192;</text>
+
+    <rect x="980" y="42" width="140" height="38" rx="19" fill="none" stroke="#3040a0" stroke-width="1"/>
+    <text x="1050" y="66" text-anchor="middle" fill="#5060a0" font-size="13">Phase 5</text>
+
+    <text x="600" y="100" text-anchor="middle" fill="#2a3060" font-size="10" letter-spacing="1">OpenClaw Killchain Analysis — F. Pizzi — Univ. Paris Sorbonne, 2026 — Infographic v4.0</text>
+    <text x="600" y="115" text-anchor="middle" fill="#2a3060" font-size="9">Entirely fictional scenario — No real attack conducted</text>
+  </g>
+</svg>
