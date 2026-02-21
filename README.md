@@ -22,7 +22,7 @@
 |----------|----|----|
 | **Summary note** (~10 pages) | [Note academique (PDF)](ACADEMIC_NOTE.pdf) | [Academic note (PDF)](ACADEMIC_NOTE_en.pdf) |
 | **Summary note** (markdown) | [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md) | [ACADEMIC_NOTE.md](ACADEMIC_NOTE.md) |
-| **Master 2 course** — AI & Cybersecurity introduction for non-specialists | [Cours M2 Sorbonne (FR v6 PDF)](S1-ISI5_IA_et_Cybersecurite%20v6.pdf) | [M2 Course Sorbonne (EN v5 PDF)](S1-ISI5_IA_et_Cybersecurite%20v5_en.pdf) |
+| **Master 2 course** — AI & Cybersecurity introduction for non-specialists | [Cours M2 Sorbonne (FR v6 PDF)](S1-ISI5_IA_et_Cybersecurite%20v6.pdf) | [M2 Course Sorbonne (EN v6 PDF)](S1-ISI5_IA_et_Cybersecurite%20v6_en.pdf) |
 
 ### Detailed Phase Analyses (~25-30 pages each)
 
@@ -48,7 +48,7 @@
 | **20 min** | Summary note: [FR (PDF)](ACADEMIC_NOTE.pdf) / [EN (PDF)](ACADEMIC_NOTE_en.pdf) |
 | **1 hour** | Summary note + one phase of your choice (see table above) |
 | **Full study** | All 5 phases in order |
-| **New to AI security?** | Start with the [Master 2 course (FR v6)](S1-ISI5_IA_et_Cybersecurite%20v6.pdf) / [(EN v5)](S1-ISI5_IA_et_Cybersecurite%20v5_en.pdf) |
+| **New to AI security?** | Start with the [Master 2 course (FR v6)](S1-ISI5_IA_et_Cybersecurite%20v6.pdf) / [(EN v6)](S1-ISI5_IA_et_Cybersecurite%20v6_en.pdf) |
 
 ---
 
@@ -166,7 +166,7 @@ Le cours de Master 2 Sorbonne (introduction a l'IA et cybersecurite) : [v6 PDF](
 For readers unfamiliar with AI security concepts, a **Master 2 course from Universite Paris Sorbonne** is included as an introduction:
 
 - [S1-ISI5 — IA et Cybersecurite (FR v6, PDF)](S1-ISI5_IA_et_Cybersecurite%20v6.pdf)
-- [S1-ISI5 — AI and Cybersecurity (EN, PDF)](S1-ISI5_IA_et_Cybersecurite%20v5_en.pdf)
+- [S1-ISI5 — AI and Cybersecurity (EN v6, PDF)](S1-ISI5_IA_et_Cybersecurite%20v6_en.pdf)
 
 This course covers foundational concepts needed to understand the kill chain analysis and is recommended as a starting point for non-specialists.
 
@@ -185,7 +185,7 @@ openclaw-killchain-analysis/
 ├── ACADEMIC_NOTE.pdf                      ← Note de synthese (FR, PDF)
 │
 ├── S1-ISI5_IA_et_Cybersecurite v6.pdf     ← Master 2 course (FR) NEW
-├── S1-ISI5_IA_et_Cybersecurite v5_en.pdf  ← Master 2 course (EN)
+├── S1-ISI5_IA_et_Cybersecurite v6_en.pdf  ← Master 2 course (EN) NEW
 │
 ├── phases/                                ← Detailed phase analyses (FR + EN)
 │   ├── Phase1_Reconnaissance.pdf / _en.pdf
