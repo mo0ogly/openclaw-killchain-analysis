@@ -134,6 +134,12 @@ Le cours de Master 2 Sorbonne (introduction a l'IA et cybersecurite) : [PDF](S1-
 **Français**: <br><img src="figures/phase5_infographic.svg" width="800"/>
 </details>
 
+<details>
+<summary><strong>Taxonomy of Attacks ON AI Systems (S1-ISI5)</strong></summary>
+
+**Français**: <br><img src="figures/taxonomy_ai_attacks_fr.svg" width="800"/>
+</details>
+
 ## Defense-in-Depth Model
 
 | Layer | Principle | Key Controls |
