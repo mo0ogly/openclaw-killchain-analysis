@@ -25,3 +25,6 @@ drafts/
 # Ignored specific files
 etude gendarmerie.pdf
 S1-ISI5_IA_et_Cybersecurite v5.docx
+
+# Text files
+*.txt
