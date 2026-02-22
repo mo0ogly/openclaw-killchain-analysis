@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v7.0] — 2026-02-22
+
+### Master 2 Course Content Expansion (S1-ISI5)
+- **Section 2.5 Expanded:** Grown from a single paragraph to 10 structured sub-sections.
+  - *Part A*: Offensive autonomous agents featuring Claude Code (Sept 2025 case), LotL lateral movement, adaptive C2 via LLM APIs, and 14 MITRE ATLAS/Zenity techniques.
+  - *Part B*: Data poisoning (4 variants), model poisoning/Pickle, indirect prompt injection (6 vectors). Converges OpenClaw with Lethal Trifecta OWASP 2026. Added a consolidated defense table. Includes 15 references (8 from 2025-2026).
+- **New Section 2.6:** Taxonomy of attacks mapped to the OECD lifecycle (7 phases). 
+  - Features the DICF quantitative scoring framework + Technical Feasibility.
+  - Added 5 structured Attack Profiles: data poisoning, indirect prompt injection, MCP ecosystem, Claude Code autonomous espionage, and LLMjacking.
+  - Comparative table of 5 security frameworks: NIST, ATLAS, OWASP LLM, OWASP ML, and ANSSI.
+  - Embedded cross-mapping: Kill Chain ↔ Lifecycle ↔ NIST ↔ ATLAS.
+  - Provided a "What Changed 2024→2026" summary table.
+  - Assorted with 4 graded student exercises and 27 references.
+
 ## [v0.8.1] — 2026-02-22
 
 ### Added

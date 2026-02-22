@@ -22,7 +22,7 @@
 |----------|----|----|
 | **Summary note** (~10 pages) | [Note academique (PDF)](ACADEMIC_NOTE.pdf) | [Academic note (PDF)](ACADEMIC_NOTE_en.pdf) |
 | **Summary note** (markdown) | [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md) | [ACADEMIC_NOTE.md](ACADEMIC_NOTE.md) |
-| **Master 2 course** — AI & Cybersecurity introduction for non-specialists | [Cours M2 Sorbonne (FR v6 PDF)](S1-ISI5_IA_et_Cybersecurite%20v6.pdf) | [M2 Course Sorbonne (EN v6 PDF)](S1-ISI5_IA_et_Cybersecurite%20v6_en.pdf) |
+| **Master 2 course** — AI & Cybersecurity introduction for non-specialists | [Cours M2 Sorbonne (FR v7 PDF)](S1-ISI5_IA_et_Cybersecurite%20v7.pdf) | [M2 Course Sorbonne (EN v7 PDF)](S1-ISI5_IA_et_Cybersecurite%20v7_en.pdf) |
 
 ### Detailed Phase Analyses (~25-30 pages each)
 
@@ -48,7 +48,7 @@
 | **20 min** | Summary note: [FR (PDF)](ACADEMIC_NOTE.pdf) / [EN (PDF)](ACADEMIC_NOTE_en.pdf) |
 | **1 hour** | Summary note + one phase of your choice (see table above) |
 | **Full study** | All 5 phases in order |
-| **New to AI security?** | Start with the [Master 2 course (FR v6)](S1-ISI5_IA_et_Cybersecurite%20v6.pdf) / [(EN v6)](S1-ISI5_IA_et_Cybersecurite%20v6_en.pdf) |
+| **New to AI security?** | Start with the [Master 2 course (FR v7)](S1-ISI5_IA_et_Cybersecurite%20v7.pdf) / [(EN v7)](S1-ISI5_IA_et_Cybersecurite%20v7_en.pdf) |
 
 ---
 
@@ -57,6 +57,11 @@
 This repository presents a **comprehensive threat model of a fictional multi-phase cyberattack** exploiting an autonomous AI coding agent (OpenClaw) as both attack vector and force multiplier against a mid-size pharmaceutical company. The study models a complete **agentic kill chain spanning 36 days**, from LLM-augmented OSINT reconnaissance through supply chain compromise, lateral movement via AI agent impersonation, to ransomware deployment and double extortion.
 
 All vulnerabilities, tools and techniques are documented in the public literature (February 2026).
+
+**Podcasts on the study**:
+- 🎧 [Podcast (FR)](https://open.spotify.com/episode/1pVpyhQKdV707gbvh1k2Dr?si=TUejrkPnTW2ax9KCMNM_qA)
+- 🎧 [Podcast (EN)](https://open.spotify.com/episode/0N3zL69Uwo97OOGqgScpse?si=ThZ6B0lTTEiY5J3h8YUwFg)
+- 🎧 [Podcast (BR)](https://open.spotify.com/episode/0dfzsZ728CDYSX0yOvbfpu?si=gC4Mk9dYRyC4pTdzFHWicQ)
 
 **Key findings:**
 - **13 of 14 MITRE ATT&CK Enterprise tactics** are covered across the five phases
@@ -165,8 +170,8 @@ Le cours de Master 2 Sorbonne (introduction a l'IA et cybersecurite) : [v6 PDF](
 
 For readers unfamiliar with AI security concepts, a **Master 2 course from Universite Paris Sorbonne** is included as an introduction:
 
-- [S1-ISI5 — IA et Cybersecurite (FR v6, PDF)](S1-ISI5_IA_et_Cybersecurite%20v6.pdf)
-- [S1-ISI5 — AI and Cybersecurity (EN v6, PDF)](S1-ISI5_IA_et_Cybersecurite%20v6_en.pdf)
+- [S1-ISI5 — IA et Cybersecurite (FR v7, PDF)](S1-ISI5_IA_et_Cybersecurite%20v7.pdf)
+- [S1-ISI5 — AI and Cybersecurity (EN v7, PDF)](S1-ISI5_IA_et_Cybersecurite%20v7_en.pdf)
 
 This course covers foundational concepts needed to understand the kill chain analysis and is recommended as a starting point for non-specialists.
 
@@ -184,8 +189,8 @@ openclaw-killchain-analysis/
 ├── NOTE_ACADEMIQUE.md                     ← Note de synthese (FR, markdown)
 ├── ACADEMIC_NOTE.pdf                      ← Note de synthese (FR, PDF)
 │
-├── S1-ISI5_IA_et_Cybersecurite v6.pdf     ← Master 2 course (FR) NEW
-├── S1-ISI5_IA_et_Cybersecurite v6_en.pdf  ← Master 2 course (EN) NEW
+├── S1-ISI5_IA_et_Cybersecurite v7.pdf     ← Master 2 course (FR) NEW
+├── S1-ISI5_IA_et_Cybersecurite v7_en.pdf  ← Master 2 course (EN) NEW
 │
 ├── phases/                                ← Detailed phase analyses (FR + EN)
 │   ├── Phase1_Reconnaissance.pdf / _en.pdf
