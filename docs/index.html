@@ -349,6 +349,78 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             transition: opacity 0.3s;
         }
+
+        /* Sophisticated Accordion Styles */
+        details.media-accordion {
+            background: linear-gradient(135deg, rgba(20, 25, 35, 0.4), rgba(10, 15, 25, 0.4));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        details.media-accordion[open] {
+            background: linear-gradient(135deg, rgba(30, 35, 45, 0.6), rgba(15, 20, 30, 0.6));
+            border-color: rgba(88, 166, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        details.media-accordion summary {
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #e8e8f0;
+            transition: background 0.2s;
+        }
+
+        details.media-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.media-accordion summary:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        details.media-accordion summary::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: #58a6ff;
+            transition: transform 0.3s;
+        }
+
+        details.media-accordion[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        details.media-accordion .accordion-content {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 0.5rem;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -362,41 +434,72 @@
             <div style="margin-top: 1.5rem; text-align: center;">
                 <img src="https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/OpenClaw_Vignette_Podcast_300x300.png"
                     alt="Operation OpenClaw Podcast"
-                    style="width: 150px; height: 150px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid var(--border);">
+                    style="width: 150px; height: 150px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid var(--border); margin-bottom: 2rem;">
             </div>
-            <div
-                style="margin-top: 1rem; margin-bottom: 0.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="https://open.spotify.com/episode/1pVpyhQKdV707gbvh1k2Dr?si=TUejrkPnTW2ax9KCMNM_qA"
-                    target="_blank"
-                    style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
-                    🎧 Podcast (FR)
-                </a>
-                <a href="https://open.spotify.com/episode/7LStR6m3Y9tHQixdaQAAgx?si=Xe_xN-3bSbO8InqVmf7KHA"
-                    target="_blank"
-                    style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
-                    🎧 Podcast (FR Non-Tech)
-                </a>
-                <a href="https://open.spotify.com/episode/0N3zL69Uwo97OOGqgScpse?si=ThZ6B0lTTEiY5J3h8YUwFg"
-                    target="_blank"
-                    style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
-                    🎧 Podcast (EN)
-                </a>
-                <a href="https://open.spotify.com/episode/2q55LJuTBJgFor1oZmexes?si=c6cdiryUR3S6SbUQD9xQBQ"
-                    target="_blank"
-                    style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
-                    🎧 Podcast (EN Non-Tech)
-                </a>
-                <a href="https://open.spotify.com/episode/0dfzsZ728CDYSX0yOvbfpu?si=gC4Mk9dYRyC4pTdzFHWicQ"
-                    target="_blank"
-                    style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
-                    🎧 Podcast (BR)
-                </a>
-                <a href="https://open.spotify.com/episode/1pAF8Dj1iD16a3RLsyktAc?si=bXg_FY49QOaRToBkGw_9MQ"
-                    target="_blank"
-                    style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
-                    🎧 Podcast (BR Non-Tech)
-                </a>
-            </div>
+
+            <details class="media-accordion">
+                <summary>🎙️ Podcasts Explicatifs (6 Épisodes)</summary>
+                <div class="accordion-content">
+                    <p style="font-size: 0.9rem; color: #8b949e; margin-bottom: 1rem; margin-top: 1rem;">Écoutez les
+                        discussions détaillées sur l'Opération OpenClaw disponibles en plusieurs langues et niveaux
+                        techniques.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: flex-start; flex-wrap: wrap;">
+                        <a href="https://open.spotify.com/episode/1pVpyhQKdV707gbvh1k2Dr?si=TUejrkPnTW2ax9KCMNM_qA"
+                            target="_blank"
+                            style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
+                            🎧 Podcast (FR)
+                        </a>
+                        <a href="https://open.spotify.com/episode/7LStR6m3Y9tHQixdaQAAgx?si=Xe_xN-3bSbO8InqVmf7KHA"
+                            target="_blank"
+                            style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
+                            🎧 Podcast (FR Non-Tech)
+                        </a>
+                        <a href="https://open.spotify.com/episode/0N3zL69Uwo97OOGqgScpse?si=ThZ6B0lTTEiY5J3h8YUwFg"
+                            target="_blank"
+                            style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
+                            🎧 Podcast (EN)
+                        </a>
+                        <a href="https://open.spotify.com/episode/2q55LJuTBJgFor1oZmexes?si=c6cdiryUR3S6SbUQD9xQBQ"
+                            target="_blank"
+                            style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
+                            🎧 Podcast (EN Non-Tech)
+                        </a>
+                        <a href="https://open.spotify.com/episode/0dfzsZ728CDYSX0yOvbfpu?si=gC4Mk9dYRyC4pTdzFHWicQ"
+                            target="_blank"
+                            style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
+                            🎧 Podcast (BR)
+                        </a>
+                        <a href="https://open.spotify.com/episode/1pAF8Dj1iD16a3RLsyktAc?si=bXg_FY49QOaRToBkGw_9MQ"
+                            target="_blank"
+                            style="display: flex; align-items: center; gap: 0.5rem; background: rgba(30, 215, 96, 0.1); border: 1px solid rgba(30, 215, 96, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; color: #1ed760; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s;">
+                            🎧 Podcast (BR Non-Tech)
+                        </a>
+                    </div>
+                </div>
+            </details>
+
+            <details class="media-accordion">
+                <summary>🎥 Vidéo Explicative</summary>
+                <div class="accordion-content">
+                    <p style="font-size: 0.9rem; color: #8b949e; margin-bottom: 1rem; margin-top: 1rem;">Présentation
+                        vidéo synthétique pour un public non-technique animée par des présentateurs IA.</p>
+                    <div style="border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <video width="100%" controls style="display: block; background: #000;">
+                            <source
+                                src="https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/videos/Opération_OpenClaw.mp4"
+                                type="video/mp4">
+                            Votre navigateur ne supporte pas la balure vidéo HTML5.
+                        </video>
+                    </div>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <a href="https://github.com/mo0ogly/openclaw-killchain-analysis/raw/main/videos/Opération_OpenClaw.mp4"
+                            style="color: #58a6ff; font-size: 0.9rem; text-decoration: none; font-weight: 600;">
+                            ⬇️ Télécharger la vidéo (.mp4)
+                        </a>
+                    </div>
+                </div>
+            </details>
+
             <p style="margin-top: 0.5rem; font-size: 0.95rem;"><strong>Fabrice Pizzi</strong> &mdash; Universit&eacute;
                 Paris Sorbonne, 2026</p>
             <div class="badges">
