@@ -79,7 +79,7 @@ Listen to detailed discussions about Operation OpenClaw available in multiple la
 <details>
 <summary><strong>🎥 Vidéo Explicative (FR Non-Tech)</strong></summary>
 
-Présentation vidéo synthétique pour un public non-technique animée par des présentateurs IA.
+Présentation vidéo synthétique pour un public non-technique.
 
 - 🎥 [Télécharger / Voir la vidéo (MP4)](https://github.com/mo0ogly/openclaw-killchain-analysis/raw/main/videos/Op%C3%A9ration_OpenClaw.mp4)
 </details>
