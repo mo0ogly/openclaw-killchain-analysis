@@ -66,6 +66,7 @@ All vulnerabilities, tools and techniques are documented in the public literatur
 - 🎧 [Podcast (FR)](https://open.spotify.com/episode/1pVpyhQKdV707gbvh1k2Dr?si=TUejrkPnTW2ax9KCMNM_qA)
 - 🎧 [Podcast (FR Non-Tech)](https://open.spotify.com/episode/7LStR6m3Y9tHQixdaQAAgx?si=Xe_xN-3bSbO8InqVmf7KHA)
 - 🎧 [Podcast (EN)](https://open.spotify.com/episode/0N3zL69Uwo97OOGqgScpse?si=ThZ6B0lTTEiY5J3h8YUwFg)
+- 🎧 [Podcast (EN Non-Tech)](https://open.spotify.com/episode/2q55LJuTBJgFor1oZmexes?si=c6cdiryUR3S6SbUQD9xQBQ)
 - 🎧 [Podcast (BR)](https://open.spotify.com/episode/0dfzsZ728CDYSX0yOvbfpu?si=gC4Mk9dYRyC4pTdzFHWicQ)
 
 **Key findings:**
