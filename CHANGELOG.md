@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.8.1] — 2026-02-22
+
+### Added
+- English version of the Master 2 course (v6) PDF and its LinkedIn infographic.
+- Interactive toggle in GitHub Pages (`index.html`) to switch between French and English versions of the phase infographics and the V6 course infographic.
+- Explicit side-by-side FR/EN PDF download buttons for the V6 course.
+
+### Fixed
+- Replaced problematic HTML minus entities in the `index.html` timeline to ensure numbers render correctly across all browsers.
+- Updated `README.md` repository structure to accurately reflect the correct PDF filenames for all phases and explicitly included the `docs/` directory.
+
 ## [v0.8] — 2026-02-19
 
 ### Initial Release
