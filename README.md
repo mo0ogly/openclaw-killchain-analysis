@@ -82,6 +82,7 @@ Listen to detailed discussions about Operation OpenClaw available in multiple la
 Présentation vidéo synthétique pour un public non-technique.
 
 - 🎥 [Opération OpenClaw (FR)](https://github.com/mo0ogly/openclaw-killchain-analysis/raw/main/videos/Op%C3%A9ration_OpenClaw.mp4)
+- 🎥 [The Fall of PharmEurys (EN)](https://github.com/mo0ogly/openclaw-killchain-analysis/raw/main/videos/The_Fall_of_PharmEurys.mp4)
 - 🎥 [A Queda da PharmEurys (BR)](https://github.com/mo0ogly/openclaw-killchain-analysis/raw/main/videos/A_Queda_da_PharmEurys.mp4)
 </details>
 
