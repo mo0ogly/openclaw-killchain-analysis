@@ -190,14 +190,16 @@ openclaw-killchain-analysis/
 ├── phases/                                ← Detailed phase analyses (FR + EN)
 │   ├── Phase1_Reconnaissance.pdf / _en.pdf
 │   ├── Phase2_Weaponization.pdf / _EN.pdf
-│   ├── Phase3_Installation_Execution.pdf / _EN.pdf
-│   ├── Phase4_Mouvement_Lateral.pdf / _EN.pdf
-│   └── Phase5_PromptLock.pdf / _EN.pdf
+│   ├── Phase3_Installation_Exécution.pdf / _Execution_EN.pdf
+│   ├── Phase4_Mouvement_Latéral_Persistance.pdf / _Lateral_Movement_Persistence_EN.pdf
+│   └── Phase5_PromptLock_Exfiltration-RD_Double Extorsion.pdf / ..._EN.pdf
 │
-├── figures/                               ← Academic figures (EN + FR, 21 figures)
+├── figures/                               ← Academic figures (EN + FR infographics)
+│
+├── docs/                                  ← GitHub Pages site (index.html)
 │
 └── scripts/                               ← Figure generation scripts
-    └── gen_figures.py
+    └── generate_all.py
 ```
 
 ## Disclaimer
