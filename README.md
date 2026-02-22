@@ -68,6 +68,7 @@ All vulnerabilities, tools and techniques are documented in the public literatur
 - 🎧 [Podcast (EN)](https://open.spotify.com/episode/0N3zL69Uwo97OOGqgScpse?si=ThZ6B0lTTEiY5J3h8YUwFg)
 - 🎧 [Podcast (EN Non-Tech)](https://open.spotify.com/episode/2q55LJuTBJgFor1oZmexes?si=c6cdiryUR3S6SbUQD9xQBQ)
 - 🎧 [Podcast (BR)](https://open.spotify.com/episode/0dfzsZ728CDYSX0yOvbfpu?si=gC4Mk9dYRyC4pTdzFHWicQ)
+- 🎧 [Podcast (BR Non-Tech)](https://open.spotify.com/episode/1pAF8Dj1iD16a3RLsyktAc?si=bXg_FY49QOaRToBkGw_9MQ)
 
 **Key findings:**
 - **13 of 14 MITRE ATT&CK Enterprise tactics** are covered across the five phases
