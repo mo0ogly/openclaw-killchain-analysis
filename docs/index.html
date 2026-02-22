@@ -409,11 +409,22 @@
         <h2>The 5 Phases &mdash; Detailed Analyses</h2>
 
         <div class="featured-course" style="margin: 2.5rem 0; text-align: center;">
-            <a href="https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/infographic_linkedin_v6.png"
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;">
+                <button id="btn-v6-en" onclick="setV6Lang('en')"
+                    style="padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid var(--border); background: rgba(88, 166, 255, 0.2); color: #e8e8f0; cursor: pointer; font-weight: 600;">EN
+                    Graphic</button>
+                <button id="btn-v6-fr" onclick="setV6Lang('fr')"
+                    style="padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.05); color: #e8e8f0; cursor: pointer; font-weight: 600;">FR
+                    Graphic</button>
+            </div>
+
+            <a id="link-v6-img"
+                href="https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/infographic_linkedin_v6_en.png"
                 target="_blank" style="display: block; margin-bottom: 1.5rem;">
-                <img src="https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/infographic_linkedin_v6.png"
+                <img id="img-v6"
+                    src="https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/infographic_linkedin_v6_en.png"
                     alt="Cours M2 Sorbonne - IA & Cybersécurité v6 Infographic"
-                    style="width: 100%; max-width: 900px; height: auto; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); border: 1px solid var(--border); transition: transform 0.2s;"
+                    style="width: 100%; max-width: 900px; height: auto; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); border: 1px solid var(--border); transition: opacity 0.3s, transform 0.2s;"
                     onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
             </a>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
@@ -640,6 +651,35 @@
                 });
             });
         });
+
+        function setV6Lang(lang) {
+            const img = document.getElementById('img-v6');
+            const link = document.getElementById('link-v6-img');
+            const btnEn = document.getElementById('btn-v6-en');
+            const btnFr = document.getElementById('btn-v6-fr');
+
+            const src = lang === 'en'
+                ? 'https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/infographic_linkedin_v6_en.png'
+                : 'https://raw.githubusercontent.com/mo0ogly/openclaw-killchain-analysis/main/figures/infographic_linkedin_v6.png';
+
+            img.style.opacity = 0.5;
+
+            const temp = new Image();
+            temp.onload = () => {
+                img.src = src;
+                link.href = src;
+                img.style.opacity = 1;
+
+                if (lang === 'en') {
+                    btnEn.style.background = 'rgba(88, 166, 255, 0.2)';
+                    btnFr.style.background = 'rgba(255, 255, 255, 0.05)';
+                } else {
+                    btnFr.style.background = 'rgba(88, 166, 255, 0.2)';
+                    btnEn.style.background = 'rgba(255, 255, 255, 0.05)';
+                }
+            };
+            temp.src = src;
+        }
     </script>
 </body>
 

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Infographic - IA & Cybersécurité v6</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0a0f;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      width: 1080px;
+      min-height: 1350px;
+      background: #0a0a0f;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Outfit', sans-serif;
+      color: #e8e8f0;
+    }
+
+    /* Animated grid background */
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+    }
+
+    /* Glow orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 255, 136, 0.15), transparent);
+      top: -100px;
+      right: -100px;
+    }
+
+    .orb-2 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 0, 85, 0.1), transparent);
+      bottom: 200px;
+      left: -80px;
+    }
+
+    .orb-3 {
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(0, 170, 255, 0.08), transparent);
+      bottom: -50px;
+      right: 100px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 50px 55px;
+      display: flex;
+      flex-direction: column;
+      min-height: 1350px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid rgba(0, 255, 136, 0.25);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #00ff88;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .badge .dot {
+      width: 8px;
+      height: 8px;
+      background: #00ff88;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    .version-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 48px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.06);
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    /* Title */
+    .title-block {
+      margin-bottom: 35px;
+    }
+
+    .title-line {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 46px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 8px;
+    }
+
+    h1 .accent {
+      background: linear-gradient(135deg, #00ff88, #00cc6a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h1 .red {
+      background: linear-gradient(135deg, #ff3366, #ff0055);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.5;
+      max-width: 700px;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(0, 255, 136, 0.4), rgba(0, 255, 136, 0.05), transparent);
+      margin: 25px 0;
+    }
+
+    /* NEW badge section */
+    .new-section {
+      margin-bottom: 30px;
+    }
+
+    .new-label {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff0055, #ff3366);
+      color: white;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .new-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .new-desc {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.5;
+      max-width: 800px;
+    }
+
+    .new-desc strong {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Attack taxonomy grid */
+    .taxonomy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 20px 0 30px 0;
+    }
+
+    .tax-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 14px 14px;
+      transition: all 0.3s;
+    }
+
+    .tax-item:hover {
+      border-color: rgba(0, 255, 136, 0.3);
+      background: rgba(0, 255, 136, 0.04);
+    }
+
+    .tax-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #00ff88;
+      margin-bottom: 5px;
+      opacity: 0.7;
+    }
+
+    .tax-name {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .tax-detail {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.3);
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    /* Kill chain section */
+    .killchain {
+      margin: 5px 0 25px 0;
+    }
+
+    .kc-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .kc-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 0, 85, 0.1);
+      border: 1px solid rgba(255, 0, 85, 0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .kc-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .kc-phases {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .kc-phase {
+      flex: 1;
+      position: relative;
+      padding: 14px 12px;
+      background: rgba(255, 0, 85, 0.04);
+      border: 1px solid rgba(255, 0, 85, 0.12);
+    }
+
+    .kc-phase:first-child {
+      border-radius: 10px 0 0 10px;
+    }
+
+    .kc-phase:last-child {
+      border-radius: 0 10px 10px 0;
+    }
+
+    .kc-phase:not(:last-child)::after {
+      content: '›';
+      position: absolute;
+      right: -7px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: rgba(255, 0, 85, 0.5);
+      z-index: 2;
+    }
+
+    .kc-phase-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #ff3366;
+      margin-bottom: 3px;
+    }
+
+    .kc-phase-name {
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .kc-phase-tech {
+      font-size: 9.5px;
+      color: rgba(255, 255, 255, 0.3);
+      margin-top: 3px;
+      line-height: 1.25;
+    }
+
+    /* Breakthroughs */
+    .breakthroughs {
+      margin: 10px 0 25px 0;
+    }
+
+    .bt-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .bt-items {
+      display: flex;
+      gap: 14px;
+    }
+
+    .bt-item {
+      flex: 1;
+      padding: 16px;
+      border-radius: 10px;
+      background: rgba(0, 170, 255, 0.04);
+      border: 1px solid rgba(0, 170, 255, 0.12);
+    }
+
+    .bt-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: rgba(0, 170, 255, 0.25);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .bt-label {
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #e8e8f0;
+    }
+
+    .bt-desc {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.35);
+      line-height: 1.4;
+    }
+
+    /* Document structure */
+    .doc-structure {
+      margin: 5px 0 20px 0;
+      display: flex;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+
+    .doc-pill {
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      border: 1px solid;
+    }
+
+    .pill-intro {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .pill-off {
+      background: rgba(255, 0, 85, 0.06);
+      border-color: rgba(255, 0, 85, 0.2);
+      color: #ff6690;
+    }
+
+    .pill-attack {
+      background: rgba(255, 170, 0, 0.06);
+      border-color: rgba(255, 170, 0, 0.25);
+      color: #ffaa00;
+      position: relative;
+    }
+
+    .pill-attack::before {
+      content: 'NEW';
+      position: absolute;
+      top: -8px;
+      right: -4px;
+      font-size: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      background: #ffaa00;
+      color: #0a0a0f;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .pill-def {
+      background: rgba(0, 255, 136, 0.06);
+      border-color: rgba(0, 255, 136, 0.2);
+      color: #00ff88;
+    }
+
+    .pill-vs {
+      background: rgba(0, 170, 255, 0.06);
+      border-color: rgba(0, 170, 255, 0.2);
+      color: #00aaff;
+    }
+
+    .pill-case {
+      background: rgba(170, 0, 255, 0.06);
+      border-color: rgba(170, 0, 255, 0.2);
+      color: #bb66ff;
+    }
+
+    .pill-reco {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: auto;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .author {
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .affiliation {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .github {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #00ff88;
+      opacity: 0.6;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .open-access {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #00ff88;
+    }
+
+    .open-access .lock-icon {
+      font-size: 14px;
+    }
+
+    .collab-note {
+      margin-top: 8px;
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.25);
+      max-width: 350px;
+      text-align: right;
+      line-height: 1.4;
+    }
+
+    /* Scan lines effect */
+    .scanlines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.03) 2px,
+          rgba(0, 0, 0, 0.03) 4px);
+      pointer-events: none;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="grid-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="scanlines"></div>
+
+    <div class="content">
+      <!-- Header -->
+      <div class="header">
+        <div class="badge"><span class="dot"></span> Master 2 Course — Sorbonne</div>
+        <div class="version-tag">v6</div>
+      </div>
+
+      <!-- Title -->
+      <div class="title-block">
+        <div class="title-line">S1-ISI5 — Information Systems Security</div>
+        <h1>AI <span class="accent">&</span> Cybersecurity</h1>
+        <h1 style="font-size: 32px; margin-top: 2px;">Attacks <span class="red">WITH</span> AI · Attacks <span
+            class="red">ON</span> AI · Defense <span class="accent">BY</span> AI</h1>
+        <div class="subtitle" style="margin-top: 12px;">Complete course material — 8 sections, 7 case studies, offensive
+          & defensive AI threat mapping</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- NEW Section -->
+      <div class="new-section">
+        <div class="new-label">▲ NEW IN V6</div>
+        <div class="new-title">Section 3 — Taxonomy of Attacks ON AI Systems</div>
+        <div class="new-desc">Integration of work by the <strong>AI Security Working Group</strong> (Campus Cyber × Hub
+          France IA, Feb 2026). References: NIST AI 100-2, MITRE ATLAS, OWASP Top 10 LLM & ML, ANSSI.</div>
+      </div>
+
+      <!-- Taxonomy grid -->
+      <div class="taxonomy-grid">
+        <div class="tax-item">
+          <div class="tax-num">3.1</div>
+          <div class="tax-name">Poisoning</div>
+          <div class="tax-detail">Data poisoning, backdoors, AI supply chain</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-num">3.2</div>
+          <div class="tax-name">Manipulation & Evasion</div>
+          <div class="tax-detail">Adversarial examples, jailbreak, substitution</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-num">3.3</div>
+          <div class="tax-name">Oracle Attacks</div>
+          <div class="tax-detail">Model stealing, inversion, membership inference</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-num">3.4</div>
+          <div class="tax-name">RAG Attacks</div>
+          <div class="tax-detail">Indirect prompt injection, embedding attacks</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-num">3.5</div>
+          <div class="tax-name">Agentic & MCP</div>
+          <div class="tax-detail">MAS privileges, tool poisoning, metadata injection</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-num">3.6</div>
+          <div class="tax-name">Federated</div>
+          <div class="tax-detail">Byzantine attacks, gradient inference</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-num">3.7</div>
+          <div class="tax-name">Decommissioning</div>
+          <div class="tax-detail">Residual data, unauthorized reuse</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-num">3.8</div>
+          <div class="tax-name">Synthesis</div>
+          <div class="tax-detail">Phase mapping ANSSI/OECD</div>
+        </div>
+      </div>
+
+      <!-- Operation OpenClaw -->
+      <div class="killchain">
+        <div class="kc-header">
+          <div class="kc-icon">⚔</div>
+          <div>
+            <div class="kc-title">Operation OpenClaw — 5-Phase Kill Chain</div>
+          </div>
+        </div>
+        <div class="kc-phases">
+          <div class="kc-phase">
+            <div class="kc-phase-num">Phase 1</div>
+            <div class="kc-phase-name">Recon</div>
+            <div class="kc-phase-tech">Shodan + WormGPT OSINT</div>
+          </div>
+          <div class="kc-phase">
+            <div class="kc-phase-num">Phase 2</div>
+            <div class="kc-phase-name">Weaponization</div>
+            <div class="kc-phase-tech">Booby-trapped skill + audio deepfake</div>
+          </div>
+          <div class="kc-phase">
+            <div class="kc-phase-num">Phase 3</div>
+            <div class="kc-phase-name">Delivery</div>
+            <div class="kc-phase-tech">3 simultaneous vectors</div>
+          </div>
+          <div class="kc-phase">
+            <div class="kc-phase-num">Phase 4</div>
+            <div class="kc-phase-name">Lateral Movement</div>
+            <div class="kc-phase-tech">Prompt injection → Golden Ticket</div>
+          </div>
+          <div class="kc-phase">
+            <div class="kc-phase-num">Phase 5</div>
+            <div class="kc-phase-name">Impact</div>
+            <div class="kc-phase-tech">PromptLock + double extortion</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Breakthroughs -->
+      <div class="breakthroughs">
+        <div class="bt-title">3 technological breakthroughs</div>
+        <div class="bt-items">
+          <div class="bt-item">
+            <div class="bt-num">01</div>
+            <div class="bt-label">Contextual adaptation</div>
+            <div class="bt-desc">The agent analyzes the environment and generates malicious code on the fly</div>
+          </div>
+          <div class="bt-item">
+            <div class="bt-num">02</div>
+            <div class="bt-label">Operational autonomy</div>
+            <div class="bt-desc">LLM pilots lateral movement and exfiltration without direct C2</div>
+          </div>
+          <div class="bt-item">
+            <div class="bt-num">03</div>
+            <div class="bt-label">Compressed Kill Chain</div>
+            <div class="bt-desc">Days → minutes. Dwell time collapses</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Document structure pills -->
+      <div class="doc-structure">
+        <div class="doc-pill pill-intro">1. Intro</div>
+        <div class="doc-pill pill-off">2. Offensive AI</div>
+        <div class="doc-pill pill-attack">3. Attacks ON AI</div>
+        <div class="doc-pill pill-def">4. Defensive AI</div>
+        <div class="doc-pill pill-vs">5. AI vs AI</div>
+        <div class="doc-pill pill-case">6. Case Studies</div>
+        <div class="doc-pill pill-reco">7. Reco</div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="footer-left">
+          <div class="author">Fabrice Pizzi</div>
+          <div class="affiliation">Université Paris-Sorbonne · Master 2 SI-ISI5 · CISSP</div>
+          <div class="github">github.com/mo0ogly/openclaw-killchain-analysis</div>
+        </div>
+        <div class="footer-right">
+          <div class="open-access">
+            <span class="lock-icon">🔓</span>
+            Open Access · FR & EN
+          </div>
+          <div class="collab-note">
+            Enhanced by the AI Security Working Group<br>
+            Campus Cyber × Hub France IA (02/2026)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
