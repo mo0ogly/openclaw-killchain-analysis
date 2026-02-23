@@ -29,3 +29,6 @@ S1-ISI5_IA_et_Cybersecurite v5.docx
 # Text files
 *.txt
 *.docx
+
+# AI Assistants
+.claude/
