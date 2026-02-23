@@ -256,6 +256,8 @@ openclaw-killchain-analysis/
 - **GitHub**: [@mo0ogly](https://github.com/mo0ogly)
 - **LinkedIn**: https://www.linkedin.com/in/fpizzi/
 
-## License
+## License & Disclaimer
 
-[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+This work, "Operation OpenClaw," is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+You are free to share and adapt the material for non-commercial purposes, provided you give appropriate credit to **Fabrice Pizzi (Université Paris Sorbonne)** and distribute your contributions under the same license. This material is provided for educational and research purposes only.

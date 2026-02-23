@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [v7.0] — 2026-02-22
 
+### Documentation & UI Improvements
+- **Media Presentation**: Integrated 6 podcast links (FR, EN, BR) and 3 non-technical explainer videos into new sophisticated collapsible accordion UI (`<details>`).
+- **License Disclaimer**: Added explicit CC BY-NC-SA 4.0 license and usage disclaimer to `README.md` and `docs/index.html` footer.
+
 ### Master 2 Course Content Expansion (S1-ISI5)
 - **Section 2.5 Expanded:** Grown from a single paragraph to 10 structured sub-sections.
   - *Part A*: Offensive autonomous agents featuring Claude Code (Sept 2025 case), LotL lateral movement, adaptive C2 via LLM APIs, and 14 MITRE ATLAS/Zenity techniques.
