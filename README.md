@@ -45,7 +45,7 @@
 | Time available | Start here |
 |---------------|-----------|
 | **5 min** | This README + [key figures](#key-figures) below |
-| **20 min** | Summary note: [FR (PDF)](ACADEMIC_NOTE.pdf) / [EN (PDF)](ACADEMIC_NOTE_en.pdf) |
+| **20 min** | Summary note: [FR (PDF)](ACADEMIC_NOTE.pdf) / [EN (PDF)](ACADEMIC_NOTE_en.pdf) / [BR (Web)](NOTA_ACADEMICA_BR.md) |
 | **1 hour** | Summary note + one phase of your choice (see table above) |
 | **Full study** | All 5 phases in order |
 | **New to AI security?** | Start with the [Master 2 course (FR v7)](S1-ISI5_IA_et_Cybersecurite%20v7.pdf) / [(EN v7)](S1-ISI5_IA_et_Cybersecurite%20v7_en.pdf) / [(BR v7)](S1-ISI5_IA_et_Cybersecurite%20v7_br.pdf) |
