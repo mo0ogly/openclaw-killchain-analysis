@@ -18,11 +18,11 @@
 
 ### Start Here
 
-| Document | FR | EN |
-|----------|----|----|
-| **Summary note** (~10 pages) | [Note academique (PDF)](ACADEMIC_NOTE.pdf) | [Academic note (PDF)](ACADEMIC_NOTE_en.pdf) |
-| **Summary note** (markdown) | [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md) | [ACADEMIC_NOTE.md](ACADEMIC_NOTE.md) |
-| **Master 2 course** — AI & Cybersecurity introduction for non-specialists | [Cours M2 Sorbonne (FR v7 PDF)](S1-ISI5_IA_et_Cybersecurite%20v7.pdf) | [M2 Course Sorbonne (EN v7 PDF)](S1-ISI5_IA_et_Cybersecurite%20v7_en.pdf) |
+| Document | FR | EN | BR |
+|----------|----|----|----|
+| **Summary note** (~10 pages) | [Note academique (PDF)](ACADEMIC_NOTE.pdf) | [Academic note (PDF)](ACADEMIC_NOTE_en.pdf) | - |
+| **Summary note** (markdown) | [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md) | [ACADEMIC_NOTE.md](ACADEMIC_NOTE.md) | - |
+| **Master 2 course** — AI & Cybersecurity introduction for non-specialists | [Cours M2 Sorbonne (FR v7 PDF)](S1-ISI5_IA_et_Cybersecurite%20v7.pdf) | [M2 Course Sorbonne (EN v7 PDF)](S1-ISI5_IA_et_Cybersecurite%20v7_en.pdf) | [M2 Course Sorbonne (BR v7 PDF)](S1-ISI5_IA_et_Cybersecurite%20v7_br.pdf) |
 
 ### Detailed Phase Analyses (~25-30 pages each)
 
@@ -48,7 +48,7 @@
 | **20 min** | Summary note: [FR (PDF)](ACADEMIC_NOTE.pdf) / [EN (PDF)](ACADEMIC_NOTE_en.pdf) |
 | **1 hour** | Summary note + one phase of your choice (see table above) |
 | **Full study** | All 5 phases in order |
-| **New to AI security?** | Start with the [Master 2 course (FR v7)](S1-ISI5_IA_et_Cybersecurite%20v7.pdf) / [(EN v7)](S1-ISI5_IA_et_Cybersecurite%20v7_en.pdf) |
+| **New to AI security?** | Start with the [Master 2 course (FR v7)](S1-ISI5_IA_et_Cybersecurite%20v7.pdf) / [(EN v7)](S1-ISI5_IA_et_Cybersecurite%20v7_en.pdf) / [(BR v7)](S1-ISI5_IA_et_Cybersecurite%20v7_br.pdf) |
 
 ---
 
@@ -197,6 +197,7 @@ For readers unfamiliar with AI security concepts, a **Master 2 course from Unive
 
 - [S1-ISI5 — IA et Cybersecurite (FR v7, PDF)](S1-ISI5_IA_et_Cybersecurite%20v7.pdf)
 - [S1-ISI5 — AI and Cybersecurity (EN v7, PDF)](S1-ISI5_IA_et_Cybersecurite%20v7_en.pdf)
+- [S1-ISI5 — IA e Ciberseguranca (BR v7, PDF)](S1-ISI5_IA_et_Cybersecurite%20v7_br.pdf)
 
 This course covers foundational concepts needed to understand the kill chain analysis and is recommended as a starting point for non-specialists.
 
@@ -216,6 +217,7 @@ openclaw-killchain-analysis/
 │
 ├── S1-ISI5_IA_et_Cybersecurite v7.pdf     ← Master 2 course (FR) NEW
 ├── S1-ISI5_IA_et_Cybersecurite v7_en.pdf  ← Master 2 course (EN) NEW
+├── S1-ISI5_IA_et_Cybersecurite v7_br.pdf  ← Master 2 course (BR) NEW
 │
 ├── phases/                                ← Detailed phase analyses (FR + EN)
 │   ├── Phase1_Reconnaissance.pdf / _en.pdf
