@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v7.1] — 2026-02-23
+
+### UI/UX "Modern Threat Intel" Upgrade
+- **Premium Aesthetics**: Upgraded `docs/index.html` with a modern "Glassmorphism" design, subtle radial background gradients, and sleek Neon Glow hover effects.
+- **Typography & Animations**: Integrated Google Fonts (Inter, JetBrains Mono) and added smooth fade-in and slide-up CSS animations for a highly professional reading experience.
+
 ## [v7.0] — 2026-02-22
 
 ### Documentation & UI Improvements
