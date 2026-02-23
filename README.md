@@ -2,7 +2,7 @@
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Status: Active Research](https://img.shields.io/badge/Status-Active%20Research-orange.svg)]()
-[![Language: EN / FR](https://img.shields.io/badge/Language-EN%20%2F%20FR-blue.svg)]()
+[![Language: EN / FR / PT](https://img.shields.io/badge/Language-EN%20%2F%20FR%20%2F%20PT-blue.svg)]()
 
 <p align="center">
   <img src="figures/openclaw_operation.png" alt="Operation OpenClaw — Kill Chain Overview" width="700"/>
@@ -20,8 +20,8 @@
 
 | Document | FR | EN | BR |
 |----------|----|----|----|
-| **Summary note** (~10 pages) | [Note academique (PDF)](ACADEMIC_NOTE.pdf) | [Academic note (PDF)](ACADEMIC_NOTE_en.pdf) | - |
-| **Summary note** (markdown) | [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md) | [ACADEMIC_NOTE.md](ACADEMIC_NOTE.md) | - |
+| **Summary note** (~10 pages) | [Note academique (PDF)](ACADEMIC_NOTE.pdf) | [Academic note (PDF)](ACADEMIC_NOTE_en.pdf) | [Nota acadêmica (PDF)](NOTA_ACADEMICA_BR.pdf) |
+| **Summary note** (markdown) | [NOTE_ACADEMIQUE.md](NOTE_ACADEMIQUE.md) | [ACADEMIC_NOTE.md](ACADEMIC_NOTE.md) | [NOTA_ACADEMICA_BR.md](NOTA_ACADEMICA_BR.md) |
 | **Master 2 course** — AI & Cybersecurity introduction for non-specialists | [Cours M2 Sorbonne (FR v7 PDF)](S1-ISI5_IA_et_Cybersecurite%20v7.pdf) | [M2 Course Sorbonne (EN v7 PDF)](S1-ISI5_IA_et_Cybersecurite%20v7_en.pdf) | [M2 Course Sorbonne (BR v7 PDF)](S1-ISI5_IA_et_Cybersecurite%20v7_br.pdf) |
 
 ### Detailed Phase Analyses (~25-30 pages each)
