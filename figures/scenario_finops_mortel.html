@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Scénario Réponse Disproportionnée — FinOps Mortel (Infrastructure Cloud)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #fdfbf7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .paper {
+    background: #fff;
+    border: 1px solid #d8d0c4;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 48px 52px 40px;
+    max-width: 960px;
+    width: 100%;
+  }
+
+  h2 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 19px;
+    font-weight: 600;
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+  }
+
+  .scenario-tag {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 20px;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .actors {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+
+  .actor-pill { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #333; }
+  .actor-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+
+  svg { display: block; width: 100%; height: auto; }
+
+  .caption {
+    margin-top: 28px;
+    border-top: 1px solid #e0d8d0;
+    padding-top: 18px;
+  }
+
+  .caption-title {
+    font-family: 'Crimson Pro', serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+  }
+
+  .steps { display: flex; flex-direction: column; gap: 7px; }
+
+  .step-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+    align-items: baseline;
+  }
+
+  .sn { font-family: 'Crimson Pro', serif; font-weight: 600; font-size: 13px; }
+  .red    { color: #c53030; }
+  .blue   { color: #2c5282; }
+  .amber  { color: #92400e; }
+  .violet { color: #5b21b6; }
+  .teal   { color: #1a6a5a; }
+  .green  { color: #276749; }
+  .grey   { color: #555; }
+
+  .context-box {
+    margin-bottom: 20px;
+    border: 1px solid #dde8f5;
+    background: #f7faff;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #1a3a6a;
+    font-family: 'Crimson Pro', serif;
+    line-height: 1.6;
+  }
+
+  .threat-box {
+    margin-top: 16px;
+    border: 1px solid #f0d5d5;
+    background: #fffafa;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #7a1a1a;
+    font-family: 'Crimson Pro', serif;
+    line-height: 1.6;
+  }
+
+  .fig-caption {
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: #444;
+    font-style: italic;
+    line-height: 1.6;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .fig-label { font-weight: 600; font-style: normal; }
+
+  .phase-labels {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .phase-pill {
+    font-size: 11px;
+    font-family: 'Crimson Pro', serif;
+    padding: 2px 10px;
+    border-radius: 10px;
+    border: 1px solid;
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <h2>Scénario <em>Réponse Disproportionnée</em> — FinOps Mortel</h2>
+  <p class="scenario-tag">Destruction en cascade par suppression de VPC — Agent d'infrastructure cloud sans modèle de dépendances</p>
+
+  <div class="context-box">
+    <strong>Mécanique — Absence de modèle mental systémique :</strong> Contrairement au scénario <em>Option Nucléaire</em> (déclenchement par ordre malveillant), ce vecteur est activé par un <em>utilisateur légitime formulant un objectif légitime</em>. L'agent dispose bien des outils nécessaires — l'API Cloud permet de supprimer un VPC. Mais il ne modélise pas les <em>dépendances implicites</em> : des ressources de production peuvent être rattachées à un réseau de test par erreur de configuration humaine antérieure. La suppression du VPC déclenche une destruction en cascade silencieuse, chaque ressource attachée étant détruite dans l'ordre topologique du graphe de dépendances cloud.
+  </div>
+
+  <div class="phase-labels">
+    <span class="phase-pill" style="color:#276749;border-color:#276749;background:#f0f7f3">① Délégation FinOps — objectif légitime</span>
+    <span class="phase-pill" style="color:#92400e;border-color:#b45309;background:#fffbf0">② Analyse heuristique — critère trafic 24h</span>
+    <span class="phase-pill" style="color:#5b21b6;border-color:#5b21b6;background:#f5f3ff">③ Décision sans graphe de dépendances</span>
+    <span class="phase-pill" style="color:#c53030;border-color:#c53030;background:#fff5f5">④ Destruction en cascade irréversible</span>
+  </div>
+
+  <div class="actors">
+    <div class="actor-pill"><div class="actor-dot" style="background:#52a36e;border:1.5px solid #3a7a52"></div>Propriétaire / DevOps</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#2c5282;border:1.5px solid #1a3a6a"></div>Agent IA (infra)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#92400e;border:1.5px solid #78350f"></div>API Cloud (monitoring)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#5b21b6;border:1.5px solid #3b0f8c"></div>VPC test (réseau virtuel)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#c53030;border:1.5px solid #a02020"></div>BDD production (attachée)</div>
+  </div>
+
+  <svg viewBox="0 0 880 830" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="a-green"  markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#52a36e"/></marker>
+      <marker id="a-red"    markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c53030"/></marker>
+      <marker id="a-blue"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#2c5282"/></marker>
+      <marker id="a-amber"  markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#92400e"/></marker>
+      <marker id="a-violet" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#5b21b6"/></marker>
+      <marker id="a-grey"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#888"/></marker>
+    </defs>
+
+    <!-- ══ EN-TÊTES ══ -->
+    <ellipse cx="84"  cy="36" rx="76" ry="22" fill="#f0f7f3" stroke="#52a36e" stroke-width="1.8"/>
+    <text x="84"  y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="12" font-weight="600" fill="#276749">Propriétaire</text>
+    <text x="84"  y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#276749">(DevOps / FinOps)</text>
+
+    <ellipse cx="274" cy="36" rx="74" ry="22" fill="#ebf4ff" stroke="#2c5282" stroke-width="1.8"/>
+    <text x="274" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="12" font-weight="600" fill="#2c5282">Agent IA</text>
+    <text x="274" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#2c5282">(infra cloud)</text>
+
+    <ellipse cx="468" cy="36" rx="80" ry="22" fill="#fdf8ee" stroke="#92400e" stroke-width="1.8"/>
+    <text x="468" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="12" font-weight="600" fill="#92400e">API Cloud</text>
+    <text x="468" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#92400e">(monitoring / actions)</text>
+
+    <ellipse cx="672" cy="36" rx="78" ry="22" fill="#f5f3ff" stroke="#5b21b6" stroke-width="1.8"/>
+    <text x="672" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="12" font-weight="600" fill="#5b21b6">VPC test</text>
+    <text x="672" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#5b21b6">(réseau virtuel)</text>
+
+    <ellipse cx="836" cy="36" rx="38" ry="22" fill="#fff5f5" stroke="#c53030" stroke-width="1.8"/>
+    <text x="836" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#c53030">BDD</text>
+    <text x="836" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#c53030">prod.</text>
+
+    <!-- ══ LIGNES DE VIE ══ -->
+    <line x1="84"  y1="58" x2="84"  y2="800" stroke="#52a36e" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="274" y1="58" x2="274" y2="800" stroke="#2c5282" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="468" y1="58" x2="468" y2="800" stroke="#92400e" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="672" y1="58" x2="672" y2="800" stroke="#5b21b6" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="836" y1="58" x2="836" y2="800" stroke="#c53030" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+
+    <!-- Axe temporel -->
+    <text x="20" y="72" font-family="Source Sans 3" font-size="10" fill="#bbb">t</text>
+    <line x1="26" y1="74" x2="26" y2="790" stroke="#ddd" stroke-width="1" marker-end="url(#a-grey)"/>
+
+    <!-- ══ PHASE 0 : État initial ══ -->
+    <rect x="40" y="62" width="830" height="22" fill="#f5f3ee" rx="2"/>
+    <text x="454" y="77" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#666" letter-spacing="0.08em">ÉTAT INITIAL — Infrastructure cloud en production, erreur de config silencieuse</text>
+
+    <!-- 0a Propriétaire → Agent : délégation FinOps -->
+    <line x1="84" y1="106" x2="262" y2="106" stroke="#52a36e" stroke-width="1.8" marker-end="url(#a-blue)"/>
+    <text x="172" y="101" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#276749">Délégation : accès API cloud en écriture (delete VPC, subnet…)</text>
+    <circle cx="32" cy="106" r="8" fill="#52a36e"/><text x="32" y="110" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">0a</text>
+
+    <!-- 0b Erreur de config préexistante (annotation) -->
+    <!-- ligne de dépendance VPC ↔ BDD prod -->
+    <line x1="672" y1="126" x2="836" y2="126" stroke="#c53030" stroke-width="1.8" stroke-dasharray="4,3"/>
+    <rect x="690" y="114" width="128" height="22" fill="#fff5f5" stroke="#c53030" stroke-width="1" rx="2"/>
+    <text x="754" y="125" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10.5" font-style="italic" fill="#c53030">⚠ BDD prod. attachée</text>
+    <text x="754" y="136" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10.5" font-style="italic" fill="#c53030">au VPC test par erreur</text>
+    <circle cx="32" cy="126" r="8" fill="#c53030"/><text x="32" y="130" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">0b</text>
+
+    <!-- ══ PHASE 1 : Objectif FinOps ══ -->
+    <rect x="40" y="150" width="830" height="22" fill="#f0f7f3" rx="2"/>
+    <text x="454" y="165" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#276749" letter-spacing="0.06em">PHASE 1 — Objectif légitime — nettoyage des environnements inactifs</text>
+
+    <!-- 1a Propriétaire → Agent : ordre FinOps -->
+    <line x1="84" y1="192" x2="262" y2="192" stroke="#52a36e" stroke-width="1.8" marker-end="url(#a-blue)"/>
+    <rect x="62" y="198" width="380" height="30" fill="#f0f7f3" stroke="#52a36e" stroke-width="1" rx="3" stroke-dasharray="4,2"/>
+    <text x="252" y="211" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#276749">« Nettoie les environnements de test inactifs</text>
+    <text x="252" y="224" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#276749">pour réduire les coûts cloud. »</text>
+    <circle cx="32" cy="192" r="8" fill="#52a36e"/><text x="32" y="196" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1a</text>
+
+    <!-- ══ PHASE 2 : Analyse heuristique ══ -->
+    <rect x="40" y="240" width="830" height="22" fill="#fff3ee" rx="2"/>
+    <text x="454" y="255" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#92400e" letter-spacing="0.06em">PHASE 2 — Analyse heuristique — critère trafic 24h (sans graphe de dépendances)</text>
+
+    <!-- 2a Agent → API Cloud : requête métriques de trafic par subnet -->
+    <line x1="274" y1="282" x2="456" y2="282" stroke="#2c5282" stroke-width="1.6" marker-end="url(#a-amber)"/>
+    <text x="364" y="277" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#92400e">Requête : métriques trafic par réseau (24h)</text>
+    <circle cx="32" cy="282" r="8" fill="#2c5282"/><text x="32" y="286" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2a</text>
+
+    <!-- 2b API → Agent : résultats trafic -->
+    <line x1="468" y1="300" x2="286" y2="300" stroke="#92400e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a-blue)"/>
+    <text x="376" y="295" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#92400e" font-style="italic">VPC-test-42 : 0 requêtes / 24h</text>
+    <circle cx="32" cy="300" r="8" fill="#92400e"/><text x="32" y="304" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2b</text>
+
+    <!-- 2c Décision interne agent : critère satisfait -->
+    <rect x="182" y="310" width="184" height="30" fill="#ebf4ff" stroke="#2c5282" stroke-width="1" rx="2"/>
+    <text x="274" y="322" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#2c5282" font-style="italic">Trafic = 0 sur 24h → critère</text>
+    <text x="274" y="334" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#2c5282" font-style="italic">« inactif » satisfait → supprimer</text>
+    <circle cx="32" cy="320" r="8" fill="#2c5282"/><text x="32" y="324" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2c</text>
+
+    <!-- 2d Absence de vérification des dépendances -->
+    <rect x="380" y="310" width="220" height="30" fill="#fff8ee" stroke="#92400e" stroke-width="1" rx="2" stroke-dasharray="4,2"/>
+    <text x="490" y="322" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#92400e" font-style="italic">⚠ Pas de requête describe-vpc-</text>
+    <text x="490" y="334" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#92400e" font-style="italic">dependencies() avant action</text>
+    <circle cx="32" cy="334" r="8" fill="#92400e"/><text x="32" y="338" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2d</text>
+
+    <!-- ══ PHASE 3 : Décision ══ -->
+    <rect x="40" y="354" width="830" height="22" fill="#f5f3ff" rx="2"/>
+    <text x="454" y="369" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#5b21b6" letter-spacing="0.06em">PHASE 3 — Décision d'action — suppression VPC sans modèle de dépendances</text>
+
+    <!-- 3a Agent → API Cloud : delete VPC -->
+    <line x1="274" y1="396" x2="456" y2="396" stroke="#c53030" stroke-width="2.5" marker-end="url(#a-amber)"/>
+    <rect x="316" y="402" width="296" height="22" fill="#fff0f0" stroke="#c53030" stroke-width="1.5" rx="3"/>
+    <text x="464" y="417" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" font-weight="600" fill="#c53030">DELETE vpc-test-42 --force</text>
+    <circle cx="32" cy="396" r="8" fill="#c53030"/><text x="32" y="400" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3a</text>
+
+    <!-- 3b API accepte sans warning de dépendances -->
+    <line x1="468" y1="438" x2="286" y2="438" stroke="#92400e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a-blue)"/>
+    <rect x="290" y="444" width="176" height="18" fill="#fff8ee" stroke="#92400e" stroke-width="1" rx="2"/>
+    <text x="378" y="456" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#92400e" font-style="italic">⚠ API accepte — aucun warning</text>
+    <circle cx="32" cy="447" r="8" fill="#92400e"/><text x="32" y="451" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3b</text>
+
+    <!-- ══ PHASE 4 : Cascade ══ -->
+    <rect x="40" y="474" width="830" height="22" fill="#fff0f0" rx="2"/>
+    <text x="454" y="489" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#c53030" letter-spacing="0.06em">PHASE 4 — Destruction en cascade (ordre topologique du graphe cloud)</text>
+
+    <!-- Cascade étape 1 : subnets détruits -->
+    <line x1="468" y1="514" x2="660" y2="514" stroke="#c53030" stroke-width="1.8" marker-end="url(#a-violet)"/>
+    <text x="562" y="509" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#5b21b6" font-weight="600">1. Subnets supprimés</text>
+    <circle cx="32" cy="514" r="8" fill="#5b21b6"/><text x="32" y="518" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4a</text>
+
+    <!-- Cascade étape 2 : interfaces réseau détruites -->
+    <line x1="468" y1="534" x2="660" y2="534" stroke="#c53030" stroke-width="1.8" marker-end="url(#a-violet)"/>
+    <text x="562" y="529" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#5b21b6" font-weight="600">2. Interfaces réseau (ENI) supprimées</text>
+    <circle cx="32" cy="534" r="8" fill="#5b21b6"/><text x="32" y="538" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4b</text>
+
+    <!-- Cascade étape 3 : BDD prod perd connectivité réseau -->
+    <line x1="660" y1="556" x2="824" y2="556" stroke="#c53030" stroke-width="2" marker-end="url(#a-red)"/>
+    <text x="740" y="551" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#c53030" font-weight="600">3. BDD prod. : perte réseau</text>
+    <circle cx="32" cy="556" r="8" fill="#c53030"/><text x="32" y="560" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4c</text>
+
+    <!-- Cascade étape 4 : BDD prod détruite (dépendance VPC) -->
+    <line x1="660" y1="578" x2="824" y2="578" stroke="#c53030" stroke-width="2.5" marker-end="url(#a-red)"/>
+    <rect x="672" y="584" width="172" height="36" fill="#fff5f5" stroke="#c53030" stroke-width="2" rx="3"/>
+    <text x="758" y="598" text-anchor="middle" font-family="Crimson Pro,serif" font-size="12" font-weight="600" fill="#c53030">BDD PROD. DÉTRUITE ⚠</text>
+    <text x="758" y="612" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10.5" font-style="italic" fill="#c53030">données irrémédiablement perdues</text>
+    <circle cx="32" cy="578" r="8" fill="#c53030"/><text x="32" y="582" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4d</text>
+
+    <!-- Cascade étape 5 : services métier tombent -->
+    <line x1="836" y1="632" x2="96" y2="632" stroke="#c53030" stroke-width="1.8" marker-end="url(#a-green)"/>
+    <text x="464" y="627" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#c53030" font-weight="600">5. Services métier hors ligne — données de production perdues</text>
+    <circle cx="32" cy="632" r="8" fill="#c53030"/><text x="32" y="636" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4e</text>
+
+    <!-- Agent → Propriétaire : rapport de mission accomplie -->
+    <line x1="274" y1="660" x2="96" y2="660" stroke="#2c5282" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a-green)"/>
+    <text x="184" y="655" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#2c5282" font-style="italic">« Nettoyage terminé — VPC-test-42 supprimé. »</text>
+    <circle cx="32" cy="660" r="8" fill="#2c5282"/><text x="32" y="664" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4f</text>
+
+    <!-- Découverte post-incident -->
+    <line x1="836" y1="692" x2="96" y2="692" stroke="#c53030" stroke-width="1.5" stroke-dasharray="3,4" marker-end="url(#a-red)"/>
+    <text x="464" y="706" text-anchor="middle" font-family="Source Sans 3" font-size="11" font-style="italic" fill="#c53030">⚠ Découverte post-incident — perte données prod., RTO inconnu, impact métier critique</text>
+    <circle cx="32" cy="692" r="8" fill="#c53030"/><text x="32" y="696" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4g</text>
+
+    <!-- Note finale -->
+    <rect x="40" y="714" width="830" height="30" fill="#fffafa" stroke="#f0d5d5" stroke-width="1" rx="2"/>
+    <text x="454" y="726" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#7a1a1a">L'agent a exécuté sa mission avec succès : un environnement inactif a été supprimé, les coûts ont été réduits.</text>
+    <text x="454" y="738" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#7a1a1a">Il n'avait aucun moyen de modéliser l'erreur de configuration humaine préexistante.</text>
+
+  </svg>
+
+  <div class="caption">
+    <div class="caption-title">Séquence détaillée</div>
+    <div class="steps">
+      <div class="step-row"><span class="sn green">0a–b</span><span><strong>État initial (erreur silencieuse) :</strong> L'agent dispose d'un accès API cloud en écriture. Une erreur de configuration humaine antérieure a rattaché des bases de données de production au VPC de l'environnement de test — l'information existe dans le graphe cloud mais n'est pas consultée proactivement.</span></div>
+      <div class="step-row"><span class="sn green">1a</span><span><strong>Objectif légitime :</strong> Le propriétaire délègue une tâche FinOps standard — supprimer les environnements de test inactifs pour réduire la facture cloud. La formulation est correcte et l'objectif réel.</span></div>
+      <div class="step-row"><span class="sn amber">2a–d</span><span><strong>Analyse heuristique :</strong> L'agent requête les métriques de trafic sur 24h. Le VPC-test-42 affiche zéro requête — critère d'inactivité satisfait. L'agent ne consulte pas l'API de dépendances (<code>describe-vpc-dependencies</code>) avant d'agir. Cette vérification n'est pas dans son plan d'action standard.</span></div>
+      <div class="step-row"><span class="sn violet">3a–b</span><span><strong>Décision sans modèle de dépendances :</strong> L'agent émet un <code>DELETE vpc-test-42 --force</code>. L'API cloud exécute sans émettre d'avertissement sur les ressources attachées — ce comportement dépend du provider et de la configuration du flag <code>--force</code>.</span></div>
+      <div class="step-row"><span class="sn red">4a–d</span><span><strong>Destruction en cascade :</strong> Le cloud détruit les ressources dans l'ordre topologique du graphe de dépendances — subnets, interfaces réseau, puis les ressources attachées. Les bases de données de production, rattachées au VPC par erreur de configuration, sont détruites avec lui.</span></div>
+      <div class="step-row"><span class="sn red">4e–g</span><span><strong>Impact :</strong> Les services métier tombent hors ligne. L'agent rapporte la mission accomplie — il a fait ce qui lui était demandé. La découverte est post-incident : RTO inconnu, données potentiellement non-restaurables si les sauvegardes sont elles-mêmes attachées au VPC.</span></div>
+    </div>
+
+    <div class="threat-box">
+      <strong>Double origine du risque :</strong> Ce scénario cumule deux fautes distinctes dont aucune n'est seule suffisante. (1) <em>Erreur humaine préexistante</em> : la BDD de production était mal configurée dans le VPC de test — une dette technique silencieuse. (2) <em>Absence de modèle de dépendances</em> dans le plan d'action de l'agent : aucune vérification des ressources attachées avant suppression. La gravité est que ces deux fautes sont extrêmement courantes séparément — leur conjonction devient catastrophique uniquement lorsqu'un agent autonome dispose des droits d'écriture. Un humain DevOps, même peu expérimenté, aurait vraisemblablement vérifié les ressources attachées dans la console avant de confirmer la suppression — friction protectrice que l'agent supprime par design. La contre-mesure requiert : (a) un outil <code>preflight-check</code> obligatoire avant toute suppression de ressource réseau, (b) une politique de confirmation hors-bande pour toute action cloud irréversible à périmètre large, (c) un tag <code>environment=production</code> vérifié systématiquement avant toute destruction.
+    </div>
+
+    <p class="fig-caption">
+      <span class="fig-label">Figure 12.</span>
+      Scénario <em>FinOps Mortel</em> : un agent d'infrastructure cloud, chargé de supprimer les environnements de test inactifs, identifie le VPC-test-42 comme inactif (zéro trafic sur 24h) et le supprime sans vérifier ses dépendances. Des bases de données de production, rattachées au VPC par erreur de configuration humaine préexistante, sont détruites en cascade. L'agent rapporte la mission accomplie. Aucune injection, aucun acteur malveillant — le dommage résulte de la conjonction d'une dette technique silencieuse et de l'absence de modèle de dépendances dans la planification de l'agent.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

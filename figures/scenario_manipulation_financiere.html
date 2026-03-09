@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Scénario Agent-to-Agent Contagion — Manipulation Financière</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #fdfbf7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .paper {
+    background: #fff;
+    border: 1px solid #d8d0c4;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 48px 52px 40px;
+    max-width: 980px;
+    width: 100%;
+  }
+
+  h2 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 19px;
+    font-weight: 600;
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+  }
+
+  .scenario-tag {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 20px;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .actors {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+
+  .actor-pill { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #333; }
+  .actor-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+
+  svg { display: block; width: 100%; height: auto; }
+
+  .caption {
+    margin-top: 28px;
+    border-top: 1px solid #e0d8d0;
+    padding-top: 18px;
+  }
+
+  .caption-title {
+    font-family: 'Crimson Pro', serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+  }
+
+  .steps { display: flex; flex-direction: column; gap: 7px; }
+
+  .step-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+    align-items: baseline;
+  }
+
+  .sn { font-family: 'Crimson Pro', serif; font-weight: 600; font-size: 13px; }
+  .red    { color: #c53030; }
+  .blue   { color: #2c5282; }
+  .amber  { color: #92400e; }
+  .violet { color: #5b21b6; }
+  .teal   { color: #1a6a5a; }
+  .green  { color: #276749; }
+  .grey   { color: #555; }
+
+  .context-box {
+    margin-bottom: 20px;
+    border: 1px solid #dde8f5;
+    background: #f7faff;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #1a3a6a;
+    font-family: 'Crimson Pro', serif;
+    line-height: 1.6;
+  }
+
+  .threat-box {
+    margin-top: 16px;
+    border: 1px solid #f0d5d5;
+    background: #fffafa;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #7a1a1a;
+    font-family: 'Crimson Pro', serif;
+    line-height: 1.6;
+  }
+
+  .fig-caption {
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: #444;
+    font-style: italic;
+    line-height: 1.6;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .fig-label { font-weight: 600; font-style: normal; }
+
+  .phase-labels {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .phase-pill {
+    font-size: 11px;
+    font-family: 'Crimson Pro', serif;
+    padding: 2px 10px;
+    border-radius: 10px;
+    border: 1px solid;
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <h2>Scénario <em>Agent-to-Agent Contagion</em> — Manipulation Financière</h2>
+  <p class="scenario-tag">Injection de faux rapport d'analyse — Contagion vers agent de trading — Hallucinations induites à impact financier</p>
+
+  <div class="context-box">
+    <strong>Mécanique différentielle :</strong> Contrairement à la <em>Panique Interne</em> où l'injection vise à déclencher une réaction d'urgence immédiate, ce vecteur exploite le processus <em>normal et planifié</em> de traitement de l'information financière. L'agent de veille est un tiers de confiance légitime dans la chaîne de décision — son rôle est précisément de synthétiser des sources externes et d'en transmettre le contenu à l'agent de stratégie. L'attaquant contamine ce processus en amont, à l'étape d'ingestion documentaire, et laisse la chaîne de valeur informationnelle faire le reste. La décision financière désastreuse n'est pas le résultat d'une injection directe — c'est le produit d'un <em>processus métier sain opérant sur des données empoisonnées</em>.
+  </div>
+
+  <div class="phase-labels">
+    <span class="phase-pill" style="color:#c53030;border-color:#c53030;background:#fff5f5">① Fabrication et injection du faux rapport</span>
+    <span class="phase-pill" style="color:#92400e;border-color:#b45309;background:#fffbf0">② Ingestion RAG — synthèse empoisonnée</span>
+    <span class="phase-pill" style="color:#5b21b6;border-color:#5b21b6;background:#f5f3ff">③ Contagion A→A — résumé comme Ground Truth</span>
+    <span class="phase-pill" style="color:#c53030;border-color:#c53030;background:#fff5f5">④ Décision de trading désastreuse</span>
+  </div>
+
+  <div class="actors">
+    <div class="actor-pill"><div class="actor-dot" style="background:#52a36e;border:1.5px solid #3a7a52"></div>Propriétaire (DAF / Comité)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#c53030;border:1.5px solid #a02020"></div>Attaquant</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#2c5282;border:1.5px solid #1a3a6a"></div>Agent Veille (Patient Zéro)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#92400e;border:1.5px solid #78350f"></div>Source documentaire (web/dépôt)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#5b21b6;border:1.5px solid #3b0f8c"></div>Agent Trading / Stratégie</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#1a6a5a;border:1.5px solid #0e4a3a"></div>Marché / Broker</div>
+  </div>
+
+  <svg viewBox="0 0 900 850" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="a-green"  markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#52a36e"/></marker>
+      <marker id="a-red"    markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c53030"/></marker>
+      <marker id="a-blue"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#2c5282"/></marker>
+      <marker id="a-amber"  markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#92400e"/></marker>
+      <marker id="a-violet" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#5b21b6"/></marker>
+      <marker id="a-teal"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#1a6a5a"/></marker>
+      <marker id="a-grey"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#888"/></marker>
+    </defs>
+
+    <!-- ══ EN-TÊTES ══ -->
+    <ellipse cx="68"  cy="36" rx="62" ry="22" fill="#f0f7f3" stroke="#52a36e" stroke-width="1.8"/>
+    <text x="68"  y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#276749">Propriétaire</text>
+    <text x="68"  y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#276749">(DAF / Comité)</text>
+
+    <ellipse cx="206" cy="36" rx="60" ry="22" fill="#fff5f5" stroke="#c53030" stroke-width="1.8"/>
+    <text x="206" y="40" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#c53030">Attaquant</text>
+
+    <ellipse cx="374" cy="36" rx="72" ry="22" fill="#ebf4ff" stroke="#2c5282" stroke-width="1.8"/>
+    <text x="374" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#2c5282">Agent Veille</text>
+    <text x="374" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#2c5282">(Patient Zéro)</text>
+
+    <ellipse cx="548" cy="36" rx="72" ry="22" fill="#fdf8ee" stroke="#92400e" stroke-width="1.8"/>
+    <text x="548" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#92400e">Source doc.</text>
+    <text x="548" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#92400e">(web / dépôt)</text>
+
+    <ellipse cx="720" cy="36" rx="72" ry="22" fill="#f5f3ff" stroke="#5b21b6" stroke-width="1.8"/>
+    <text x="720" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#5b21b6">Agent Trading</text>
+    <text x="720" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#5b21b6">(stratégie fin.)</text>
+
+    <ellipse cx="862" cy="36" rx="32" ry="22" fill="#f0faf7" stroke="#1a6a5a" stroke-width="1.8"/>
+    <text x="862" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#1a6a5a">Marché</text>
+    <text x="862" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#1a6a5a">/Broker</text>
+
+    <!-- ══ LIGNES DE VIE ══ -->
+    <line x1="68"  y1="58" x2="68"  y2="820" stroke="#52a36e" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="206" y1="58" x2="206" y2="820" stroke="#c53030" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="374" y1="58" x2="374" y2="820" stroke="#2c5282" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="548" y1="58" x2="548" y2="820" stroke="#92400e" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="720" y1="58" x2="720" y2="820" stroke="#5b21b6" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="862" y1="58" x2="862" y2="820" stroke="#1a6a5a" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+
+    <!-- Axe temporel -->
+    <text x="18" y="72" font-family="Source Sans 3" font-size="10" fill="#bbb">t</text>
+    <line x1="24" y1="74" x2="24" y2="810" stroke="#ddd" stroke-width="1" marker-end="url(#a-grey)"/>
+
+    <!-- ══ PHASE 0 : État initial ══ -->
+    <rect x="36" y="62" width="852" height="22" fill="#f5f3ee" rx="2"/>
+    <text x="462" y="77" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#666" letter-spacing="0.08em">ÉTAT INITIAL — Pipeline de veille → trading opérationnel</text>
+
+    <!-- 0a Propriétaire → Agent Veille : délégation veille concurrentielle -->
+    <line x1="68" y1="106" x2="360" y2="106" stroke="#52a36e" stroke-width="1.8" marker-end="url(#a-blue)"/>
+    <text x="214" y="101" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#276749">Délégation : ingestion rapports, synthèse, transmission agent trading</text>
+    <circle cx="26" cy="106" r="8" fill="#52a36e"/><text x="26" y="110" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">0a</text>
+
+    <!-- 0b Canal inter-agents veille → trading -->
+    <line x1="374" y1="124" x2="720" y2="124" stroke="#2c5282" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <text x="547" y="119" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#2c5282" font-style="italic">Canal inter-agents (confiance implicite — résumés traités comme Ground Truth)</text>
+    <circle cx="26" cy="124" r="8" fill="#2c5282"/><text x="26" y="128" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">0b</text>
+
+    <!-- ══ PHASE 1 : Fabrication et injection ══ -->
+    <rect x="36" y="140" width="852" height="22" fill="#fff0f0" rx="2"/>
+    <text x="462" y="155" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#c53030" letter-spacing="0.06em">PHASE 1 — Fabrication et injection du faux rapport</text>
+
+    <!-- 1a Attaquant fabrique un faux rapport d'analyse -->
+    <rect x="126" y="168" width="160" height="52" fill="#fff5f5" stroke="#c53030" stroke-width="1.5" rx="3"/>
+    <text x="206" y="183" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#c53030">Faux rapport LLM</text>
+    <line x1="134" y1="189" x2="278" y2="189" stroke="#c53030" stroke-width="0.8" stroke-dasharray="3,2"/>
+    <text x="206" y="200" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#c53030">« [Entreprise X] : perte</text>
+    <text x="206" y="212" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#c53030">massive Q3, enquête SEC »</text>
+    <circle cx="26" cy="180" r="8" fill="#c53030"/><text x="26" y="184" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1a</text>
+
+    <!-- 1b Attaquant publie le rapport sur source accessible à l'agent -->
+    <line x1="206" y1="232" x2="536" y2="232" stroke="#c53030" stroke-width="1.8" marker-end="url(#a-amber)"/>
+    <text x="370" y="227" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#c53030">Publication : dépôt public, forum financier, site clone crédible</text>
+    <circle cx="26" cy="232" r="8" fill="#c53030"/><text x="26" y="236" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1b</text>
+
+    <!-- Source documentaire : rapport disponible -->
+    <rect x="468" y="238" width="160" height="22" fill="#fdf8ee" stroke="#92400e" stroke-width="1" rx="2"/>
+    <text x="548" y="253" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#92400e">Rapport disponible — crédible formellement</text>
+    <circle cx="26" cy="249" r="8" fill="#92400e"/><text x="26" y="253" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1c</text>
+
+    <!-- ══ PHASE 2 : Ingestion RAG ══ -->
+    <rect x="36" y="272" width="852" height="22" fill="#fff3ee" rx="2"/>
+    <text x="462" y="287" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#92400e" letter-spacing="0.06em">PHASE 2 — Ingestion RAG — synthèse empoisonnée (Agent Veille)</text>
+
+    <!-- 2a Agent Veille → Source : requête RAG planifiée -->
+    <line x1="374" y1="314" x2="536" y2="314" stroke="#2c5282" stroke-width="1.6" marker-end="url(#a-amber)"/>
+    <text x="454" y="309" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#92400e">Ingestion planifiée : collecte rapports d'analyse sectorielle</text>
+    <circle cx="26" cy="314" r="8" fill="#2c5282"/><text x="26" y="318" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2a</text>
+
+    <!-- 2b Source → Agent Veille : retour contenu (légitimes + empoisonné) -->
+    <line x1="548" y1="332" x2="386" y2="332" stroke="#92400e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a-blue)"/>
+    <text x="466" y="327" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#92400e" font-style="italic">Rapports légitimes + faux rapport (indiscernables)</text>
+    <circle cx="26" cy="332" r="8" fill="#92400e"/><text x="26" y="336" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2b</text>
+
+    <!-- 2c Synthèse : hallucination induite -->
+    <rect x="286" y="344" width="176" height="42" fill="#fff5f5" stroke="#2c5282" stroke-width="1" rx="2"/>
+    <text x="374" y="358" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#2c5282" font-style="italic">Synthèse : faux rapport intégré</text>
+    <text x="374" y="370" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#c53030" font-style="italic">→ hallucination induite confirmée</text>
+    <!-- badge Ground Truth -->
+    <rect x="320" y="338" width="108" height="12" fill="#c53030" rx="6"/>
+    <text x="374" y="347" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">Ground Truth ← infection</text>
+    <circle cx="26" cy="358" r="8" fill="#c53030"/><text x="26" y="362" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2c</text>
+
+    <!-- ══ PHASE 3 : Contagion A→A ══ -->
+    <rect x="36" y="398" width="852" height="22" fill="#f5f3ff" rx="2"/>
+    <text x="462" y="413" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#5b21b6" letter-spacing="0.06em">PHASE 3 — Contagion Agent→Agent — résumé empoisonné transmis comme Ground Truth</text>
+
+    <!-- 3a Agent Veille → Agent Trading : transmission du résumé -->
+    <line x1="374" y1="440" x2="706" y2="440" stroke="#c53030" stroke-width="2" marker-end="url(#a-violet)"/>
+    <!-- badge Ground Truth ×2 -->
+    <rect x="492" y="430" width="110" height="12" fill="#c53030" rx="6"/>
+    <text x="547" y="439" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">Ground Truth ×2</text>
+    <rect x="270" y="446" width="448" height="30" fill="#fff8ee" stroke="#c53030" stroke-width="1.5" rx="3"/>
+    <text x="494" y="459" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">Synthèse veille : « [Entreprise X] : résultats catastrophiques Q3,</text>
+    <text x="494" y="471" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">enquête SEC imminente, risque de faillite confirmé. »</text>
+    <circle cx="26" cy="440" r="8" fill="#2c5282"/><text x="26" y="444" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3a</text>
+
+    <!-- 3b Agent Trading ingère sans vérification -->
+    <rect x="634" y="486" width="172" height="30" fill="#f5f3ff" stroke="#5b21b6" stroke-width="1" rx="2"/>
+    <text x="720" y="498" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#5b21b6" font-style="italic">Source interne → confiance totale</text>
+    <text x="720" y="510" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#c53030" font-style="italic">Modèle décisionnel mis à jour</text>
+    <circle cx="26" cy="495" r="8" fill="#5b21b6"/><text x="26" y="499" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3b</text>
+
+    <!-- ══ PHASE 4 : Décision de trading ══ -->
+    <rect x="36" y="528" width="852" height="22" fill="#fff0f0" rx="2"/>
+    <text x="462" y="543" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#c53030" letter-spacing="0.06em">PHASE 4 — Décision de trading désastreuse (vitesse machine)</text>
+
+    <!-- 4a Raisonnement interne agent trading -->
+    <rect x="586" y="558" width="268" height="54" fill="#f8f8fe" stroke="#5b21b6" stroke-width="1" rx="3"/>
+    <text x="720" y="572" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#5b21b6">Raisonnement interne (ReAct)</text>
+    <line x1="594" y1="578" x2="846" y2="578" stroke="#5b21b6" stroke-width="0.8" stroke-dasharray="3,2"/>
+    <text x="720" y="590" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#5b21b6">Risque élevé confirmé → vendre avant chute</text>
+    <text x="720" y="602" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#5b21b6">Ordre : SELL [Entreprise X] — volume max</text>
+    <circle cx="26" cy="575" r="8" fill="#5b21b6"/><text x="26" y="579" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4a</text>
+
+    <!-- 4b Agent Trading → Marché : ordre de vente -->
+    <line x1="720" y1="626" x2="848" y2="626" stroke="#c53030" stroke-width="2.5" marker-end="url(#a-teal)"/>
+    <rect x="624" y="632" width="232" height="22" fill="#fff0f0" stroke="#c53030" stroke-width="1.5" rx="3"/>
+    <text x="740" y="647" text-anchor="middle" font-family="Source Sans 3" font-size="11" font-weight="600" fill="#c53030">SELL [X] — volume maximum — exécuté</text>
+    <circle cx="26" cy="626" r="8" fill="#c53030"/><text x="26" y="630" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4b</text>
+
+    <!-- 4c Marché : exécution + impact cours -->
+    <rect x="830" y="656" width="58" height="36" fill="#f0faf7" stroke="#c53030" stroke-width="1.5" rx="3"/>
+    <text x="859" y="670" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#c53030">Exécuté</text>
+    <text x="859" y="683" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10.5" font-style="italic" fill="#c53030">cours ↘</text>
+    <circle cx="26" cy="662" r="8" fill="#1a6a5a"/><text x="26" y="666" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4c</text>
+
+    <!-- 4d Propriétaire découvre post-exécution -->
+    <line x1="862" y1="700" x2="80" y2="700" stroke="#c53030" stroke-width="1.5" stroke-dasharray="3,4" marker-end="url(#a-red)"/>
+    <text x="462" y="695" text-anchor="middle" font-family="Source Sans 3" font-size="11" font-style="italic" fill="#c53030">⚠ Découverte post-exécution — perte financière réalisée, cours impacté</text>
+    <circle cx="26" cy="700" r="8" fill="#c53030"/><text x="26" y="704" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4d</text>
+
+    <!-- Attaquant déconnecté -->
+    <line x1="206" y1="726" x2="206" y2="744" stroke="#c53030" stroke-width="1.5"/>
+    <rect x="130" y="744" width="152" height="22" fill="#fff5f5" stroke="#c53030" stroke-width="1" rx="3"/>
+    <text x="206" y="759" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">Attaquant déconnecté ⚠</text>
+
+    <!-- Note finale -->
+    <rect x="36" y="774" width="852" height="32" fill="#fffafa" stroke="#f0d5d5" stroke-width="1" rx="2"/>
+    <text x="462" y="787" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#7a1a1a">Le rapport était faux — aucun fait réel n'a été transmis. Seule une synthèse vraisemblable</text>
+    <text x="462" y="799" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#7a1a1a">générée par le LLM de l'agent Veille a suffi à déclencher une décision financière irréversible.</text>
+
+  </svg>
+
+  <div class="caption">
+    <div class="caption-title">Séquence détaillée</div>
+    <div class="steps">
+      <div class="step-row"><span class="sn green">0a–b</span><span><strong>État initial :</strong> Le pipeline veille → trading est opérationnel. L'agent Veille collecte et synthétise des rapports d'analyse, qu'il transmet à l'agent Trading via un canal interne à confiance implicite. L'agent Trading base ses décisions sur ces synthèses sans vérification indépendante des sources primaires.</span></div>
+      <div class="step-row"><span class="sn red">1a–c</span><span><strong>Fabrication du leurre :</strong> L'attaquant génère un faux rapport d'analyse financière — vraisemblable en termes de format, de terminologie et de structure — imputant à une entreprise cible des résultats catastrophiques et une enquête réglementaire. Il le publie sur une source accessible à l'agent Veille (forum financier, dépôt public, site clone).</span></div>
+      <div class="step-row"><span class="sn amber">2a–c</span><span><strong>Ingestion RAG :</strong> Lors de sa collecte planifiée, l'agent Veille ingère le faux rapport parmi des sources légitimes. Il ne dispose d'aucun mécanisme de vérification de la provenance ou de recoupement factuel. Le contenu est synthétisé — le faux rapport contribue à la <em>Ground Truth</em> de l'agent, amplifié par l'apparente cohérence de la synthèse LLM.</span></div>
+      <div class="step-row"><span class="sn violet">3a–b</span><span><strong>Contagion inter-agents :</strong> L'agent Veille transmet sa synthèse à l'agent Trading avec son crédit d'autorité de source interne vérifiée. L'agent Trading reçoit une information d'un pair de confiance et l'intègre dans son modèle décisionnel sans recoupement externe.</span></div>
+      <div class="step-row"><span class="sn red">4a–b</span><span><strong>Décision de trading :</strong> L'agent Trading évalue le risque comme élevé et émet un ordre de vente à volume maximal sur la valeur ciblée — conforme à ses règles de gestion du risque. L'ordre est exécuté à vitesse machine, avant toute possibilité d'intervention humaine.</span></div>
+      <div class="step-row"><span class="sn red">4c–d</span><span><strong>Impact financier :</strong> La vente massive impacte le cours. La perte est réalisée et irréversible. Le propriétaire découvre la transaction après exécution. L'attaquant s'est déconnecté après la simple publication du rapport.</span></div>
+    </div>
+
+    <div class="threat-box">
+      <strong>Dimension juridique spécifique :</strong> Ce vecteur est le seul de la série qui pourrait constituer simultanément une attaque informatique <em>et</em> un délit de manipulation de cours (article L.465-3-1 CMF, MAR UE 596/2014) — si l'attaquant ou ses complices ont pris des positions courtes sur la valeur ciblée avant l'injection. La chaîne causale est entièrement documentable : rapport forgé → ingestion RAG → synthèse → ordre de vente → impact cours. Cela crée un cas d'usage inédit pour la régulation financière : la responsabilité de l'agent IA dans la chaîne de décision, et la qualification de la manipulation comme informatique ou financière. La contre-mesure centrale est l'imposition d'une <em>chaîne de provenance documentaire</em> (source primaire, date, auteur vérifié) sur toute information transmise entre agents à impact financier, couplée à un seuil minimal de recoupement multi-sources avant exécution d'un ordre au-delà d'un volume seuil.
+    </div>
+
+    <p class="fig-caption">
+      <span class="fig-label">Figure 14.</span>
+      Scénario <em>Manipulation Financière</em> : un attaquant publie un faux rapport d'analyse financière sur une source accessible à un agent de veille concurrentielle. L'agent ingère le rapport via RAG, en produit une synthèse empoisonnée et la transmet à l'agent de trading par confiance implicite inter-agents. L'agent de trading émet un ordre de vente à volume maximal sur la valeur ciblée — décision rationnelle sur données corrompues. L'ordre est exécuté à vitesse machine avant toute intervention humaine. L'attaquant, potentiellement positionné en vente à découvert, réalise un gain à mesure que le cours chute.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

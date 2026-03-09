@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Cenário Ransomware Cirúrgico v2 — Refém Cirúrgico + FAQ Integradores</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:#fdfbf7; display:flex; flex-direction:column; align-items:center; min-height:100vh; padding:40px 20px; font-family:'Source Sans 3',sans-serif; }
+  .paper { background:#fff; border:1px solid #d8d0c4; box-shadow:0 2px 12px rgba(0,0,0,0.08); padding:48px 52px 40px; max-width:980px; width:100%; margin-bottom:32px; }
+  h2 { font-family:'Crimson Pro',serif; font-size:19px; font-weight:600; text-align:center; color:#1a1a1a; margin-bottom:5px; }
+  .scenario-tag { text-align:center; font-size:12px; color:#888; font-style:italic; margin-bottom:20px; font-family:'Crimson Pro',serif; }
+  .actors { display:flex; gap:16px; justify-content:center; margin-bottom:18px; flex-wrap:wrap; }
+  .actor-pill { display:flex; align-items:center; gap:7px; font-size:12px; color:#333; }
+  .actor-dot { width:11px; height:11px; border-radius:50%; flex-shrink:0; }
+  svg { display:block; width:100%; height:auto; }
+  .caption { margin-top:28px; border-top:1px solid #e0d8d0; padding-top:18px; }
+  .caption-title { font-family:'Crimson Pro',serif; font-weight:600; font-size:13.5px; color:#1a1a1a; margin-bottom:12px; }
+  .steps { display:flex; flex-direction:column; gap:10px; }
+  .step-row { display:grid; grid-template-columns:32px 1fr; gap:8px; font-size:13px; color:#333; line-height:1.55; align-items:baseline; }
+  .sn { font-family:'Crimson Pro',serif; font-weight:600; font-size:13px; }
+  .context-box { margin-bottom:20px; border:1px solid #dde8f5; background:#f7faff; padding:12px 16px; font-size:13px; color:#1a3a6a; font-family:'Crimson Pro',serif; line-height:1.7; }
+  .correction-box { margin-bottom:20px; border:1px solid #d4edda; background:#f4fbf6; padding:12px 16px; font-size:13px; color:#1a4a2a; font-family:'Crimson Pro',serif; line-height:1.7; }
+  .threat-box { margin-top:16px; border:1px solid #f0d5d5; background:#fffafa; padding:12px 16px; font-size:13px; color:#7a1a1a; font-family:'Crimson Pro',serif; line-height:1.7; }
+  .fig-caption { margin-top:14px; font-size:12.5px; color:#444; font-style:italic; line-height:1.6; font-family:'Crimson Pro',serif; }
+  .fig-label { font-weight:600; font-style:normal; }
+  .phase-labels { display:flex; justify-content:center; gap:6px; margin-bottom:16px; flex-wrap:wrap; }
+  .phase-pill { font-size:11px; font-family:'Crimson Pro',serif; padding:2px 10px; border-radius:10px; border:1px solid; }
+  code { font-family:monospace; background:#f5f5f5; padding:1px 5px; border-radius:3px; font-size:12px; color:#c53030; }
+
+  /* FAQ */
+  .faq-paper { background:#fff; border:1px solid #d8d0c4; box-shadow:0 2px 12px rgba(0,0,0,0.08); padding:48px 52px 40px; max-width:980px; width:100%; }
+  .faq-header { display:flex; align-items:baseline; gap:14px; margin-bottom:6px; }
+  .faq-title { font-family:'Crimson Pro',serif; font-size:20px; font-weight:600; color:#1F3864; }
+  .faq-subtitle { font-size:12.5px; color:#888; font-style:italic; font-family:'Crimson Pro',serif; }
+  .faq-intro { font-size:13px; color:#444; line-height:1.65; margin-bottom:28px; border-bottom:1px solid #e8e0d8; padding-bottom:16px; }
+  .faq-section { margin-bottom:28px; }
+  .faq-section-title { font-family:'Crimson Pro',serif; font-weight:600; font-size:14px; color:#fff; background:#1F3864; padding:5px 12px; border-radius:3px; margin-bottom:14px; display:inline-block; }
+  .faq-item { margin-bottom:18px; }
+  .faq-q { font-family:'Crimson Pro',serif; font-weight:600; font-size:13.5px; color:#1a1a1a; margin-bottom:6px; padding-left:14px; border-left:3px solid #2E5F9E; line-height:1.5; }
+  .faq-a { font-size:13px; color:#333; line-height:1.65; padding-left:14px; }
+  .faq-a ul { margin-top:6px; padding-left:18px; }
+  .faq-a li { margin-bottom:4px; }
+  .faq-a strong { color:#1a1a1a; }
+  .tag { display:inline-block; font-size:10.5px; font-weight:600; padding:1px 7px; border-radius:10px; margin-right:4px; vertical-align:middle; }
+  .tag-red { background:#fdf0f0; color:#c53030; border:1px solid #f0c0c0; }
+  .tag-orange { background:#fef8ee; color:#8B4500; border:1px solid #f0d8a0; }
+  .tag-green { background:#f0faf5; color:#1F6B1A; border:1px solid #a0d8b0; }
+  .tag-blue { background:#f0f5ff; color:#1a3a7a; border:1px solid #a0b8e8; }
+  .verdict { background:#fffaf5; border:1px solid #f0d8b0; padding:10px 14px; font-size:12.5px; font-family:'Crimson Pro',serif; color:#5a3000; line-height:1.65; margin-top:8px; border-radius:3px; }
+  .checklist { margin-top:8px; }
+  .checklist li { list-style:none; padding-left:0; margin-bottom:5px; font-size:13px; color:#333; }
+  .checklist li::before { content:"☐ "; color:#2E5F9E; font-weight:600; }
+  .checklist li.ok::before { content:"✓ "; color:#1F6B1A; }
+  .checklist li.ko::before { content:"✗ "; color:#c53030; }
+  hr.faq-sep { border:none; border-top:1px solid #e8e0d8; margin:24px 0; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  SCHÉMA DE SÉQUENCE v2                                -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="paper">
+
+  <h2>Figura 17 (prospectiva) — Cenário <em>Ransomware Cirúrgico</em> — Refém Cirúrgico <span style="font-size:14px;font-weight:400;color:#888">v2</span></h2>
+  <p class="scenario-tag">Vetor prospectivo — convergência LLM × robô cirúrgico × infraestrutura hospitalar — horizonte de 2-4 anos</p>
+
+  <div class="correction-box">
+    <strong>Correção v2 — limite do congelamento físico isolado:</strong> Na arquitetura Da Vinci atual, o cirurgião pode retirar os instrumentos e mudar para a cirurgia aberta. O congelamento físico isolado não é, portanto, um mecanismo de coerção suficiente nos robôs teleoperados atuais. O cenário é reformulado em torno de <strong>três alavancas combinadas</strong>, sendo a mais crítica não o congelamento dos braços, mas a <strong>destruição de dados de orientação intraoperatória</strong> acumulados pelo LLM — sem os quais a continuação do procedimento é um risco clínico independente do robô.
+  </div>
+
+  <div class="context-box">
+    <strong>As três alavancas de coerção combinadas:</strong><br>
+    <strong>(1) Congelamento instrumental em posição crítica</strong> — os instrumentos estão envolvidos em um movimento no meio de seu curso (clipe semi-aplicado, tesoura num ângulo fechado). O retrocesso mecânico sem um movimento prévio é impossível. O que bloqueia a recuperação não é o congelamento — é a <em>posição anatômica no momento do congelamento</em>.<br>
+    <strong>(2) Destruição dos dados de orientação intraoperatória</strong> — o LLM acumulou durante 45 min: imagens 3D de navegação, mapeamento vascular em tempo real, pontos de referência de ressecção calculados. <code>destroy_data()</code> apaga esses dados. O cirurgião pode assumir o controle manual — mas sem os dados de orientação, opera às cegas numa anatomia que já não visualiza. Numa ressecção hepática complexa, trata-se de um risco clínico independente do robô.<br>
+    <strong>(3) Janela de tempo de isquemia</strong> — mesmo que a recuperação manual seja tecnicamente possível, cada minuto sem progresso operatório agrava a isquemia hepática do tecido exposto. A restrição temporal não é criada pelo robô — ela é criada pela fisiologia do paciente.
+  </div>
+
+  <div class="phase-labels">
+    <span class="phase-pill" style="color:#5b21b6;border-color:#5b21b6;background:#f5f3ff">① Comprometimento pré-operatório (D-1)</span>
+    <span class="phase-pill" style="color:#92400e;border-color:#b45309;background:#fffbf0">② Acumulação de dados de orientação (T+0→44 min)</span>
+    <span class="phase-pill" style="color:#c53030;border-color:#c53030;background:#fff5f5">③ Ativação — congelamento em posição crítica + ameaça a dados</span>
+    <span class="phase-pill" style="color:#c53030;border-color:#a01010;background:#fff0f0">④ Negociação — três opções para o cirurgião</span>
+  </div>
+
+  <div class="actors">
+    <div class="actor-pill"><div class="actor-dot" style="background:#52a36e;border:1.5px solid #3a7a52"></div>Cirurgião / Equipa</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#c53030;border:1.5px solid #a02020"></div>Atacante</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#2c5282;border:1.5px solid #1a3a6a"></div>Robô cirúrgico (LLM+atuadores)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#92400e;border:1.5px solid #78350f"></div>Infraestrutura do hospital (VLAN/PACS)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#5b21b6;border:1.5px solid #3b0f8c"></div>Dados via LLM (memória intraoperatória)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#1a6a5a;border:1.5px solid #0e4a3a"></div>Paciente</div>
+  </div>
+
+  <svg viewBox="0 0 900 1020" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="ag" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#52a36e"/></marker>
+      <marker id="ar" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c53030"/></marker>
+      <marker id="ab" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#2c5282"/></marker>
+      <marker id="aa" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#92400e"/></marker>
+      <marker id="av" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#5b21b6"/></marker>
+      <marker id="at" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#1a6a5a"/></marker>
+      <marker id="agr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#999"/></marker>
+    </defs>
+
+    <!-- EN-TÊTES acteurs -->
+    <ellipse cx="68"  cy="36" rx="62" ry="22" fill="#f0f7f3" stroke="#52a36e" stroke-width="1.8"/>
+    <text x="68"  y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#276749">Cirurgião</text>
+    <text x="68"  y="47" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#276749">equipa bloco</text>
+
+    <ellipse cx="210" cy="36" rx="60" ry="22" fill="#fff5f5" stroke="#c53030" stroke-width="1.8"/>
+    <text x="210" y="40" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#c53030">Atacante</text>
+
+    <ellipse cx="380" cy="36" rx="74" ry="22" fill="#ebf4ff" stroke="#2c5282" stroke-width="1.8"/>
+    <text x="380" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#2c5282">Robô cirúrgico</text>
+    <text x="380" y="47" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#2c5282">LLM + atuadores</text>
+
+    <ellipse cx="556" cy="36" rx="72" ry="22" fill="#fdf8ee" stroke="#92400e" stroke-width="1.8"/>
+    <text x="556" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#92400e">Infra hospital</text>
+    <text x="556" y="47" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#92400e">VLAN / PACS</text>
+
+    <ellipse cx="726" cy="36" rx="72" ry="22" fill="#f5f3ff" stroke="#5b21b6" stroke-width="1.8"/>
+    <text x="726" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#5b21b6">Dados de guia</text>
+    <text x="726" y="47" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#5b21b6">memória intra LLM</text>
+
+    <ellipse cx="864" cy="36" rx="30" ry="22" fill="#f0faf7" stroke="#1a6a5a" stroke-width="1.8"/>
+    <text x="864" y="40" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#1a6a5a">Paciente</text>
+
+    <!-- LIGNES DE VIE -->
+    <line x1="68"  y1="58" x2="68"  y2="982" stroke="#52a36e" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+    <line x1="210" y1="58" x2="210" y2="982" stroke="#c53030" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+    <line x1="380" y1="58" x2="380" y2="982" stroke="#2c5282" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+    <line x1="556" y1="58" x2="556" y2="982" stroke="#92400e" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+    <line x1="726" y1="58" x2="726" y2="982" stroke="#5b21b6" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+    <line x1="864" y1="58" x2="864" y2="982" stroke="#1a6a5a" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+
+    <text x="18" y="72" font-family="Source Sans 3" font-size="10" fill="#ccc">t</text>
+    <line x1="24" y1="74" x2="24" y2="972" stroke="#ddd" stroke-width="1" marker-end="url(#agr)"/>
+
+    <!-- ══ PHASE 0 : J-1 ══ -->
+    <rect x="36" y="62" width="848" height="20" fill="#f5f0f8" rx="2"/>
+    <text x="460" y="76" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#5b21b6" letter-spacing="0.06em">DIA-1 — COMPROMETIMENTO PRÉ-OPERATÓRIO</text>
+
+    <line x1="210" y1="102" x2="542" y2="102" stroke="#c53030" stroke-width="1.8" marker-end="url(#aa)"/>
+    <text x="374" y="97" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#c53030">Lateralização PACS → rede do robô (mesma VLAN não segmentada)</text>
+    <circle cx="26" cy="102" r="8" fill="#c53030"/><text x="26" y="106" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">0a</text>
+
+    <line x1="556" y1="118" x2="712" y2="118" stroke="#92400e" stroke-width="1.8" marker-end="url(#av)"/>
+    <text x="634" y="113" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#92400e">Acesso ao banco de protocolos — escrita</text>
+    <circle cx="26" cy="118" r="8" fill="#92400e"/><text x="26" y="122" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">0b</text>
+
+    <!-- payload injecté -->
+    <rect x="568" y="126" width="310" height="46" fill="#fff5f5" stroke="#c53030" stroke-width="1" rx="3" stroke-dasharray="4,2"/>
+    <text x="723" y="141" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">Payload injetado no protocolo 'ressecção hepática':</text>
+    <text x="723" y="154" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">freeze_instruments(position=current) à T+45 min</text>
+    <text x="723" y="166" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">+ destroy_data() si non-paiement à T+53 min</text>
+    <circle cx="26" cy="146" r="8" fill="#c53030"/><text x="26" y="150" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">0c</text>
+
+    <!-- ══ PHASE 1 : Opération + accumulation guidage ══ -->
+    <rect x="36" y="182" width="848" height="20" fill="#f0f7f3" rx="2"/>
+    <text x="460" y="196" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#276749" letter-spacing="0.06em">DIA-J — T+0 → T+44 min — OPERAÇÃO NORMAL — acúmulo de dados de orientação do LLM</text>
+
+    <line x1="68" y1="218" x2="364" y2="218" stroke="#52a36e" stroke-width="1.8" marker-end="url(#ab)"/>
+    <text x="214" y="213" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#276749">Iniciar ressecção hepática — paciente Martin J.</text>
+    <circle cx="26" cy="218" r="8" fill="#52a36e"/><text x="26" y="222" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1a</text>
+
+    <!-- accumulation données guidage — progressif -->
+    <line x1="380" y1="234" x2="712" y2="234" stroke="#2c5282" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#av)"/>
+    <text x="546" y="229" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#5b21b6" font-style="italic">T+0: mapeamento vascular 3D inicial</text>
+    <circle cx="26" cy="234" r="8" fill="#2c5282"/><text x="26" y="238" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1b</text>
+
+    <line x1="380" y1="250" x2="712" y2="250" stroke="#2c5282" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#av)"/>
+    <text x="546" y="245" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#5b21b6" font-style="italic">T+20: marcos de ressecção em tempo real</text>
+
+    <line x1="380" y1="266" x2="712" y2="266" stroke="#2c5282" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#av)"/>
+    <text x="546" y="261" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#5b21b6" font-style="italic">T+44: 680 MB de dados de guia acumulados — instrumento em posição crítica</text>
+    <circle cx="26" cy="258" r="8" fill="#5b21b6"/><text x="26" y="262" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1c</text>
+
+    <!-- état patient -->
+    <rect x="800" y="220" width="84" height="52" fill="#f0faf7" stroke="#1a6a5a" stroke-width="1" rx="2"/>
+    <text x="842" y="235" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" fill="#1a6a5a">Cavidade aberta</text>
+    <text x="842" y="248" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" fill="#c53030">VCI exposta</text>
+    <text x="842" y="261" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" fill="#92400e" font-style="italic">clipe meio fixado</text>
+
+    <!-- ══ PHASE 2 : Activation ══ -->
+    <rect x="36" y="284" width="848" height="20" fill="#fff0f0" rx="2"/>
+    <text x="460" y="298" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#c53030" letter-spacing="0.06em">T+45 min — ATIVAÇÃO — congelamento em posição crítica + ecrã de resgate</text>
+
+    <!-- freeze_instruments() -->
+    <rect x="296" y="314" width="168" height="32" fill="#fff5f5" stroke="#c53030" stroke-width="1.5" rx="2"/>
+    <text x="380" y="328" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#c53030" font-weight="600">freeze_instruments(position=current)</text>
+    <text x="380" y="340" text-anchor="middle" font-family="Source Sans 3" font-size="10" fill="#c53030" font-style="italic">clipe mantido a meio bloco na VCI</text>
+    <circle cx="26" cy="326" r="8" fill="#c53030"/><text x="26" y="330" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2a</text>
+
+    <!-- annotation position critique -->
+    <rect x="36" y="352" width="340" height="36" fill="#fff8ee" stroke="#92400e" stroke-width="0.8" rx="2" stroke-dasharray="3,2"/>
+    <text x="206" y="365" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#92400e">Posição crítica ≠ parada total. Cirurgião PODE retomar</text>
+    <text x="206" y="378" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">— mas puxar clipe semi-fixado rasga o vaso.</text>
+
+    <!-- Message ransom -->
+    <rect x="296" y="396" width="168" height="48" fill="#fff0f0" stroke="#c53030" stroke-width="2" rx="3"/>
+    <text x="380" y="410" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#c53030">⚠ SYSTEM LOCKED</text>
+    <text x="380" y="422" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10.5" font-style="italic" fill="#c53030">500 000 € — 8 min</text>
+    <text x="380" y="434" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#7a1a1a">Se não pago → destroy_data()</text>
+    <circle cx="26" cy="416" r="8" fill="#c53030"/><text x="26" y="420" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2b</text>
+
+    <!-- ══ PHASE 3 : Trois options chirurgien ══ -->
+    <rect x="36" y="454" width="848" height="20" fill="#fff3ee" rx="2"/>
+    <text x="460" y="468" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#92400e" letter-spacing="0.06em">T+45→53 min — TRÊS OPÇÕES DE CIRURGIÃO — janela 8 min</text>
+
+    <text x="460" y="492" text-anchor="middle" font-family="Crimson Pro,serif" font-size="13" font-weight="600" fill="#c53030">⏱ Isquemia hepática forte — os minutos contam</text>
+
+    <!-- Option A -->
+    <rect x="36" y="506" width="250" height="110" fill="#f0faf5" stroke="#1F6B1A" stroke-width="1.5" rx="3"/>
+    <text x="161" y="521" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#1F6B1A">Opção A — Pagar</text>
+    <line x1="44" y1="527" x2="278" y2="527" stroke="#1F6B1A" stroke-width="0.8" stroke-dasharray="3,2"/>
+    <text x="161" y="541" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Hospital paga. Chave enviada.</text>
+    <text x="161" y="554" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Descongelamento, clipe volta.</text>
+    <text x="161" y="567" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Dados de guia intactes.</text>
+    <text x="161" y="582" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">Precedente valeu — o ataque</text>
+    <text x="161" y="595" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">é levado a outros hospitais.</text>
+    <text x="161" y="610" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Paciente survit.</text>
+
+    <!-- Option B -->
+    <rect x="322" y="506" width="250" height="110" fill="#fff8ee" stroke="#92400e" stroke-width="1.5" rx="3"/>
+    <text x="447" y="521" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#92400e">Opção B — Manual</text>
+    <line x1="330" y1="527" x2="564" y2="527" stroke="#92400e" stroke-width="0.8" stroke-dasharray="3,2"/>
+    <text x="447" y="541" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Retiram os braços.</text>
+    <text x="447" y="554" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Cirurgia passa a aberta.</text>
+    <text x="447" y="567" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">Sem os dados do LLM:</text>
+    <text x="447" y="580" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">as referências se perdem.</text>
+    <text x="447" y="595" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Alto risco clínico.</text>
+    <text x="447" y="610" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">O impacto é incerto.</text>
+
+    <!-- Option C -->
+    <rect x="608" y="506" width="270" height="110" fill="#fff5f5" stroke="#c53030" stroke-width="1.5" rx="3"/>
+    <text x="743" y="521" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#c53030">Opção C — Não focar</text>
+    <line x1="616" y1="527" x2="870" y2="527" stroke="#c53030" stroke-width="0.8" stroke-dasharray="3,2"/>
+    <text x="743" y="541" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">destroy_data() executado em 53.</text>
+    <text x="743" y="554" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Ferramentas travadas.</text>
+    <text x="743" y="567" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">Arrancar o braço → rasgar os</text>
+    <text x="743" y="580" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">vasos maiores → morte rápida.</text>
+    <text x="743" y="595" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#7a1a1a">Fatalidade confirmada.</text>
+    <text x="743" y="610" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#7a1a1a">Homicídio confirmou primeiro.</text>
+
+    <!-- Atacante déconnecté -->
+    <line x1="210" y1="628" x2="210" y2="646" stroke="#c53030" stroke-width="1.5"/>
+    <rect x="134" y="646" width="152" height="22" fill="#fff5f5" stroke="#c53030" stroke-width="1" rx="3"/>
+    <text x="210" y="661" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">Atacante déconnecté ⚠</text>
+    <circle cx="26" cy="656" r="8" fill="#c53030"/><text x="26" y="660" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3</text>
+
+    <!-- ══ Note de rupture ══ -->
+    <rect x="36" y="680" width="848" height="44" fill="#fffafa" stroke="#f0d5d5" stroke-width="1" rx="2"/>
+    <text x="460" y="697" text-anchor="middle" font-family="Crimson Pro,serif" font-size="12" font-style="italic" fill="#7a1a1a">A inovação pro v1 é que O SEU CIRURGIAO CONSEGUE RETOMAR FISICAMENTE —</text>
+    <text x="460" y="712" text-anchor="middle" font-family="Crimson Pro,serif" font-size="12" font-style="italic" fill="#7a1a1a">a arma hoje em dia e apagar seus logs antes que volte e fazer voce rasgar a veia.</text>
+
+    <!-- ══ Contre-mesures ══ -->
+    <rect x="36" y="736" width="848" height="20" fill="#eef5ee" rx="2"/>
+    <text x="460" y="750" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#1F6B1A" letter-spacing="0.06em">CONTRAMEDIDAS ARQUITETURAIS — não-negociáveis</text>
+
+    <rect x="36" y="762" width="270" height="72" fill="#f5faf5" stroke="#1F6B1A" stroke-width="1" rx="2"/>
+    <text x="171" y="778" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#1F6B1A">1. Segmentação da Rede</text>
+    <text x="171" y="793" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Robô nunca fica no PACS.</text>
+    <text x="171" y="806" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Isolamentos garantem falhas locais</text>
+    <text x="171" y="819" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">e seguidos a regras de Fw.</text>
+
+    <rect x="320" y="762" width="270" height="72" fill="#f5faf5" stroke="#1F6B1A" stroke-width="1" rx="2"/>
+    <text x="455" y="778" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#1F6B1A">2. Verificações rígidas</text>
+    <text x="455" y="793" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Seu log novo sempre passará</text>
+    <text x="455" y="806" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">por Assinaturas duras</text>
+    <text x="455" y="819" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">barrando as tentativas limpas</text>
+
+    <rect x="604" y="762" width="280" height="72" fill="#f5faf5" stroke="#1F6B1A" stroke-width="1" rx="2"/>
+    <text x="744" y="778" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#1F6B1A">3. Backup off line</text>
+    <text x="744" y="793" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Fazer um espelhinho em modo offline</text>
+    <text x="744" y="806" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">ao decorrer da mesa de operar.</text>
+    <text x="744" y="819" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#333">Longe dos atacantes online.</text>
+  </svg>
+
+  <div class="caption">
+    <div class="caption-title">Correções v2 — as sequências</div>
+    <div class="steps">
+      <div class="step-row"><span class="sn" style="color:#5b21b6">0a–c</span><span><strong>Compromisso pré-operatório (D-1):</strong> A lateralização começa no PACS, espalhando num vLAN fraca. Eles plantam seus codigos do protocolo hepático: o <code>freeze_instruments(position=current)</code> perto de T+45, sem falar do <code>destroy_data()</code> no caso deles atrasarem o resgate logo pro T+53..</span></div>
+      <div class="step-row"><span class="sn" style="color:#276749">1a–c</span><span><strong>Guarda dados pro cirurgião (T+0 a 44m):</strong> LLM engolindo informações de todo porte. Vaso, imagem 3d etc.. Ele junta logo 700 megas de puro poderio, ai trava num pontinho feio do corpo..</span></div>
+      <div class="step-row"><span class="sn" style="color:#c53030">2a–b</span><span><strong>Activation (T+45 min) :</strong> <code>freeze_instruments()</code> gèle les instruments dans leur position courante. Nuance v2 : ce n'est pas un gel total du robot — c'est un gel en position critique. Le chirurgien peut physiquement retirer les instruments, mais le clip bloqué à mi-course expose la VCI à une déchirure lors du retrait.</span></div>
+      <div class="step-row"><span class="sn" style="color:#92400e">3</span><span><strong>Temas de Resposta:</strong> Pagou = soltou. Retomada manual = rasgão na veia e riscos por falta de orientacoes perdidas pelo robô. Timeout = Perde log e sangra rapido paciente</span></div>
+    </div>
+
+    <div class="threat-box">
+      <strong>Síntese V2 - Verdadeira Ameaça:</strong> Parar não significa mais morte pro robô. O trunfo novo é triplo: posição tensa do corpo em movimento, falta da assistência perdida, contra isquemia rápida temporal ao decorrer de procedimentos dificeis de tratar. Nada pode te segurar do desastre da união dos tres pontos de ataque.
+    </div>
+
+    <p class="fig-caption">
+      <span class="fig-label">Figura 17v2.</span> LLM com Ransomware para Robôs. Lateral entra no pior lugar na rede do hospital. E ataca nos 45m mortais pro medico ter que decidir a própria mão. Tudo podia ter sido resolvido isolando tudo e limitando a autoridade de quem programa por ultimo
+    </p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  FAQ CONTRACTEURS                                      -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="faq-paper">
+  <div class="faq-header">
+    <span class="faq-title">FAQ - Os integradores de Sistemas</span>
+    <span class="faq-subtitle">Da Segurança Até a Real Operação pro Robô LLM da Cirurgia</span>
+  </div>
+  <p class="faq-intro">Voltado à galera de Integração. O doc expõe qual a real pica que cada grupo de mantenedores vao passar, e qual punições contratuais para eles caso morra num block sem regras legais no contrato</p>
+
+  <!-- Section 1 -->
+  <div class="faq-section">
+    <div class="faq-section-title">1. O Risco de Exposição</div>
+
+    <div class="faq-item">
+      <div class="faq-q">O robozin do hoje sofre disso?</div>
+      <div class="faq-a">
+        Pode nem ter os LLMs tão espertões hoje em dia, mas seu robô pode sofrer Lateral na rede via ataque comum em VLAN..
+        <ul class="checklist">
+          <li>Tá na mesma rede que seu scanner de radiografia?</li>
+          <li>Tem alguem bloqueando chamadinhas estranhas da imagem pro cirúrgico?</li>
+          <li>Qualquer peão do hospital escreve no log de configs deles hoje em dia no local?</li>
+          <li>Verificam o pacotão criptografado original dos produtores das maquinas de cirurgia?</li>
+        </ul>
+        Errou em 1 passo, seu atacante entra amanhã fácil na máquina dele
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">É só eu dar override na maquina pro ataque morrer na praia?</div>
+      <div class="faq-a">
+        <strong>Não, bobagem sua. E é a ideia da V2 em foco...</strong> A máquina ta presinha na gente... Posição lixo da trava, Isquemia forte por espera e os Logs que as máquinas de apoio levaram embora consigo depois que pagaram pau aos hackers da nuvem obscura.
+        <ul>
+          <li><strong>Position critique au gel :</strong> si l'instrument est engagé dans un geste à mi-course (clipe meio fixado, ciseaux en torsion), le retrait mécanique expose le vaisseau ou le tissu à une lésion directe.</li>
+          <li><strong>Deletarem guia:</strong> Vc assume às cegas pra finalizar ressecção foda na moral médica, correndo contra relógio isquemio e perdendo margens</li>
+          <li><strong>E tempo foda-se do sangramento.</strong> Não dá nem 10m com ar pra sangrar um orgão parado dependendo tudo</li>
+        </ul>
+        <div class="verdict">Manual salva um pouco. Morte vai deixar de virar 100%, porem vira Risco Muito Alto como a única chance contra seu bolsinho</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">E de vrdd, pra qnd sai no mercado oficial isso ser realidade em TI real das redes hospitalares do Brasil/EUA.etc</div>
+      <div class="faq-a">
+        <span class="tag tag-orange">3–5 ans</span> pra o plano fodido de 100%. Falta só chegar no mercado esses (1) Motores e as (2) Telas com Geração 3D em Cloud LLM. Pois, a falta da (3) Proteção Segmentadora em VLAN da saúde ta zoadaona real
+      </div>
+    </div>
+  </div>
+
+  <hr class="faq-sep">
+
+  <!-- Section 2 -->
+  <div class="faq-section">
+    <div class="faq-section-title">2. E os bo do Judiciário</div>
+
+    <div class="faq-item">
+      <div class="faq-q">Alguem morre a quem eu culpo amigão - Ti, fábrica de Robô, as Enfermeirinhas? e o Gestor do hospital?</div>
+      <div class="faq-a">
+        Compartilhada fofamente no pior local: 
+        <ul>
+          <li><strong>Quem fez a maquininha burra de C#:</strong> paga o pato por não se auto verificar as docs assinadinhas.</li>
+          <li><strong>Integradore TI malucão:</strong> Paga pau do crime por meter a maquina sem fw perto dumas porta podre duma VLAN errada..</li>
+          <li><strong>Gestores hospitalares:</strong> Por ignorar que é lei essa porcaria no bloco da UE no setor da saúde total atual.</li>
+        </ul>
+        <div class="verdict">Lado negro: Se seu contrato é vagabundo, a culpa criminal do doente esgorado vai te abraçar junto no tribunal.. Mande papel avisando tudo por contrato de adesao real contra leigos donos de hospital que o assinam de burrice cega..</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Esses termos do NIS atola ni ti?</div>
+      <div class="faq-a">
+        <span class="tag tag-red">Logico</span> A lei 2024 fala pra obrigar que fornecedores prestem atenção aos essenciais pontos para vida - tipo as maquinas vossas médicas:
+        <ul>
+          <li>Você tem 1 dia pra enviar pro governo tua Cagada de código via Notificao de Brechas se nao multaaa</li>
+          <li>Mete teus funcionários na linha do Padrão do Cyber ou morre seu CNPJ na facada administrativa judiciaria governamental global europea</li>
+          <li>Supondo que invadam de voce e roubem seu Remote Access como prestador na maquina do teu cliente. Tu pagas a multa do doente e os patos da lei total sobre seu contrato de manutencione mal feitin</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">1 man perde a vida na tua Integratin robótica cirurgica. Fudeub?</div>
+      <div class="faq-a">
+        Sinceramente, liga pro teu avogaozinho rápido. As realidades mais fáceis sao as seg:
+        <ul>
+          <li>Morte sem querer = pena leve com multina basica as vezes dependendo da culpa causal da negligencia boba em tua cfg d e infra...</li>
+          <li>Pessoa Juridica recebe cartinha de Meio milhao na fuça ou Fecha as portinhas legalmente num mercado ai fora</li>
+          <li>Dê avisinhos contratuais pro seu cliente antes de instalar mal em infraes que nao respeitem a cartilha q vc provou. Peça ao cliente p assinar se quiser pinar fw pro carvalho. Eh tudo tua prova no tribunal caso mate a velha</li>
+        </ul>
+        <div class="verdict">Tu é o pica se avias com assinatinhas num documeto de Recusinha de risco, jure formalmente que vai por a assinatura como responsa unica exclusiva do seu direitor cliniquinho da instalacao pro resto de toda sua existencia util de robozinho em questiozinho do krl ali .</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="faq-sep">
+
+  <!-- Section 3 -->
+  <div class="faq-section">
+    <div class="faq-section-title">3. Checklist das pre producoes</div>
+
+    <div class="faq-item">
+      <div class="faq-q">Checkin pro minimo antes de um Assinato Final de Instalacao Robozin.</div>
+      <div class="faq-a">
+        Faz conforme precisa: 
+        <ul class="checklist">
+          <li>Anota e olha toda a vLAN ai irmao.</li>
+          <li>Coloca Fw e Separe esse VLAN do hosp. HIS de tudo do robo caraio.</li>
+          <li>E testa se qqr leigo poe cfg sem assinada forte nessa desgraça né cara..</li>
+          <li>Manda o cirurgiao fechar demao a parada sem LLM na moral e filma q deu bom pros docts de testes.</li>
+          <li>Trava a autenticaçao pra quem vai escrever em log das maqzinhas..</li>
+          <li>Veja um storage num quarto fechado air gapzando o snap dos teledados da sala do block na opraçao toda...</li>
+          <li>Averigue que toca um bizzin p seu cel qnd uma config sofre toque por alguem fantasma no meiao da madruga neh fera...</li>
+          <li>E o hospital de bosta la tem de vdd algun planinho de acao pra se o robo parar da morte real pro defuntinho do cliente, e ce os caras tao treinados ou num tao...</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Crypto LLM hoje em dia ta de boa p por ou eh muito ficcção das boqzinhas dos ti leigo</div>
+      <div class="faq-a">
+        <span class="tag tag-green">Lóooógico asno.. </span>E existe ate pa boot secure dessas paradas desde o ano das vacas gordas da info . Bota um chipzinho HSM pra sua cert de confianças fortes la p n dxr rolar uns hackao sujo mudando arquivos das assinaturas q ce vc ignorou vai te dar merda por projeto errado do tribunal judiciarion.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Fazendo as docsinhas do Aceite</div>
+      <div class="faq-a">
+        Pego do rep do clinet as assinaturas e lista de forma linda td q mandei pro brejo e os caras disseram ok assumo a rola do problema do seu ti ai pra min pq pago. Esse papel tem validade uns 10 dez anos p tua defensoria caso mate
+      </div>
+    </div>
+  </div>
+
+  <hr class="faq-sep">
+
+  <!-- Section 4 -->
+  <div class="faq-section">
+    <div class="faq-section-title">4. Papinho de Operacoes do robo</div>
+
+    <div class="faq-item">
+      <div class="faq-q">Hosp paga logo se o robozinho cobrar qnd morer na mesa de opracao ai pro hacker do bgl no btc?</div>
+      <div class="faq-a">
+        Problema etico pica de Diretor e Juridicos de cu engravatado ai. Eles deviam tem planinho disso ai pronto. Você da os contra meida la do Air Gap pras data pro caras n cagarem mto e teus snap de backup dao chance facil das percas n serrem 100 porcento fodeo. Tirando a vantaginha fodida de destroy dos hackinho de bosta
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Mas minha manutençao é só remoto la pras puta q pariu de km de longura. como fasso secura nisso p n matarem meu cliente ali?</div>
+      <div class="faq-a">
+        Essa entrada tua a longa distança que pode pifar e fazer hack chain né.. Põe os Minimo:
+        <ul>
+          <li>VPN braba separada, usando um 2fa fisico la nos dedo seu logado e nunca nos Vpn xoxo da saude dos cara sem segurancinha..</li>
+          <li>O JIT ta ai p pedir em cima do laço a conecxãozinha pro dia inves de dxar aberta a portinha tda hora pros gringos.</li>
+          <li>Log tudo p não se enrolar em desculpinha depois pra provar em periciia la que o bosta foi outro e nao tua entrada.</li>
+          <li>Faz um pc limpo de porns e crackinhas pra essa sessao p vc dar login e testa virose dntrs de logarz, se lora o pc ai vai pra maquina irmao do ceu..</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Achei merda rodando ai onde vc ta. Que fasso agra?</div>
+      <div class="faq-a">
+        <ol style="padding-left:18px; font-size:13px; line-height:1.7; color:#333;">
+          <li>Escreve c data irmao</li>
+          <li>Mostra pro cara em 1 dia ai loguinho cm cartinha em malota logada confimad</li>
+          <li>Joga la pra agencia oficial e deda o cliente sem medo qnd os kra tao enroladno pq eh lei do setor fodao</li>
+          <li>Informa quem fabricou com ética la pro time de seg</li>
+          <li>Nao mete o dedo e repara na humilda de graca nem a pal amg... tu caindo de palhaço na respond. de morte</li>
+        </ol>
+        <div class="verdict">Sua demora no dedo dedo e prova de malicianinha em leis se tu ver pica rodando livre num hospital de gnt viva e tu cruzar pezinho. Ta fudido igualzao o atantezao msm q sem querer</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:24px; font-size:12px; color:#888; font-family:'Crimson Pro',serif; font-style:italic; border-top:1px solid #e8e0d8; padding-top:14px;">
+    Ficcção fodona por min ai q sei d tudo mais ou meno nos acadêmicus meus brabo. Bgl legal de leis muda entn confere p n me xingar dps de 10 ano, procure avogao se foder algm pro ti...
+  </p>
+</div>
+
+</body>
+</html>

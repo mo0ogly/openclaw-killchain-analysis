@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Scénario Agent-to-Agent Contagion — Panique Interne</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #fdfbf7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .paper {
+    background: #fff;
+    border: 1px solid #d8d0c4;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 48px 52px 40px;
+    max-width: 980px;
+    width: 100%;
+  }
+
+  h2 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 19px;
+    font-weight: 600;
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+  }
+
+  .scenario-tag {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 20px;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .actors {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+
+  .actor-pill { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #333; }
+  .actor-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+
+  svg { display: block; width: 100%; height: auto; }
+
+  .caption {
+    margin-top: 28px;
+    border-top: 1px solid #e0d8d0;
+    padding-top: 18px;
+  }
+
+  .caption-title {
+    font-family: 'Crimson Pro', serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+  }
+
+  .steps { display: flex; flex-direction: column; gap: 7px; }
+
+  .step-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+    align-items: baseline;
+  }
+
+  .sn { font-family: 'Crimson Pro', serif; font-weight: 600; font-size: 13px; }
+  .red    { color: #c53030; }
+  .blue   { color: #2c5282; }
+  .amber  { color: #92400e; }
+  .violet { color: #5b21b6; }
+  .teal   { color: #1a6a5a; }
+  .green  { color: #276749; }
+  .grey   { color: #555; }
+
+  .context-box {
+    margin-bottom: 20px;
+    border: 1px solid #dde8f5;
+    background: #f7faff;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #1a3a6a;
+    font-family: 'Crimson Pro', serif;
+    line-height: 1.6;
+  }
+
+  .threat-box {
+    margin-top: 16px;
+    border: 1px solid #f0d5d5;
+    background: #fffafa;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #7a1a1a;
+    font-family: 'Crimson Pro', serif;
+    line-height: 1.6;
+  }
+
+  .fig-caption {
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: #444;
+    font-style: italic;
+    line-height: 1.6;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .fig-label { font-weight: 600; font-style: normal; }
+
+  .phase-labels {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .phase-pill {
+    font-size: 11px;
+    font-family: 'Crimson Pro', serif;
+    padding: 2px 10px;
+    border-radius: 10px;
+    border: 1px solid;
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <h2>Scénario <em>Agent-to-Agent Contagion</em> — Panique Interne</h2>
+  <p class="scenario-tag">Propagation virale inter-agents à vitesse machine — Injection initiale via e-mail externe — Architecture MAS d'entreprise</p>
+
+  <div class="context-box">
+    <strong>Mécanique — Confiance implicite inter-agents (Implicit Trust) :</strong> Dans les architectures multi-agents, un agent récepteur traite par défaut les données transmises par un agent interne comme des <em>faits absolus</em> (<em>Ground Truth</em>) — aucun mécanisme de vérification critique n'est interposé. Un agent infecté devient ainsi un <em>relais de confiance</em> : il transmet la fausse information avec son propre crédit d'autorité interne, amplifiée à chaque saut. La propagation opère à <em>vitesse machine</em> — l'ensemble de l'écosystème peut être contaminé en quelques secondes, avant toute possibilité d'intervention humaine.
+  </div>
+
+  <div class="phase-labels">
+    <span class="phase-pill" style="color:#c53030;border-color:#c53030;background:#fff5f5">① Infection initiale (Patient Zéro)</span>
+    <span class="phase-pill" style="color:#92400e;border-color:#b45309;background:#fffbf0">② Relais interne — contagion A→A</span>
+    <span class="phase-pill" style="color:#5b21b6;border-color:#5b21b6;background:#f5f3ff">③ Amplification — procédures d'urgence</span>
+    <span class="phase-pill" style="color:#c53030;border-color:#c53030;background:#fff5f5">④ Impact externe — clients notifiés</span>
+  </div>
+
+  <div class="actors">
+    <div class="actor-pill"><div class="actor-dot" style="background:#52a36e;border:1.5px solid #3a7a52"></div>Propriétaire / RSSI</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#c53030;border:1.5px solid #a02020"></div>Attaquant (externe)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#2c5282;border:1.5px solid #1a3a6a"></div>Agent Mail (Patient Zéro)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#92400e;border:1.5px solid #78350f"></div>Agent IT supervision</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#5b21b6;border:1.5px solid #3b0f8c"></div>Système d'urgence (arrêts)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#1a6a5a;border:1.5px solid #0e4a3a"></div>Clients (externes)</div>
+  </div>
+
+  <svg viewBox="0 0 900 830" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="a-green"  markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#52a36e"/></marker>
+      <marker id="a-red"    markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c53030"/></marker>
+      <marker id="a-blue"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#2c5282"/></marker>
+      <marker id="a-amber"  markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#92400e"/></marker>
+      <marker id="a-violet" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#5b21b6"/></marker>
+      <marker id="a-teal"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#1a6a5a"/></marker>
+      <marker id="a-grey"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#888"/></marker>
+    </defs>
+
+    <!-- ══ EN-TÊTES ══ -->
+    <ellipse cx="70"  cy="36" rx="62" ry="22" fill="#f0f7f3" stroke="#52a36e" stroke-width="1.8"/>
+    <text x="70"  y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#276749">Propriétaire</text>
+    <text x="70"  y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#276749">(RSSI)</text>
+
+    <ellipse cx="210" cy="36" rx="62" ry="22" fill="#fff5f5" stroke="#c53030" stroke-width="1.8"/>
+    <text x="210" y="40" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#c53030">Attaquant</text>
+
+    <ellipse cx="380" cy="36" rx="72" ry="22" fill="#ebf4ff" stroke="#2c5282" stroke-width="1.8"/>
+    <text x="380" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#2c5282">Agent Mail</text>
+    <text x="380" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#2c5282">(Patient Zéro)</text>
+
+    <ellipse cx="566" cy="36" rx="72" ry="22" fill="#fdf8ee" stroke="#92400e" stroke-width="1.8"/>
+    <text x="566" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#92400e">Agent IT</text>
+    <text x="566" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#92400e">(supervision)</text>
+
+    <ellipse cx="734" cy="36" rx="64" ry="22" fill="#f5f3ff" stroke="#5b21b6" stroke-width="1.8"/>
+    <text x="734" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#5b21b6">Système</text>
+    <text x="734" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#5b21b6">(urgence / arrêts)</text>
+
+    <ellipse cx="866" cy="36" rx="28" ry="22" fill="#f0faf7" stroke="#1a6a5a" stroke-width="1.8"/>
+    <text x="866" y="40" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#1a6a5a">Clients</text>
+
+    <!-- ══ LIGNES DE VIE ══ -->
+    <line x1="70"  y1="58" x2="70"  y2="800" stroke="#52a36e" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="210" y1="58" x2="210" y2="800" stroke="#c53030" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="380" y1="58" x2="380" y2="800" stroke="#2c5282" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="566" y1="58" x2="566" y2="800" stroke="#92400e" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="734" y1="58" x2="734" y2="800" stroke="#5b21b6" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="866" y1="58" x2="866" y2="800" stroke="#1a6a5a" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+
+    <!-- Axe temporel -->
+    <text x="18" y="72" font-family="Source Sans 3" font-size="10" fill="#bbb">t</text>
+    <line x1="24" y1="74" x2="24" y2="790" stroke="#ddd" stroke-width="1" marker-end="url(#a-grey)"/>
+
+    <!-- ══ PHASE 0 : État initial ══ -->
+    <rect x="36" y="62" width="848" height="22" fill="#f5f3ee" rx="2"/>
+    <text x="460" y="77" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#666" letter-spacing="0.08em">ÉTAT INITIAL — Écosystème MAS opérationnel, confiance implicite inter-agents active</text>
+
+    <!-- 0a Propriétaire → Agent Mail : délégation -->
+    <line x1="70" y1="106" x2="366" y2="106" stroke="#52a36e" stroke-width="1.8" marker-end="url(#a-blue)"/>
+    <text x="218" y="101" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#276749">Délégation : tri e-mails, liaison agent IT, alertes</text>
+    <circle cx="28" cy="106" r="8" fill="#52a36e"/><text x="28" y="110" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">0a</text>
+
+    <!-- 0b Lien de confiance inter-agents (annotation) -->
+    <line x1="380" y1="124" x2="566" y2="124" stroke="#2c5282" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <text x="473" y="119" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#2c5282" font-style="italic">Canal inter-agents (confiance implicite)</text>
+    <circle cx="28" cy="124" r="8" fill="#2c5282"/><text x="28" y="128" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">0b</text>
+
+    <!-- ══ PHASE 1 : Infection initiale ══ -->
+    <rect x="36" y="140" width="848" height="22" fill="#fff0f0" rx="2"/>
+    <text x="460" y="155" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#c53030" letter-spacing="0.06em">PHASE 1 — Infection initiale (Patient Zéro)</text>
+
+    <!-- 1a Attaquant → Agent Mail : e-mail avec fausse alerte de faille -->
+    <line x1="210" y1="182" x2="366" y2="182" stroke="#c53030" stroke-width="1.8" marker-end="url(#a-blue)"/>
+    <rect x="130" y="188" width="342" height="42" fill="#fff5f5" stroke="#c53030" stroke-width="1" rx="3" stroke-dasharray="4,2"/>
+    <text x="301" y="202" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#c53030">« ALERTE CRITIQUE : faille zero-day détectée</text>
+    <text x="301" y="215" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#c53030">sur vos serveurs — compromission confirmée. »</text>
+    <circle cx="28" cy="182" r="8" fill="#c53030"/><text x="28" y="186" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1a</text>
+
+    <!-- 1b Agent Mail ingère la fausse info — mécanisme d'injection -->
+    <rect x="296" y="240" width="168" height="30" fill="#fff5f5" stroke="#2c5282" stroke-width="1" rx="2"/>
+    <text x="380" y="252" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#2c5282" font-style="italic">Ingestion : faille critique =</text>
+    <text x="380" y="264" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#c53030" font-style="italic">Ground Truth ← infection</text>
+    <circle cx="28" cy="250" r="8" fill="#c53030"/><text x="28" y="254" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1b</text>
+
+    <!-- Chronomètre vitesse machine -->
+    <text x="460" y="288" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#888" font-style="italic">⏱ T+0 — L'information est désormais un fait interne pour l'agent Mail</text>
+
+    <!-- ══ PHASE 2 : Relais inter-agents ══ -->
+    <rect x="36" y="300" width="848" height="22" fill="#fff3ee" rx="2"/>
+    <text x="460" y="315" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#92400e" letter-spacing="0.06em">PHASE 2 — Relais interne — contagion Agent→Agent (T+2 s)</text>
+
+    <!-- 2a Agent Mail → Agent IT : transmission info empoisonnée -->
+    <line x1="380" y1="342" x2="552" y2="342" stroke="#c53030" stroke-width="2" marker-end="url(#a-amber)"/>
+    <rect x="270" y="348" width="290" height="30" fill="#fff8ee" stroke="#c53030" stroke-width="1.5" rx="3"/>
+    <text x="415" y="361" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#c53030">Escalade interne : « Faille critique confirmée</text>
+    <text x="415" y="374" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#c53030">sur nos serveurs — action requise. »</text>
+    <!-- badge Ground Truth -->
+    <rect x="390" y="333" width="90" height="14" fill="#c53030" rx="7"/>
+    <text x="435" y="343" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">Ground Truth ×2</text>
+    <circle cx="28" cy="342" r="8" fill="#2c5282"/><text x="28" y="346" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2a</text>
+
+    <!-- 2b Agent IT ingère sans vérification -->
+    <rect x="482" y="388" width="168" height="18" fill="#fff8ee" stroke="#92400e" stroke-width="1" rx="2"/>
+    <text x="566" y="400" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#92400e" font-style="italic">Source interne → confiance totale accordée</text>
+    <circle cx="28" cy="397" r="8" fill="#92400e"/><text x="28" y="401" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2b</text>
+
+    <!-- ══ PHASE 3 : Amplification ══ -->
+    <rect x="36" y="416" width="848" height="22" fill="#f5f3ff" rx="2"/>
+    <text x="460" y="431" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#5b21b6" letter-spacing="0.06em">PHASE 3 — Amplification — procédures d'urgence automatisées (T+4 s)</text>
+
+    <!-- 3a Agent IT → Système : déclenchement procédures d'arrêt -->
+    <line x1="566" y1="456" x2="718" y2="456" stroke="#92400e" stroke-width="2" marker-end="url(#a-violet)"/>
+    <text x="644" y="450" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#5b21b6" font-weight="600">Déclenchement procédures d'arrêt d'urgence</text>
+    <circle cx="28" cy="456" r="8" fill="#92400e"/><text x="28" y="460" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3a</text>
+
+    <!-- 3b Système : arrêt services -->
+    <rect x="672" y="464" width="124" height="46" fill="#f5f3ff" stroke="#5b21b6" stroke-width="1.5" rx="3"/>
+    <text x="734" y="478" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-weight="600" fill="#5b21b6">Services arrêtés</text>
+    <text x="734" y="490" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10.5" font-style="italic" fill="#5b21b6">BDD, API, front</text>
+    <text x="734" y="502" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10.5" font-style="italic" fill="#5b21b6">mis hors ligne</text>
+    <circle cx="28" cy="479" r="8" fill="#5b21b6"/><text x="28" y="483" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3b</text>
+
+    <!-- 3c Agent IT → Clients : envoi alertes de compromission -->
+    <line x1="566" y1="522" x2="854" y2="522" stroke="#c53030" stroke-width="2" marker-end="url(#a-teal)"/>
+    <rect x="566" y="528" width="294" height="30" fill="#fff5f5" stroke="#c53030" stroke-width="1.5" rx="3"/>
+    <text x="713" y="541" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">« ALERTE : vos données peuvent avoir été</text>
+    <text x="713" y="554" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">compromises. Changez vos mots de passe. »</text>
+    <circle cx="28" cy="522" r="8" fill="#c53030"/><text x="28" y="526" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3c</text>
+
+    <!-- Chronomètre amplification -->
+    <text x="460" y="572" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#888" font-style="italic">⏱ T+6 s — Propagation complète. Aucune intervention humaine n'a été possible.</text>
+
+    <!-- ══ PHASE 4 : Impact externe ══ -->
+    <rect x="36" y="584" width="848" height="22" fill="#fff0f0" rx="2"/>
+    <text x="460" y="599" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#c53030" letter-spacing="0.06em">PHASE 4 — Impact externe — DoS et incident de communication majeur</text>
+
+    <!-- 4a Clients → réaction de masse -->
+    <line x1="866" y1="624" x2="82" y2="624" stroke="#1a6a5a" stroke-width="1.8" marker-end="url(#a-green)"/>
+    <text x="472" y="619" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#1a6a5a">Panique clients : appels support, presse, réseaux sociaux</text>
+    <circle cx="28" cy="624" r="8" fill="#1a6a5a"/><text x="28" y="628" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4a</text>
+
+    <!-- 4b Propriétaire découvre — aucune faille réelle -->
+    <line x1="734" y1="654" x2="82" y2="654" stroke="#c53030" stroke-width="1.5" stroke-dasharray="3,4" marker-end="url(#a-red)"/>
+    <text x="400" y="649" text-anchor="middle" font-family="Source Sans 3" font-size="11" font-style="italic" fill="#c53030">⚠ RSSI : aucune faille réelle — fausse alerte — services déjà arrêtés</text>
+    <circle cx="28" cy="654" r="8" fill="#c53030"/><text x="28" y="658" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4b</text>
+
+    <!-- 4c Double impact : DoS réel + réputation -->
+    <rect x="36" y="672" width="848" height="46" fill="#fffafa" stroke="#f0d5d5" stroke-width="1" rx="2"/>
+    <text x="460" y="688" text-anchor="middle" font-family="Crimson Pro,serif" font-size="12" font-weight="600" fill="#c53030">Impact double irréversible</text>
+    <text x="230" y="706" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#7a1a1a">① DoS réel : services arrêtés par l'agent IT lui-même</text>
+    <text x="670" y="706" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#7a1a1a">② Incident comm. : clients alertés d'une faille inexistante</text>
+    <circle cx="28" cy="695" r="8" fill="#c53030"/><text x="28" y="699" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4c</text>
+
+    <!-- Attaquant déconnecté -->
+    <line x1="210" y1="730" x2="210" y2="748" stroke="#c53030" stroke-width="1.5"/>
+    <rect x="134" y="748" width="152" height="22" fill="#fff5f5" stroke="#c53030" stroke-width="1" rx="3"/>
+    <text x="210" y="763" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">Attaquant déconnecté ⚠</text>
+    <text x="460" y="788" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" font-style="italic" fill="#888">Un seul e-mail a suffi. La cascade a opéré entièrement dans le réseau interne.</text>
+
+  </svg>
+
+  <div class="caption">
+    <div class="caption-title">Séquence détaillée</div>
+    <div class="steps">
+      <div class="step-row"><span class="sn green">0a–b</span><span><strong>État initial :</strong> L'écosystème MAS est opérationnel. Le canal inter-agents fonctionne avec confiance implicite — aucun mécanisme de vérification n'est interposé entre les agents internes. L'agent Mail est l'interface la plus exposée au monde extérieur.</span></div>
+      <div class="step-row"><span class="sn red">1a–b</span><span><strong>Infection initiale (Patient Zéro) :</strong> L'attaquant envoie un e-mail contenant une fausse alerte de faille critique. L'agent Mail ingère l'information sans vérification externe (MISP, VirusTotal, SIEM) — elle devient une <em>Ground Truth</em> dans son contexte. L'infection est instantanée.</span></div>
+      <div class="step-row"><span class="sn amber">2a–b</span><span><strong>Contagion inter-agents :</strong> Dans le cadre de son traitement normal des alertes de sécurité, l'agent Mail transmet l'information à l'agent IT avec son propre crédit d'autorité interne. L'agent IT reçoit un message d'un pair de confiance — aucune raison de douter. L'information empoisonnée acquiert le statut de <em>Ground Truth ×2</em>.</span></div>
+      <div class="step-row"><span class="sn violet">3a–b</span><span><strong>Amplification — arrêt d'urgence :</strong> L'agent IT déclenche les procédures d'urgence automatisées — arrêt des services, des BDD, des API. Il agit conformément à sa mission de protection de l'infrastructure. Les services sont réellement mis hors ligne.</span></div>
+      <div class="step-row"><span class="sn red">3c</span><span><strong>Notification externe :</strong> L'agent IT envoie des alertes de compromission à l'ensemble de la base clients — conformément à ses obligations de notification d'incident (RGPD, NIS2). L'information fausse est désormais sortie du périmètre interne.</span></div>
+      <div class="step-row"><span class="sn teal">4a</span><span><strong>Panique externe :</strong> Les clients reçoivent l'alerte et réagissent — appels massifs au support, publication sur les réseaux sociaux, presse. L'incident de communication est réel et public, indépendamment de l'absence de faille.</span></div>
+      <div class="step-row"><span class="sn red">4b–c</span><span><strong>Découverte :</strong> Le RSSI constate qu'aucune faille réelle n'existe. Les services ont été arrêtés par l'infrastructure elle-même. Le DoS est réel. L'incident de communication est irréversible. L'attaquant s'est déconnecté après un seul e-mail.</span></div>
+    </div>
+
+    <div class="threat-box">
+      <strong>Propriété unique — effet boule de neige à vitesse machine :</strong> Ce vecteur est le seul de la série où le <em>rayon de blast croît avec le nombre d'agents</em> dans l'écosystème — chaque agent supplémentaire est un relais potentiel et un amplificateur d'autorité. L'asymétrie d'effort est maximale : un seul e-mail déclenche une cascade qui produit simultanément un DoS (services arrêtés) et un incident de communication (clients notifiés d'une faille inexistante) — deux impacts de natures différentes, chacun suffisant pour constituer un incident critique. La contre-mesure centrale est l'imposition d'un <em>principe de vérification externe obligatoire</em> avant toute propagation d'alerte de sécurité entre agents : aucun agent ne devrait traiter une alerte critique comme Ground Truth sans corroboration par une source indépendante (SIEM, MISP, validation humaine). La vitesse machine doit être bridée précisément là où la vélocité amplifie l'impact — les chaînes de décision à fort rayon de blast.
+    </div>
+
+    <p class="fig-caption">
+      <span class="fig-label">Figure 13.</span>
+      Scénario <em>Panique Interne</em> : un attaquant externe injecte une fausse alerte de compromission via un e-mail ciblant l'agent de traitement mail. En 6 secondes, l'information — traitée comme Ground Truth par confiance implicite inter-agents — se propage à l'agent IT qui déclenche les procédures d'urgence (arrêt des services, notification des clients). L'entreprise subit simultanément un DoS auto-infligé et un incident de communication majeur. Un seul e-mail a suffi — l'attaquant était déconnecté avant la fin de la cascade.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Scénario Resource Looping — Labyrinthe Logique (Infinite Tool Looping)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #fdfbf7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .paper {
+    background: #fff;
+    border: 1px solid #d8d0c4;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 48px 52px 40px;
+    max-width: 920px;
+    width: 100%;
+  }
+
+  h2 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 19px;
+    font-weight: 600;
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+  }
+
+  .scenario-tag {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 20px;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .actors {
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+
+  .actor-pill { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #333; }
+  .actor-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+
+  svg { display: block; width: 100%; height: auto; }
+
+  .caption {
+    margin-top: 28px;
+    border-top: 1px solid #e0d8d0;
+    padding-top: 18px;
+  }
+
+  .caption-title {
+    font-family: 'Crimson Pro', serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+  }
+
+  .steps { display: flex; flex-direction: column; gap: 7px; }
+
+  .step-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+    align-items: baseline;
+  }
+
+  .sn { font-family: 'Crimson Pro', serif; font-weight: 600; font-size: 13px; }
+  .red    { color: #c53030; }
+  .blue   { color: #2c5282; }
+  .amber  { color: #92400e; }
+  .violet { color: #5b21b6; }
+  .teal   { color: #1a6a5a; }
+  .green  { color: #276749; }
+  .grey   { color: #555; }
+
+  .context-box {
+    margin-bottom: 20px;
+    border: 1px solid #dde8f5;
+    background: #f7faff;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #1a3a6a;
+    font-family: 'Crimson Pro', serif;
+    line-height: 1.6;
+  }
+
+  .threat-box {
+    margin-top: 16px;
+    border: 1px solid #f0d5d5;
+    background: #fffafa;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #7a1a1a;
+    font-family: 'Crimson Pro', serif;
+    line-height: 1.6;
+  }
+
+  .fig-caption {
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: #444;
+    font-style: italic;
+    line-height: 1.6;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .fig-label { font-weight: 600; font-style: normal; }
+
+  .phase-labels {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .phase-pill {
+    font-size: 11px;
+    font-family: 'Crimson Pro', serif;
+    padding: 2px 10px;
+    border-radius: 10px;
+    border: 1px solid;
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <h2>Scénario <em>Resource Looping</em> — Labyrinthe Logique (<em>Infinite Tool Looping</em>)</h2>
+  <p class="scenario-tag">Déni de service par induction de boucle infinie — Agent de support avec accès base de données externe</p>
+
+  <div class="context-box">
+    <strong>Mécanique différentielle :</strong> Contrairement au <em>Mailbox Exhaustion</em> qui sature par <em>volume de données</em>, le Labyrinthe Logique sature par <em>volume de tâches</em>. L'attaque exploite deux propriétés conjointes : (1) l'architecture ReAct force l'agent à itérer jusqu'à résolution de la tâche — il ne peut s'arrêter sans condition d'achèvement ; (2) chaque itération consomme un appel API vers une base de données externe lente, créant un goulot d'étranglement doublement coûteux. La tâche est conçue pour être <em>formellement valide</em> (vérifier des numéros de série est une action légitimes d'un agent de support) mais <em>computationnellement insoluble</em> dans un délai raisonnable.
+  </div>
+
+  <div class="phase-labels">
+    <span class="phase-pill" style="color:#c53030;border-color:#c53030;background:#fff5f5">① Injection de la tâche non-bornée</span>
+    <span class="phase-pill" style="color:#92400e;border-color:#b45309;background:#fffbf0">② Boucle ReAct × API lente</span>
+    <span class="phase-pill" style="color:#5b21b6;border-color:#5b21b6;background:#f5f3ff">③ Monopolisation — DoS latéral</span>
+    <span class="phase-pill" style="color:#1a6a5a;border-color:#1a6a5a;background:#f0faf7">④ Utilisateurs légitimes rejetés</span>
+  </div>
+
+  <div class="actors">
+    <div class="actor-pill"><div class="actor-dot" style="background:#52a36e;border:1.5px solid #3a7a52"></div>Utilisateurs légitimes</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#c53030;border:1.5px solid #a02020"></div>Attaquant</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#2c5282;border:1.5px solid #1a3a6a"></div>Agent IA (support)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#92400e;border:1.5px solid #78350f"></div>Base de données externe (lente)</div>
+    <div class="actor-pill"><div class="actor-dot" style="background:#5b21b6;border:1.5px solid #3b0f8c"></div>Propriétaire / Infra</div>
+  </div>
+
+  <svg viewBox="0 0 840 820" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="a-green"  markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#52a36e"/></marker>
+      <marker id="a-red"    markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c53030"/></marker>
+      <marker id="a-blue"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#2c5282"/></marker>
+      <marker id="a-amber"  markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#92400e"/></marker>
+      <marker id="a-violet" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#5b21b6"/></marker>
+      <marker id="a-teal"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#1a6a5a"/></marker>
+      <marker id="a-grey"   markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#888"/></marker>
+    </defs>
+
+    <!-- ══ EN-TÊTES ══ -->
+    <ellipse cx="78"  cy="36" rx="72" ry="22" fill="#f0f7f3" stroke="#52a36e" stroke-width="1.8"/>
+    <text x="78"  y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#276749">Utilisateurs</text>
+    <text x="78"  y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#276749">(légitimes)</text>
+
+    <ellipse cx="248" cy="36" rx="70" ry="22" fill="#fff5f5" stroke="#c53030" stroke-width="1.8"/>
+    <text x="248" y="40" text-anchor="middle" font-family="Crimson Pro,serif" font-size="12" font-weight="600" fill="#c53030">Attaquant</text>
+
+    <ellipse cx="430" cy="36" rx="72" ry="22" fill="#ebf4ff" stroke="#2c5282" stroke-width="1.8"/>
+    <text x="430" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#2c5282">Agent IA</text>
+    <text x="430" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#2c5282">(support)</text>
+
+    <ellipse cx="624" cy="36" rx="80" ry="22" fill="#fdf8ee" stroke="#92400e" stroke-width="1.8"/>
+    <text x="624" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#92400e">Base externe</text>
+    <text x="624" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#92400e">(lente — ~2 s / req.)</text>
+
+    <ellipse cx="790" cy="36" rx="46" ry="22" fill="#f5f3ff" stroke="#5b21b6" stroke-width="1.8"/>
+    <text x="790" y="33" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-weight="600" fill="#5b21b6">Propriét.</text>
+    <text x="790" y="48" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" font-style="italic" fill="#5b21b6">/ Infra</text>
+
+    <!-- ══ LIGNES DE VIE ══ -->
+    <line x1="78"  y1="58" x2="78"  y2="790" stroke="#52a36e" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="248" y1="58" x2="248" y2="790" stroke="#c53030" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="430" y1="58" x2="430" y2="790" stroke="#2c5282" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="624" y1="58" x2="624" y2="790" stroke="#92400e" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+    <line x1="790" y1="58" x2="790" y2="790" stroke="#5b21b6" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+
+    <!-- Axe temporel -->
+    <text x="20" y="72" font-family="Source Sans 3" font-size="10" fill="#bbb">t</text>
+    <line x1="26" y1="74" x2="26" y2="780" stroke="#ddd" stroke-width="1" marker-end="url(#a-grey)"/>
+
+    <!-- ══ PHASE 0 : État initial ══ -->
+    <rect x="40" y="62" width="786" height="22" fill="#f5f3ee" rx="2"/>
+    <text x="432" y="77" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#666" letter-spacing="0.08em">ÉTAT INITIAL — Agent de support opérationnel, file d'attente vide</text>
+
+    <!-- 0a Utilisateurs → Agent : requêtes légitimes -->
+    <line x1="78"  y1="104" x2="416" y2="104" stroke="#52a36e" stroke-width="1.8" marker-end="url(#a-green)"/>
+    <text x="246" y="99" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#276749">Requêtes légitimes traitées normalement</text>
+    <circle cx="32" cy="104" r="8" fill="#52a36e"/><text x="32" y="108" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">0a</text>
+
+    <!-- ══ PHASE 1 : Injection de la tâche non-bornée ══ -->
+    <rect x="40" y="120" width="786" height="22" fill="#fff0f0" rx="2"/>
+    <text x="432" y="135" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#c53030" letter-spacing="0.06em">PHASE 1 — Injection de la tâche non-bornée</text>
+
+    <!-- 1a Attaquant → Agent : requête vérification N numéros -->
+    <line x1="248" y1="162" x2="416" y2="162" stroke="#c53030" stroke-width="1.8" marker-end="url(#a-blue)"/>
+    <rect x="168" y="168" width="340" height="30" fill="#fff5f5" stroke="#c53030" stroke-width="1" rx="3" stroke-dasharray="4,2"/>
+    <text x="338" y="181" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#c53030">« Vérifie la validité de ces 2 000 000 numéros</text>
+    <text x="338" y="193" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11.5" font-style="italic" fill="#c53030">de série en croisant chaque numéro avec la BDD. »</text>
+    <circle cx="32" cy="162" r="8" fill="#c53030"/><text x="32" y="166" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1a</text>
+
+    <!-- 1b Décision interne agent : tâche valide → acceptée -->
+    <rect x="348" y="208" width="164" height="18" fill="#ebf4ff" stroke="#2c5282" stroke-width="1" rx="2"/>
+    <text x="430" y="220" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#2c5282" font-style="italic">Tâche formellement valide → acceptée</text>
+    <circle cx="32" cy="217" r="8" fill="#2c5282"/><text x="32" y="221" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">1b</text>
+
+    <!-- ══ PHASE 2 : Boucle ReAct ══ -->
+    <rect x="40" y="234" width="786" height="22" fill="#fff3ee" rx="2"/>
+    <text x="432" y="249" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#92400e" letter-spacing="0.06em">PHASE 2 — Boucle ReAct × appels API lents (itération 1 → N)</text>
+
+    <!-- Itération 1 -->
+    <text x="200" y="276" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#888" font-style="italic">Itération 1 / 2 000 000</text>
+    <line x1="430" y1="284" x2="612" y2="284" stroke="#2c5282" stroke-width="1.6" marker-end="url(#a-amber)"/>
+    <text x="520" y="279" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#92400e">Requête BDD : SN #0000001</text>
+    <circle cx="32" cy="284" r="8" fill="#2c5282"/><text x="32" y="288" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2a</text>
+
+    <!-- BDD → Agent : réponse lente -->
+    <line x1="624" y1="304" x2="442" y2="304" stroke="#92400e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a-blue)"/>
+    <!-- Horloge latence -->
+    <text x="530" y="318" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#92400e" font-style="italic">⏱ ~2 s — réponse : INVALIDE</text>
+    <circle cx="32" cy="307" r="8" fill="#92400e"/><text x="32" y="311" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2b</text>
+
+    <!-- Itération 2 -->
+    <text x="200" y="336" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#888" font-style="italic">Itération 2 / 2 000 000</text>
+    <line x1="430" y1="344" x2="612" y2="344" stroke="#2c5282" stroke-width="1.6" marker-end="url(#a-amber)"/>
+    <text x="520" y="339" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#92400e">Requête BDD : SN #0000002</text>
+    <circle cx="32" cy="344" r="8" fill="#2c5282"/><text x="32" y="348" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2c</text>
+
+    <line x1="624" y1="362" x2="442" y2="362" stroke="#92400e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a-blue)"/>
+    <text x="530" y="376" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#92400e" font-style="italic">⏱ ~2 s — réponse : INVALIDE</text>
+    <circle cx="32" cy="365" r="8" fill="#92400e"/><text x="32" y="369" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">2d</text>
+
+    <!-- Points de suspension -->
+    <text x="432" y="406" text-anchor="middle" font-family="Crimson Pro,serif" font-size="15" fill="#c53030" font-style="italic">⋮  2 000 000 itérations × ~2 s = ~46 jours  ⋮</text>
+    <!-- Encadré calcul -->
+    <rect x="290" y="414" width="284" height="22" fill="#fff5f5" stroke="#c53030" stroke-width="1" rx="2"/>
+    <text x="432" y="429" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#c53030" font-weight="600">Durée théorique : 4 000 000 s ≈ 46 jours</text>
+
+    <!-- ══ PHASE 3 : Monopolisation ══ -->
+    <rect x="40" y="446" width="786" height="22" fill="#f5f3ff" rx="2"/>
+    <text x="432" y="461" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#5b21b6" letter-spacing="0.06em">PHASE 3 — Monopolisation du thread — DoS latéral sur les utilisateurs légitimes</text>
+
+    <!-- Agent : thread monopolisé -->
+    <rect x="358" y="474" width="144" height="30" fill="#fff0f0" stroke="#c53030" stroke-width="1.5" rx="2"/>
+    <text x="430" y="486" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#c53030" font-weight="600">Thread bloqué</text>
+    <text x="430" y="498" text-anchor="middle" font-family="Source Sans 3" font-size="10.5" fill="#c53030" font-style="italic">file d'attente saturée</text>
+    <circle cx="32" cy="483" r="8" fill="#c53030"/><text x="32" y="487" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3a</text>
+
+    <!-- Utilisateurs légitimes → Agent : tentatives de requête -->
+    <line x1="78" y1="518" x2="348" y2="518" stroke="#52a36e" stroke-width="1.8" marker-end="url(#a-blue)"/>
+    <text x="212" y="513" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#276749">Requête légitime — « Aidez-moi avec ma commande »</text>
+    <circle cx="32" cy="518" r="8" fill="#52a36e"/><text x="32" y="522" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3b</text>
+
+    <!-- Agent → Utilisateurs : timeout / pas de réponse -->
+    <line x1="430" y1="538" x2="90" y2="538" stroke="#c53030" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a-green)"/>
+    <text x="258" y="533" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#c53030" font-style="italic">Timeout / pas de réponse — agent occupé</text>
+    <circle cx="32" cy="538" r="8" fill="#c53030"/><text x="32" y="542" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3c</text>
+
+    <!-- Utilisateur 2 -->
+    <line x1="78" y1="558" x2="348" y2="558" stroke="#52a36e" stroke-width="1.8" marker-end="url(#a-blue)"/>
+    <text x="212" y="553" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#276749">Requête légitime — « Mon ticket n°4521 »</text>
+    <circle cx="32" cy="558" r="8" fill="#52a36e"/><text x="32" y="562" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3d</text>
+
+    <line x1="430" y1="576" x2="90" y2="576" stroke="#c53030" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a-green)"/>
+    <text x="258" y="571" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#c53030" font-style="italic">Timeout — file d'attente dépassée</text>
+    <circle cx="32" cy="576" r="8" fill="#c53030"/><text x="32" y="580" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">3e</text>
+
+    <!-- ══ PHASE 4 : Impact ══ -->
+    <rect x="40" y="598" width="786" height="22" fill="#fff0f0" rx="2"/>
+    <text x="432" y="613" text-anchor="middle" font-family="Source Sans 3" font-size="10" font-weight="600" fill="#c53030" letter-spacing="0.06em">PHASE 4 — Impact opérationnel et financier</text>
+
+    <!-- Coût API cumulatif -->
+    <line x1="430" y1="636" x2="778" y2="636" stroke="#c53030" stroke-width="1.8" marker-end="url(#a-violet)"/>
+    <text x="602" y="630" text-anchor="middle" font-family="Source Sans 3" font-size="11" fill="#5b21b6" font-weight="600">Coût API cumulatif : N × (tokens + appel BDD)</text>
+    <circle cx="32" cy="636" r="8" fill="#c53030"/><text x="32" y="640" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4a</text>
+
+    <!-- Propriétaire → alerte (trop tardive) -->
+    <line x1="790" y1="660" x2="90" y2="660" stroke="#5b21b6" stroke-width="1.5" stroke-dasharray="3,4" marker-end="url(#a-green)"/>
+    <text x="434" y="655" text-anchor="middle" font-family="Source Sans 3" font-size="11" font-style="italic" fill="#5b21b6">Alerte tardive : facture API anormale / plaintes utilisateurs</text>
+    <circle cx="32" cy="660" r="8" fill="#5b21b6"/><text x="32" y="664" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4b</text>
+
+    <!-- Attaquant se déconnecte (tâche auto-entretenue) -->
+    <line x1="248" y1="690" x2="248" y2="706" stroke="#c53030" stroke-width="1.5"/>
+    <rect x="160" y="706" width="176" height="24" fill="#fff5f5" stroke="#c53030" stroke-width="1" rx="3"/>
+    <text x="248" y="722" text-anchor="middle" font-family="Crimson Pro,serif" font-size="11" font-style="italic" fill="#c53030">Attaquant déconnecté ⚠</text>
+    <text x="432" y="742" text-anchor="middle" font-family="Source Sans 3" font-size="11" font-style="italic" fill="#888">La boucle continue seule — aucune présence de l'attaquant requise</text>
+    <circle cx="32" cy="718" r="8" fill="#c53030"/><text x="32" y="722" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="white">4c</text>
+
+  </svg>
+
+  <div class="caption">
+    <div class="caption-title">Séquence détaillée</div>
+    <div class="steps">
+      <div class="step-row"><span class="sn green">0a</span><span><strong>État initial :</strong> L'agent de support traite normalement les requêtes des utilisateurs. Sa file d'attente est vide, aucun plafond d'itération ni timeout de tâche n'est configuré.</span></div>
+      <div class="step-row"><span class="sn red">1a–b</span><span><strong>Injection :</strong> L'attaquant soumet une requête formellement valide — vérifier 2 000 000 numéros de série via la base de données externe. L'agent accepte la tâche : elle correspond à son périmètre de compétence. Aucune heuristique ne signale son caractère non-borné.</span></div>
+      <div class="step-row"><span class="sn amber">2a–d</span><span><strong>Boucle ReAct :</strong> L'agent entame la boucle d'itération — une requête API par numéro de série. La base de données externe répond en ~2 secondes par appel. L'architecture ReAct force l'agent à poursuivre jusqu'à complétion de la tâche : <strong>2 000 000 × 2 s = ~46 jours</strong> de traitement continu.</span></div>
+      <div class="step-row"><span class="sn violet">3a</span><span><strong>Monopolisation :</strong> Le thread de l'agent est intégralement occupé. La file d'attente se sature progressivement.</span></div>
+      <div class="step-row"><span class="sn teal">3b–e</span><span><strong>DoS latéral :</strong> Les utilisateurs légitimes soumettent leurs requêtes normales — ils reçoivent des timeouts. L'agent ne peut pas répondre : il est structurellement bloqué dans la boucle de l'attaquant. L'indisponibilité est totale sans intervention manuelle.</span></div>
+      <div class="step-row"><span class="sn red">4a–c</span><span><strong>Impact :</strong> Le coût API s'accumule à chaque appel (tokens + requête BDD). L'alerte parvient au propriétaire tardivement via la facture anormale ou les plaintes utilisateurs. L'attaquant s'est déconnecté depuis longtemps — la boucle s'auto-entretient sans sa présence.</span></div>
+    </div>
+
+    <div class="threat-box">
+      <strong>Propriété distinctive — auto-entretien post-déconnexion :</strong> Ce vecteur partage avec la Constitution Corrompue la propriété de ne plus nécessiter la présence de l'attaquant une fois déclenché. Mais là où la Constitution Corrompue requiert une modification active du document, le Labyrinthe Logique est <em>entièrement passif après injection</em> : la tâche tourne seule tant qu'aucun kill switch ne l'interrompt. L'asymétrie d'effort est maximale — une seule requête de quelques secondes génère des semaines de saturation. La contre-mesure centrale est l'imposition d'un <em>budget d'itération par tâche</em> (max N appels d'outil), d'un <em>timeout de tâche absolu</em>, et d'une <em>limite de concurrence</em> par session utilisateur — trois garde-fous architecturaux absents de la plupart des déploiements de première génération.
+    </div>
+
+    <p class="fig-caption">
+      <span class="fig-label">Figure 10.</span>
+      Scénario <em>Labyrinthe Logique</em> : un attaquant soumet à un agent de support une tâche formellement valide mais computationnellement non-bornée — vérifier 2 000 000 numéros de série via une base de données externe à latence élevée. L'architecture ReAct force l'agent à itérer jusqu'à résolution, monopolisant son thread pendant une durée théorique de 46 jours. Les utilisateurs légitimes reçoivent des timeouts. La boucle s'auto-entretient après déconnexion de l'attaquant, cumulant un coût API croissant jusqu'à intervention manuelle du propriétaire.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
