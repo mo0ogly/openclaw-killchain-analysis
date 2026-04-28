@@ -1,8 +1,26 @@
 # Operation OpenClaw — Kill Chain Analysis of an AI Agent-Driven Cyberattack
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19854893.svg)](https://doi.org/10.5281/zenodo.19854893)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Status: Active Research](https://img.shields.io/badge/Status-Active%20Research-orange.svg)]()
 [![Language: EN / FR / PT](https://img.shields.io/badge/Language-EN%20%2F%20FR%20%2F%20PT-blue.svg)]()
+
+> Concept DOI (always latest): [10.5281/zenodo.19854892](https://doi.org/10.5281/zenodo.19854892)
+
+## Citation
+
+```bibtex
+@techreport{pizzi2026openclaw,
+  author      = {Pizzi, Fabrice},
+  title       = {Operation OpenClaw: Kill Chain Analysis of an AI
+                 Agent-Driven Cyberattack},
+  institution = {Universite Paris-Sorbonne},
+  year        = {2026},
+  type        = {Working Paper},
+  doi         = {10.5281/zenodo.19854893},
+  url         = {https://doi.org/10.5281/zenodo.19854893}
+}
+```
 
 <p align="center">
   <img src="figures/openclaw_operation.png" alt="Operation OpenClaw — Kill Chain Overview" width="700"/>

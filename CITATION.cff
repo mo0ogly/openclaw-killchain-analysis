@@ -8,6 +8,14 @@ authors:
     affiliation: "Universite Paris-Sorbonne"
 date-released: 2026-04-28
 version: "1.0.0"
+doi: "10.5281/zenodo.19854893"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.19854893"
+    description: "Version DOI (v1.0.0)"
+  - type: doi
+    value: "10.5281/zenodo.19854892"
+    description: "Concept DOI (always latest version)"
 license: CC-BY-NC-SA-4.0
 repository-code: "https://github.com/mo0ogly/openclaw-killchain-analysis"
 keywords:
