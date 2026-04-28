@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: generic
+title: "Operation OpenClaw: Kill Chain Analysis of an AI Agent-Driven Cyberattack"
+authors:
+  - family-names: Pizzi
+    given-names: Fabrice
+    affiliation: "Universite Paris-Sorbonne"
+date-released: 2026-04-28
+version: "1.0.0"
+license: CC-BY-NC-SA-4.0
+repository-code: "https://github.com/mo0ogly/openclaw-killchain-analysis"
+keywords:
+  - AI agents
+  - cybersecurity
+  - kill chain
+  - MITRE ATT&CK
+  - prompt injection
+  - ransomware
+  - PromptLock
+  - double extortion
+abstract: >
+  Academic kill chain analysis (Lockheed Martin model) of an AI agent-driven
+  cyberattack across 5 phases: Reconnaissance, Weaponization, Delivery and
+  Exploitation, Lateral Movement and Persistence, Exfiltration and Double
+  Extortion (PromptLock). Includes M2 Sorbonne course materials on AI and
+  Cybersecurity. Multilingual (EN/FR/PT).

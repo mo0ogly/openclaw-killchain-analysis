@@ -1,0 +1,39 @@
+{
+  "title": "Operation OpenClaw: Kill Chain Analysis of an AI Agent-Driven Cyberattack",
+  "description": "Academic kill chain analysis (Lockheed Martin model) of an AI agent-driven cyberattack across 5 phases: Reconnaissance, Weaponization, Delivery and Exploitation, Lateral Movement and Persistence, Exfiltration and Double Extortion (PromptLock). Includes academic notes, M2 Sorbonne course materials on AI and Cybersecurity, and per-phase infographics. Multilingual deliverables (EN/FR/PT).",
+  "creators": [
+    {
+      "name": "Pizzi, Fabrice",
+      "affiliation": "Universite Paris-Sorbonne"
+    }
+  ],
+  "upload_type": "publication",
+  "publication_type": "workingpaper",
+  "publication_date": "2026-04-28",
+  "language": "eng",
+  "access_right": "open",
+  "license": "cc-by-nc-sa-4.0",
+  "keywords": [
+    "AI agents",
+    "cybersecurity",
+    "kill chain",
+    "MITRE ATT&CK",
+    "prompt injection",
+    "ransomware",
+    "PromptLock",
+    "double extortion"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/mo0ogly/openclaw-killchain-analysis",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "arXiv:2602.20021",
+      "relation": "cites",
+      "resource_type": "publication-article"
+    }
+  ],
+  "notes": "Active research project. Includes M2 Sorbonne course slides on AI and Cybersecurity (versions 5-8). Per-phase reports ~25-30 pages each."
+}
